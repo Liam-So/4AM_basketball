@@ -1,0 +1,8 @@
+.image {
+    margin-left: 2rem;
+}
+
+
+.image > img {
+    height: 6rem;
+}
