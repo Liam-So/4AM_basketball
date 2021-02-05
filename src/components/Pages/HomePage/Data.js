@@ -20,7 +20,7 @@ export const homeObjOne = {
     headline: 'Elite Camp',
     description: 'The 4AM Camp is a basketball camp for elite high school boys. During the camp, we aim to teach not only basketball skills, as Andrew was an exceptional player, but also the life skills that Andrew embodied as a phenomenal young man. ',
     imgStart: 'start',
-    img: '../../images/logo.png',
+    img: 'images/logo.png',
     alt: 'Baller'
 }
 
