@@ -78,16 +78,11 @@
   
   img {
     border: 0;
+    border-radius: 25px;
     max-width: 100%;
     vertical-align: middle;
     display: inline-block;
   }
-
-/* .row.home__hero-row {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-} */
 
 .container {
     display: flex;
