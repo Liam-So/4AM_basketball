@@ -1,3 +1,8 @@
+## 1.3
+
+* Added Our Team Page
+
+
 ## 1.2
 
 * Added Donate Page (add to cart has no functionality yet)
