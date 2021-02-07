@@ -9,5 +9,5 @@ export const homeObjOne = {
     buttonLabel: 'Get Started',
     imgStart: '',
     img: 'images/champ.jpg',
-    alt: 'Credit Card'
+    alt: 'calgary_dinos'
   };

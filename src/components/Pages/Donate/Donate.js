@@ -10,9 +10,9 @@ import { homeObjOne } from './Data'
 function Donate() {
 
     const products = [
-        { id: 1, name: 'Donate $10', description: 'Goes towards scholarship fund', price: '$10', image: Logo},
-        { id: 2, name: 'Donate $20', description: 'Goes towards schorship fund', price: '$20', image: Logo },
-        { id: 3, name: 'Donate $50', description: 'Goes towards schorship fund', price: '$50', image: Logo },
+        { id: 1, name: 'Donate $10', description: 'Goes towards scholarship fund', price: '$10', image: Logo, alt:'logo', },
+        { id: 2, name: 'Donate $20', description: 'Goes towards schorship fund', price: '$20', image: Logo, alt:'logo', },
+        { id: 3, name: 'Donate $50', description: 'Goes towards schorship fund', price: '$50', image: Logo, alt:'logo', },
     ]
 
     const classes = useStyles();

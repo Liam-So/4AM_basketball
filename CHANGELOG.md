@@ -1,3 +1,8 @@
+## 1.4
+
+* Added Footer for all pages and fixed Donate image bug
+
+
 ## 1.3
 
 * Added Our Team Page

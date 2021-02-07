@@ -9,7 +9,9 @@ function DonateProduct({ product }) {
 
     return (
         <Card className={classes.root}>
-            <CardMedia className={classes.media} image={product.image} title={product.name}/>
+            <CardMedia >
+                <img src={product.image} alt={product.alt}/>    
+            </CardMedia>
             <CardContent>
                 <div className={classes.cardContent}>
                     <Typography variant="h5" gutterBottom>

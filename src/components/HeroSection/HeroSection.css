@@ -32,7 +32,8 @@
   }
   
   .top-line {
-    color: #f00946;
+    /* color: #f00946; */
+    color: #1c2237;
     font-size: 16px;
     line-height: 16px;
     font-weight: 700;
@@ -54,7 +55,8 @@
   }
   
   .darkBg {
-    background-color: #1c2237;
+    /* background-color: #1c2237; */
+    background-color: #dc3545;
   }
   
   .home__hero-subtitle {
