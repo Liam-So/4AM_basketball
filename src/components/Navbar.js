@@ -10,9 +10,6 @@ import {
 } from "@material-ui/core";
 import { Home } from "@material-ui/icons";
 import { makeStyles } from "@material-ui/core/styles";
-import { SidebarData } from "../Sidebar/SidebarData";
-import SubMenu from "../Sidebar/SubMenu";
-import "./Navbar.css";
 
 const useStyles = makeStyles({
   navbarDisplayFlex: {
@@ -30,6 +27,14 @@ const useStyles = makeStyles({
   },
 });
 
+const navLinks = [
+  { title: `about us`, path: `/about-us` },
+  { title: `product`, path: `/product` },
+  { title: `blog`, path: `/blog` },
+  { title: `contact`, path: `/contact` },
+  { title: `faq`, path: `/faq` },
+];
+
 const Header = () => {
   const classes = useStyles();
 
@@ -45,23 +50,7 @@ const Header = () => {
             aria-labelledby="main navigation"
             className={classes.navDisplayFlex}
           >
-            <div class="dropdown">
-              <button class="dropbtn">Dropdown</button>
-              <div class="dropdown-content">
-                <a href="#">Link 1</a>
-                <a href="#">Link 2</a>
-                <a href="#">Link 3</a>
-              </div>
-            </div>
-            <div class="dropdown">
-              <button class="dropbtn">Dropdown</button>
-              <div class="dropdown-content">
-                <a href="#">Link 1</a>
-                <a href="#">Link 2</a>
-                <a href="#">Link 3</a>
-              </div>
-            </div>
-            {SidebarData.map(({ title, path }) => (
+            {navLinks.map(({ title, path }) => (
               <a href={path} key={title} className={classes.linkText}>
                 <ListItem button>
                   <ListItemText primary={title} />

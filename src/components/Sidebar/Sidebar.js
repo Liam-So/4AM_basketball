@@ -14,6 +14,7 @@ const Nav = styled.div`
   position: relative;
   width: 100%;
   display: flex;
+  flex-direction: column;
 `;
 
 const NavIcon = styled(Link)`
