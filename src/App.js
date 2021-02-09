@@ -8,6 +8,7 @@ import Navbar from "./components/Navbar/Navbar";
 function App() {
   return (
     <Router>
+      <Navbar />
       <Switch>
         <Route path="/" exact component={Home} />
         <Route path="/donate" exact component={Donate} />

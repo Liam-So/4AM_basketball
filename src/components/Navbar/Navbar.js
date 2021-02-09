@@ -11,8 +11,10 @@ import {
 import { Home } from "@material-ui/icons";
 import { makeStyles } from "@material-ui/core/styles";
 import { SidebarData } from "../Sidebar/SidebarData";
-import SubMenu from "../Sidebar/SubMenu";
+import { DropdownData } from "./DropdownData";
 import "./Navbar.css";
+import { Link } from "react-router-dom";
+import Logo from "../../images/logo.png";
 
 const useStyles = makeStyles({
   navbarDisplayFlex: {
@@ -37,36 +39,32 @@ const Header = () => {
     <AppBar position="static">
       <Toolbar>
         <Container maxWidth="md" className={classes.navbarDisplayFlex}>
-          <IconButton edge="start" color="inherit" aria-label="home">
-            <Home fontSize="large" />
+          <IconButton
+            className="nav_logo"
+            edge="start"
+            color="inherit"
+            aria-label="home"
+          >
+            <Link to="/">
+              <img className="nav_logo" src={Logo} alt="logo" />
+            </Link>
           </IconButton>
           <List
             component="nav"
             aria-labelledby="main navigation"
             className={classes.navDisplayFlex}
           >
-            <div class="dropdown">
-              <button class="dropbtn">Dropdown</button>
-              <div class="dropdown-content">
-                <a href="#">Link 1</a>
-                <a href="#">Link 2</a>
-                <a href="#">Link 3</a>
+            {DropdownData.map((item, index) => (
+              <div class="dropdown" key={index}>
+                <Link to={item.path}>
+                  <button class="dropbtn">{item.title}</button>
+                </Link>
+                <div class="dropdown-content">
+                  {item.subNav.map((s, i) => (
+                    <Link to={s.path}>{s.title}</Link>
+                  ))}
+                </div>
               </div>
-            </div>
-            <div class="dropdown">
-              <button class="dropbtn">Dropdown</button>
-              <div class="dropdown-content">
-                <a href="#">Link 1</a>
-                <a href="#">Link 2</a>
-                <a href="#">Link 3</a>
-              </div>
-            </div>
-            {SidebarData.map(({ title, path }) => (
-              <a href={path} key={title} className={classes.linkText}>
-                <ListItem button>
-                  <ListItemText primary={title} />
-                </ListItem>
-              </a>
             ))}
           </List>
         </Container>
