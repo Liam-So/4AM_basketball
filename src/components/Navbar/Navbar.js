@@ -15,16 +15,9 @@ import { DropdownData } from "./DropdownData";
 import "./Navbar.css";
 import { Link } from "react-router-dom";
 import Logo from "../../images/logo.png";
+import Sidebar from "../Sidebar/Sidebar";
 
 const useStyles = makeStyles({
-  navbarDisplayFlex: {
-    display: `flex`,
-    justifyContent: `space-between`,
-  },
-  navDisplayFlex: {
-    display: `flex`,
-    justifyContent: `space-between`,
-  },
   linkText: {
     textDecoration: `none`,
     textTransform: `uppercase`,
@@ -36,9 +29,12 @@ const Header = () => {
   const classes = useStyles();
 
   return (
-    <AppBar position="static">
+    <AppBar position="static" color="secondary">
       <Toolbar>
-        <Container maxWidth="md" className={classes.navbarDisplayFlex}>
+        <Container className="navbarDisplay">
+          <div className="float-right md:hidden">
+            <Sidebar />
+          </div>
           <IconButton
             className="nav_logo"
             edge="start"
@@ -49,24 +45,26 @@ const Header = () => {
               <img className="nav_logo" src={Logo} alt="logo" />
             </Link>
           </IconButton>
-          <List
-            component="nav"
-            aria-labelledby="main navigation"
-            className={classes.navDisplayFlex}
-          >
-            {DropdownData.map((item, index) => (
-              <div class="dropdown" key={index}>
-                <Link to={item.path}>
-                  <button class="dropbtn">{item.title}</button>
-                </Link>
-                <div class="dropdown-content">
-                  {item.subNav.map((s, i) => (
-                    <Link to={s.path}>{s.title}</Link>
-                  ))}
+          <div className="hidden float-right md:flex">
+            <List
+              component="nav"
+              aria-labelledby="main navigation"
+              className="navDisplay"
+            >
+              {DropdownData.map((item, index) => (
+                <div class="dropdown" key={index}>
+                  <Link to={item.path}>
+                    <button class="dropbtn">{item.title}</button>
+                  </Link>
+                  <div class="dropdown-content">
+                    {item.subNav.map((s, i) => (
+                      <Link to={s.path}>{s.title}</Link>
+                    ))}
+                  </div>
                 </div>
-              </div>
-            ))}
-          </List>
+              ))}
+            </List>
+          </div>
         </Container>
       </Toolbar>
     </AppBar>

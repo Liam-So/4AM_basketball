@@ -10,11 +10,9 @@ import "./Sidebar.css";
 import Logo from "../../images/logo.png";
 
 const Nav = styled.div`
-  background: #15171c;
-  position: relative;
-  width: 100%;
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 `;
 
 const NavIcon = styled(Link)`
@@ -26,21 +24,21 @@ const NavIcon = styled(Link)`
   align-items: center;
 `;
 
-// const SidebarNav = styled.nav`
-//   background: #15171c;
-//   width: 250px;
-//   height: 100vh;
-//   display: flex;
-//   justify-content: center;
-//   top: 0;
-//   right: ${({ sidebar }) => (sidebar ? "0" : "-100%")};
-//   transition: 350ms;
-//   z-index: 10;
-// `;
+const SidebarNav = styled.nav`
+  background: #15171c;
+  width: 250px;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  right: ${({ sidebar }) => (sidebar ? "0" : "-100%")};
+  transition: 350ms;
+  z-index: 10;
+`;
 
 const SidebarWrap = styled.div`
   width: 100%;
-  display: flex;
 `;
 
 const Sidebar = () => {
@@ -50,14 +48,23 @@ const Sidebar = () => {
 
   return (
     <>
-      <Nav>
-        <Link to="/" className="image">
-          <img src={Logo} alt="logo" />
-        </Link>
-        {SidebarData.map((item, index) => {
-          return <SubMenu item={item} key={index} />;
-        })}
-      </Nav>
+      <IconContext.Provider value={{ color: "#fff" }}>
+        <Nav className="bg-secondary">
+          <NavIcon to="#">
+            <FaIcons.FaBars onClick={showSidebar} />
+          </NavIcon>
+        </Nav>
+        <SidebarNav sidebar={sidebar}>
+          <SidebarWrap>
+            <NavIcon to="#">
+              <AiIcons.AiOutlineClose onClick={showSidebar} />
+            </NavIcon>
+            {SidebarData.map((item, index) => {
+              return <SubMenu item={item} key={index} />;
+            })}
+          </SidebarWrap>
+        </SidebarNav>
+      </IconContext.Provider>
     </>
   );
 };
