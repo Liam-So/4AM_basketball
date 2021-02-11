@@ -1,3 +1,8 @@
+## 1.5 
+
+* Added Cart functionality for Donate products (still needs to be worked on for registration and t-shirts)
+
+
 ## 1.4
 
 * Added Footer for all pages and fixed Donate image bug
