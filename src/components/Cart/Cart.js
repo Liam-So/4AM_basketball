@@ -24,10 +24,10 @@ function Cart({ cart, handleUpdateCartQty, handleRemoveFromCart, handleEmptyCart
             <div className={classes.cardDetails}>
                 <Typography variant="h4"style={{fontFamily: 'Lato'}} >Subtotal: { cart.subtotal.formatted_with_symbol }</Typography>
                 <div style={{paddingBottom: '20px'}}>
-                    <Button className={classes.emptyButton} style={{fontFamily: 'Lato'}} size="large" type="button" variant ="contained" color="secondary" onClick={handleEmptyCart}>
+                    <Button className={classes.emptyButton} style={{fontFamily: 'Lato', backgroundColor: '#dc3545'}} size="large" type="button" variant ="contained" color="secondary" onClick={handleEmptyCart}>
                         Empty Cart
                     </Button>
-                    <Button className={classes.checkout} style={{fontFamily: 'Lato'}} size="large" type="button" variant ="contained" color="primary">
+                    <Button className={classes.checkout} style={{fontFamily: 'Lato', backgroundColor: '#dc3545'}} size="large" type="button" variant ="contained" color="primary">
                         Checkout
                     </Button>
                 </div>
