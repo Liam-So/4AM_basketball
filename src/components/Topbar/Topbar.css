@@ -48,8 +48,10 @@
   float: right;
 }
 
-.navbarDisplay {
-  display: flex;
-  justify-content: space-between;
-  float: right !important;
+.MuiContainer-root {
+  margin: 0 !important;
+}
+
+.MuiContainer-maxWidthLg {
+  max-width: 100% !important;
 }

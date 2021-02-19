@@ -4,30 +4,16 @@ import {
   Toolbar,
   IconButton,
   List,
-  ListItem,
-  ListItemText,
   Container,
 } from "@material-ui/core";
-import { Home } from "@material-ui/icons";
-import { makeStyles } from "@material-ui/core/styles";
 import { SidebarData } from "../Sidebar/SidebarData";
 import { DropdownData } from "./DropdownData";
-import "./Navbar.css";
+import "./Topbar.css";
 import { Link } from "react-router-dom";
 import Logo from "../../images/logo.png";
 import Sidebar from "../Sidebar/Sidebar";
 
-const useStyles = makeStyles({
-  linkText: {
-    textDecoration: `none`,
-    textTransform: `uppercase`,
-    color: `white`,
-  },
-});
-
 const Header = () => {
-  const classes = useStyles();
-
   return (
     <AppBar position="static" color="secondary">
       <Toolbar>
