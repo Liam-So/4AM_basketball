@@ -7,7 +7,6 @@ import { SidebarData } from "./SidebarData";
 import SubMenu from "./SubMenu";
 import { IconContext } from "react-icons/lib";
 import "./Sidebar.css";
-import Logo from "../../images/logo.png";
 
 const Nav = styled.div`
   display: flex;
@@ -25,7 +24,7 @@ const NavIcon = styled(Link)`
 `;
 
 const SidebarNav = styled.nav`
-  background: #15171c;
+  background: linear-gradient(90deg, rgb(28, 27, 27) 0%, rgb(26, 23, 23) 100%);
   width: 250px;
   height: 100vh;
   display: flex;
@@ -49,8 +48,8 @@ const Sidebar = () => {
   return (
     <>
       <IconContext.Provider value={{ color: "#fff" }}>
-        <Nav className="bg-secondary">
-          <NavIcon to="#">
+        <Nav className="color">
+          <NavIcon to="#" style={{ margin: 0 }}>
             <FaIcons.FaBars onClick={showSidebar} />
           </NavIcon>
         </Nav>
@@ -60,7 +59,9 @@ const Sidebar = () => {
               <AiIcons.AiOutlineClose onClick={showSidebar} />
             </NavIcon>
             {SidebarData.map((item, index) => {
-              return <SubMenu item={item} key={index} />;
+              return (
+                <SubMenu item={item} key={index} parentMethod={showSidebar} />
+              );
             })}
           </SidebarWrap>
         </SidebarNav>

@@ -1,14 +1,10 @@
 import React from "react";
-import * as FaIcons from "react-icons/fa";
-import * as AiIcons from "react-icons/ai";
 import * as IoIcons from "react-icons/io";
 import * as RiIcons from "react-icons/ri";
 
 export const SidebarData = [
   {
     title: "About",
-    path: "/",
-    icon: <AiIcons.AiFillHome />,
     iconClosed: <RiIcons.RiArrowDownSFill />,
     iconOpened: <RiIcons.RiArrowUpSFill />,
 
@@ -42,8 +38,6 @@ export const SidebarData = [
   },
   {
     title: "Services",
-    path: "/",
-    icon: <IoIcons.IoMdBasketball />,
     iconClosed: <RiIcons.RiArrowDownSFill />,
     iconOpened: <RiIcons.RiArrowUpSFill />,
 
@@ -65,11 +59,9 @@ export const SidebarData = [
   {
     title: "Donate",
     path: "/donate",
-    icon: <FaIcons.FaDonate />,
   },
   {
     title: "Cart",
     path: "/cart",
-    icon: <FaIcons.FaShoppingCart />,
   },
 ];

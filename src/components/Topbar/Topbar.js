@@ -6,7 +6,6 @@ import {
   List,
   Container,
 } from "@material-ui/core";
-import { SidebarData } from "../Sidebar/SidebarData";
 import { DropdownData } from "./DropdownData";
 import "./Topbar.css";
 import { Link } from "react-router-dom";

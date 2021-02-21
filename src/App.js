@@ -1,5 +1,4 @@
 import "./App.css";
-import Sidebar from "./components/Sidebar/Sidebar";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from "./components/Pages/HomePage/Home";
 import Donate from "./components/Pages/Donate/Donate";
