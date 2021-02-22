@@ -19,9 +19,16 @@ function CartItem({ item }) {
         })
     };
 
-    const addExtraItem = () => {
+    // const addExtraItem = () => {
+    //     dispatch({
+    //         type: "ADD_EXTRA_ITEM",
+    //         id: item.id,
+    //     })
+    // }
+
+    const addToBasket = () => {
         dispatch({
-            type: "ADD_EXTRA_ITEM",
+            type: "ADD_TO_BASKET",
             id: item.id,
         })
     }
@@ -38,8 +45,8 @@ function CartItem({ item }) {
             <CardActions className={classes.cartActions}>
                 <div className={classes.buttons} >
                     <Button type="button" size="small">-</Button>
-                    <Typography variant="body2">1</Typography>
-                    <Button type="button" size="small" onClick={addExtraItem}>+</Button>
+                    <Typography variant="body2">{item.quantity}</Typography>
+                    <Button type="button" size="small" onClick={addToBasket}>+</Button>
                 </div>
                 <Button variant="contained" type="button" style={{backgroundColor: '#dc3545'}} color="primary" onClick={removeFromBasket}>Remove</Button>
             </CardActions>

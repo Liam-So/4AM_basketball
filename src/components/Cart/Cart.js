@@ -5,7 +5,7 @@ import CartItem from './CartItem/CartItem'
 import { useStateValue } from '../StateProvider';
 import { getBasketTotal } from '../reducer';
 
-function Cart({ cart, handleUpdateCartQty, handleRemoveFromCart, handleEmptyCart }) {
+function Cart() {
 
     const classes = useStyles() ; 
 
@@ -18,15 +18,16 @@ function Cart({ cart, handleUpdateCartQty, handleRemoveFromCart, handleEmptyCart
 
     const FilledCart = () => (
         <>
+            
             <Grid container spacing={3}>
-                {basket.map((item) => (
+                {Object.values(basket).map((item) => (
                     <Grid item xs={12} sm={4} key={item.id}>
-                        <CartItem item={item} onUpdateCartQty={handleUpdateCartQty} onRemoveFromCart={handleRemoveFromCart} />
+                        <CartItem item={item} />
                     </Grid>
                 ))}
             </Grid>
             <div className={classes.cardDetails}>
-                <Typography variant="h4"style={{fontFamily: 'Lato'}} >Subtotal: ${getBasketTotal(basket)}</Typography>
+                <Typography variant="h4"style={{fontFamily: 'Lato'}} >Subtotal: ${getBasketTotal(Object.values(basket))}</Typography>
                 <div style={{paddingBottom: '20px'}}>
                     <Button className={classes.checkout} style={{fontFamily: 'Lato', backgroundColor: '#dc3545'}} size="large" type="button" variant ="contained" color="primary">
                         Checkout
@@ -37,14 +38,18 @@ function Cart({ cart, handleUpdateCartQty, handleRemoveFromCart, handleEmptyCart
         </>
     )
 
-    if (!cart.line_items) return 'Loading...';
+    if (Object.values(basket).length === undefined) return 'Loading...';
+
+    // if (window.basket) {
+    //     Object.assign(window.UndeffinedVariable, {})
+    // }
 
     return (
         <Container>
-            <div className={classes.toolbar} />
+            {/* <div className={classes.toolbar} /> */}
             <Typography className={classes.title} variant="h3" gutterBottom style={{fontFamily: 'Lato'}}>Your Shopping Cart</Typography>
             {/* { !cart.line_items.length  ? <EmptyCart /> : <FilledCart />} */}
-            { basket.length === 0  ? <EmptyCart /> : <FilledCart />}
+            { Object.values(basket).length === 0  ? <EmptyCart /> : <FilledCart />}
         </Container>
     )
 }

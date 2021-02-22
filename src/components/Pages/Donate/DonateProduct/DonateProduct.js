@@ -8,7 +8,7 @@ function DonateProduct({ product }) {
 
     const classes = useStyles() ; 
 
-    const [{}, dispatch] = useStateValue() ; 
+    const [{ basket }, dispatch] = useStateValue() ; 
 
         const addToBasket = () => {
         // add item to basket...
@@ -20,6 +20,7 @@ function DonateProduct({ product }) {
                 image: product.image,
                 price: product.price,
                 description: product.description,
+                quantity: product.quantity,
             }
         })
     } ; 

@@ -1,5 +1,5 @@
 export const initialState = {
-    basket: [],
+    basket: {},
 };
 
 export const getBasketTotal = (basket) => 
@@ -10,43 +10,28 @@ const reducer = (state, action) => {
     console.log(action) ; 
     switch(action.type) {
         case 'ADD_TO_BASKET' :
-            return {
-                ...state,
-                basket: [...state.basket, action.item] 
-            };
-        // case 'ADD_TO_BASKET' :
-        //     return {
-        //         ...state,
-        //         basket: (...state.basket[action.item.id] + 1) || 1,
-        //     };
-        case 'REMOVE_FROM_BASKET' :
-            let newBasket = [...state.basket] ; 
+            let newBasket = state.basket ; 
 
-            const index = state.basket.findIndex((basketItem) => basketItem.id === action.id) ; 
-
-            if (index >= 0) {
-                newBasket.splice(index, 1) ;
+            if (newBasket[action.item.id] !== undefined) {
+                newBasket[action.item.id].quantity += 1 ;
             } else {
-                console.warn(
-                    `Cant remove product (id: ${action.id})`
-                );
+                newBasket[action.item.id] = action.item ; 
             }
 
             return { ...state, basket: newBasket } ; 
-        case 'ADD_EXTRA_ITEM' :
-            let newAddedBasket = [...state.basket] ; 
 
-            const i = state.basket.findIndex((basketItem) => basketItem.id === action.id) ;
+        case 'REMOVE_FROM_BASKET' :
+            // let newRemoveBasket = state.basket ; 
 
-            if (i >= 0) {
-                newAddedBasket.push(i, 1) ; 
-            } else {
-                console.warn(
-                    `Can't add product` 
-                );
-            }
+            // if (newRemoveBasket[action.item.id] !== undefined) {
+            //     if (newRemoveBasket[action.item.id].quantity === 1) {
+            //         delete newRemoveBasket[action.item.id] ; 
+            //     } else {
+            //         newRemoveBasket[action.item.id].quantity -= 1 ; 
+            //     }
+            // }
+            return { state } 
 
-            return {...state, basket: newAddedBasket} ; 
         default:
             return state ; 
     }
