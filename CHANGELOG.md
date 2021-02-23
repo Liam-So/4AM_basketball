@@ -1,3 +1,7 @@
+## 1.6 (@Liam-So)
+
+* Added react-context state manager and removed commerceJs implmentation.
+
 ## 1.5 (@Liam-So)
 
 * Added Cart functionality for Donate products (still needs to be worked on for registration and t-shirts)
