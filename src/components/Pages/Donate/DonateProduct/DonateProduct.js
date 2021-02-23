@@ -2,31 +2,46 @@ import React from 'react'
 import { Card, CardMedia, CardContent, CardActions, Typography, IconButton } from '@material-ui/core'
 import { AddShoppingCart } from '@material-ui/icons'
 import useStyles from './styles'
+import { useStateValue } from '../../../StateProvider'
 
-function DonateProduct({ product, onAddToCart }) {
+function DonateProduct({ product }) {
 
     const classes = useStyles() ; 
 
-    console.log(product);
+    const [{ basket }, dispatch] = useStateValue() ; 
+
+        const addToBasket = () => {
+        dispatch({
+            type: 'ADD_TO_BASKET',
+            item: {
+                id: product.id,
+                title: product.name,
+                image: product.image,
+                price: product.price,
+                description: product.description,
+                quantity: product.quantity,
+            }
+        })
+    } ; 
 
     return (
         <Card className={classes.root}>
-            <CardMedia >
-                <img src={product.media.source} alt={product.alt}/>    
+            <CardMedia  title={product.name}>
+                <img src={product.image} alt={product.name} />
             </CardMedia>
             <CardContent>
                 <div className={classes.cardContent}>
-                    <Typography variant="h5" style={{fontFamily: 'Lato'}} gutterBottom>
+                    <Typography variant="h5" gutterBottom>
                         {product.name}
                     </Typography>
                     <Typography variant="h5" >
-                        {product.price.formatted_with_symbol}
+                        ${product.price}
                     </Typography>
                 </div>
-                <Typography dangerouslySetInnerHTML={{ __html: product.description }} variant="body2" style={{fontFamily: 'Lato'}} color="textSecondary" />
+                <Typography variant="body2" color="textSecondary">{product.description}</Typography>
             </CardContent>
             <CardActions disableSpacing className={classes.cardActions}>
-                <IconButton aria-label="Add to Cart" onClick={() => onAddToCart(product.id, 1)}><AddShoppingCart /></IconButton>
+                <IconButton onClick={addToBasket} aria-label="Add to Cart"><AddShoppingCart /></IconButton>
             </CardActions>
         </Card>
     )
