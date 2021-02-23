@@ -40,15 +40,10 @@ function Cart() {
 
     if (Object.values(basket).length === undefined) return 'Loading...';
 
-    // if (window.basket) {
-    //     Object.assign(window.UndeffinedVariable, {})
-    // }
 
     return (
         <Container>
-            {/* <div className={classes.toolbar} /> */}
             <Typography className={classes.title} variant="h3" gutterBottom style={{fontFamily: 'Lato'}}>Your Shopping Cart</Typography>
-            {/* { !cart.line_items.length  ? <EmptyCart /> : <FilledCart />} */}
             { Object.values(basket).length === 0  ? <EmptyCart /> : <FilledCart />}
         </Container>
     )

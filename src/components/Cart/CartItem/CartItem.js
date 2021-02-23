@@ -19,17 +19,17 @@ function CartItem({ item }) {
         })
     };
 
-    // const addExtraItem = () => {
-    //     dispatch({
-    //         type: "ADD_EXTRA_ITEM",
-    //         id: item.id,
-    //     })
-    // }
-
     const addToBasket = () => {
         dispatch({
             type: "ADD_TO_BASKET",
-            id: item.id,
+            item: {
+                id: item.id,
+                title: item.title,
+                image: item.image,
+                price: item.price,
+                description: item.description,
+                quantity: item.quantity,
+            }
         })
     }
 
@@ -48,7 +48,7 @@ function CartItem({ item }) {
                     <Typography variant="body2">{item.quantity}</Typography>
                     <Button type="button" size="small" onClick={addToBasket}>+</Button>
                 </div>
-                <Button variant="contained" type="button" style={{backgroundColor: '#dc3545'}} color="primary" onClick={removeFromBasket}>Remove</Button>
+                <Button variant="contained" type="button" style={{backgroundColor: '#dc3545'}} color="primary" onClick={removeFromBasket} >Remove</Button>
             </CardActions>
         </Card>
     )
