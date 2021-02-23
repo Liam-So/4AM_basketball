@@ -44,7 +44,7 @@ function CartItem({ item }) {
             </CardContent>
             <CardActions className={classes.cartActions}>
                 <div className={classes.buttons} >
-                    <Button type="button" size="small">-</Button>
+                    <Button type="button" size="small" onClick={removeFromBasket}>-</Button>
                     <Typography variant="body2">{item.quantity}</Typography>
                     <Button type="button" size="small" onClick={addToBasket}>+</Button>
                 </div>
