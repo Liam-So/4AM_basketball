@@ -1,16 +1,14 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
-import { Link } from 'react-router-dom';
-import * as FaIcons from 'react-icons/fa';
-import * as AiIcons from 'react-icons/ai';
-import { SidebarData } from './SidebarData';
-import SubMenu from './SubMenu';
-import { IconContext } from 'react-icons/lib';
-import './Sidebar.css' ; 
-import Logo from '../../images/logo.png'
+import React, { useState } from "react";
+import styled from "styled-components";
+import { Link } from "react-router-dom";
+import * as FaIcons from "react-icons/fa";
+import * as AiIcons from "react-icons/ai";
+import { SidebarData } from "./SidebarData";
+import SubMenu from "./SubMenu";
+import { IconContext } from "react-icons/lib";
+import "./Sidebar.css";
 
 const Nav = styled.div`
-  background: #15171c;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -26,14 +24,14 @@ const NavIcon = styled(Link)`
 `;
 
 const SidebarNav = styled.nav`
-  background: #15171c;
+  background: linear-gradient(90deg, rgb(28, 27, 27) 0%, rgb(26, 23, 23) 100%);
   width: 250px;
   height: 100vh;
   display: flex;
   justify-content: center;
   position: fixed;
   top: 0;
-  right: ${({ sidebar }) => (sidebar ? '0' : '-100%')};
+  right: ${({ sidebar }) => (sidebar ? "0" : "-100%")};
   transition: 350ms;
   z-index: 10;
 `;
@@ -49,22 +47,21 @@ const Sidebar = () => {
 
   return (
     <>
-      <IconContext.Provider value={{ color: '#fff' }}>
-        <Nav>
-            <Link to='/' className='image'>
-                <img src={Logo} alt='logo' />
-            </Link>
-          <NavIcon to='#'>
+      <IconContext.Provider value={{ color: "#fff" }}>
+        <Nav className="color">
+          <NavIcon to="#" style={{ margin: 0 }}>
             <FaIcons.FaBars onClick={showSidebar} />
           </NavIcon>
         </Nav>
         <SidebarNav sidebar={sidebar}>
           <SidebarWrap>
-            <NavIcon to='#'>
+            <NavIcon to="#">
               <AiIcons.AiOutlineClose onClick={showSidebar} />
             </NavIcon>
             {SidebarData.map((item, index) => {
-              return <SubMenu item={item} key={index} />;
+              return (
+                <SubMenu item={item} key={index} parentMethod={showSidebar} />
+              );
             })}
           </SidebarWrap>
         </SidebarNav>

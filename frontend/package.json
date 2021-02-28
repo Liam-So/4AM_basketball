@@ -3,25 +3,36 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+<<<<<<< HEAD:frontend/package.json
     "@chec/commerce.js": "^2.3.1",
+=======
+    "@craco/craco": "^6.1.0",
+>>>>>>> origin/feature_navbar:package.json
     "@material-ui/core": "^4.11.3",
     "@material-ui/icons": "^4.11.2",
+    "@tailwindcss/postcss7-compat": "^2.0.2",
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.5",
     "@testing-library/user-event": "^12.6.3",
+<<<<<<< HEAD:frontend/package.json
     "axios": "^0.21.1",
+=======
+    "autoprefixer": "^9.8.6",
+    "postcss": "^7.0.35",
+>>>>>>> origin/feature_navbar:package.json
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-icons": "^4.1.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.1",
     "styled-components": "^5.2.1",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.2",
     "web-vitals": "^0.2.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
+    "start": "craco start",
+    "build": "craco build",
+    "test": "craco test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
