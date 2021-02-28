@@ -1,7 +1,7 @@
 import React from 'react'
 import { Typography, Button, Card, CardActions, CardContent, CardMedia } from '@material-ui/core'
 import useStyles from './styles'
-import { useStateValue } from '../../StateProvider'
+import { useStateValue } from '../../../StateProvider'
 
 
 function CartItem({ item }) {
