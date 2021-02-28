@@ -2,6 +2,7 @@ import express from 'express' ;
 import mongoose from 'mongoose' ; 
 import Cors from 'cors' ; 
 import Products from './dbProducts.js'
+import Camps from './dbCamps.js'
 
 
 // App config
@@ -41,6 +42,28 @@ app.post('/products', (req, res) => {
 
 app.get('/products', (req, res) => {
     Products.find((err, data) => {
+        if (err) {
+            res.status(500).send(err)
+        } else {
+            res.status(200).send(data)
+        }
+    }) ; 
+});
+
+app.post('/registration', (req, res) => {
+    const dbProduct = req.body ; 
+
+    Camps.create(dbProduct, (err, data) => {
+        if (err) {
+            res.status(500).send(err)
+        } else {
+            res.status(201).send(data)
+        }
+    }) ; 
+});
+
+app.get('/registration', (req, res) => {
+    Camps.find((err, data) => {
         if (err) {
             res.status(500).send(err)
         } else {

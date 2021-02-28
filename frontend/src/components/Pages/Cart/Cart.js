@@ -2,14 +2,16 @@ import React from 'react'
 import { Container, Typography, Button, Grid } from '@material-ui/core'
 import useStyles from './styles'
 import CartItem from './CartItem/CartItem'
-import { useStateValue } from '../StateProvider';
-import { getBasketTotal } from '../reducer';
+import { useStateValue } from '../../StateProvider';
+import { getBasketTotal } from '../../reducer';
 
 function Cart() {
 
     const classes = useStyles() ; 
 
     const [{ basket }] = useStateValue() ; 
+
+    console.log(basket)
 
     const EmptyCart = () => {
         return <Typography variant="subtitle1" style={{height: '70vh', fontFamily: 'Lato'}}>You have no items in your shopping cart, start adding some!</Typography>

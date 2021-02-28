@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import { Grid } from '@material-ui/core'
-import Logo from '../../../images/logo.png'
 import DonateProduct from './DonateProduct/DonateProduct'
 import useStyles from './styles'
 import HeroSection from '../../HeroSection/HeroSection'
