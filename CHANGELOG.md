@@ -1,3 +1,7 @@
+## 1.7 (@Liam-So)
+
+* Setup Express and MongoDB to project. Created schema for Donate products.
+
 ## 1.6 (@Liam-So)
 
 * Added react-context state manager and removed commerceJs implmentation.
