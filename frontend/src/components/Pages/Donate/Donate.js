@@ -16,6 +16,7 @@ function Donate() {
         { id: 3, name: 'Donation', description: 'All proceeds go toward scholarship fund', price: 50, image: Logo, quantity: 1},
     ]
 
+
     const classes = useStyles();
 
 
