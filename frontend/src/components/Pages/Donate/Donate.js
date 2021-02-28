@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { Grid } from '@material-ui/core'
 import Logo from '../../../images/logo.png'
 import DonateProduct from './DonateProduct/DonateProduct'
@@ -7,18 +7,22 @@ import HeroSection from '../../HeroSection/HeroSection'
 import { homeObjOne } from './Data'
 import axios from '../../../axios'
 
-
 function Donate() {
 
-    const products = [
-        { id: 1, name: 'Donation', description: 'All proceeds go toward scholarship fund', price: 10, image: Logo, quantity: 1},
-        { id: 2, name: 'Donation', description: 'All proceeds go toward scholarship fund', price: 20, image: Logo, quantity: 1},
-        { id: 3, name: 'Donation', description: 'All proceeds go toward scholarship fund', price: 50, image: Logo, quantity: 1},
-    ]
+    const [products, setProducts] = useState([])
+
+    useEffect(() => {
+        async function fetchData() {
+            const req = await axios.get('/products');
+
+            setProducts(req.data)
+        }
+
+        fetchData() ;
+    }, [])
 
 
     const classes = useStyles();
-
 
 
     return (
