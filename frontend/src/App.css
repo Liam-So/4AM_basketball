@@ -9,9 +9,17 @@
 
 .home {
   height: 100vh;
-  background-image: url('./images/wall.jpg');
+  background-image: linear-gradient(rgba(0, 0, 0, 0.23), rgba(0, 0, 0, 0.23)), url('./images/IMG_3840.JPG');
   background-position: center;
   background-size: cover;
   color: #fff;
   background-repeat: no-repeat;
+  display: flex;
+  height: 90vh;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  font-size: 3rem;
+  font-weight: 500;
+  font-family: 'PT Sans', sans-serif ; 
 }
