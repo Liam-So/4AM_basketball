@@ -1,3 +1,7 @@
+## 1.9 (@Ryan-Hong)
+
+* Created responsive topbar 
+
 ## 1.8 (@Liam-So)
 
 * Created camp registration page and linked data to Mongo.
@@ -14,21 +18,17 @@
 
 * Added Cart functionality for Donate products (still needs to be worked on for registration and t-shirts)
 
-
 ## 1.4 (@Liam-So)
 
 * Added Footer for all pages and fixed Donate image bug
-
 
 ## 1.3 (@Liam-So)
 
 * Added Our Team Page
 
-
 ## 1.2 (@Liam-So)
 
 * Added Donate Page (add to cart has no functionality yet)
-
 
 ## 1.1 (@Liam-So)
 
