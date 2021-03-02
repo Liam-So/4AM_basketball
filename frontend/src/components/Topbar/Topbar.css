@@ -39,11 +39,7 @@
 }
 
 .MuiAppBar-colorSecondary {
-  background: linear-gradient(
-    90deg,
-    rgb(28, 27, 27) 0%,
-    rgb(26, 23, 23) 100%
-  ) !important;
+  background: rgba(0, 0, 0, 0) !important;
 }
 
 .navDisplay {
@@ -58,4 +54,8 @@
 
 .MuiContainer-maxWidthLg {
   max-width: 100% !important;
+}
+
+.Muipaper {
+  border-bottom: none !important;
 }

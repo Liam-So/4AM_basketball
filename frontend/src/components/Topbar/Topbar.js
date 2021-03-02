@@ -14,7 +14,7 @@ import Sidebar from "../Sidebar/Sidebar";
 
 const Header = () => {
   return (
-    <AppBar position="static" color="secondary">
+    <AppBar position="static" color="secondary" elevation={0}>
       <Toolbar>
         <Container className="navbarDisplay">
           <div className="float-right md:hidden">
