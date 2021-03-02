@@ -5,6 +5,7 @@ import useStyles from './styles'
 import HeroSection from '../../HeroSection/HeroSection'
 import { homeObjOne } from './Data'
 import axios from '../../../axios'
+import Sidebar from '../../Sidebar/Sidebar'
 
 function Donate() {
 
@@ -26,6 +27,7 @@ function Donate() {
 
     return (
         <div>
+            <Sidebar />
             <HeroSection {...homeObjOne} />
             <main className={classes.content}>
                 <div className={classes.toolbar} />

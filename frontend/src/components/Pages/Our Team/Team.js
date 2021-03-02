@@ -3,6 +3,7 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { Card, CardMedia } from '@material-ui/core/';
 import useStyles from './styles';
+import Sidebar from '../../Sidebar/Sidebar';
 
 
 function Team() {
@@ -181,7 +182,7 @@ function Team() {
 
     return (
     <div >
-
+        <Sidebar />
         <div className={classes.title}>
             <h1 style={{alignItems: 'center', color: '#f00946'}}>Our Coaching Staff</h1>
         </div>

@@ -10,7 +10,8 @@ import './Sidebar.css' ;
 import Logo from '../../images/logo.png'
 
 const Nav = styled.div`
-  background: #15171c;
+  // background: #15171c;
+  background: transparent;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -55,7 +56,7 @@ const Sidebar = () => {
                 <img src={Logo} alt='logo' />
             </Link>
           <NavIcon to='#'>
-            <FaIcons.FaBars onClick={showSidebar} />
+            <FaIcons.FaBars onClick={showSidebar} style={{color: '#fe4e50'}}/>
           </NavIcon>
         </Nav>
         <SidebarNav sidebar={sidebar}>

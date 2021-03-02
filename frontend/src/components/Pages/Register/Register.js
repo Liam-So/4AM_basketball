@@ -3,6 +3,7 @@ import useStyles from './styles'
 import { Typography, Grid } from '@material-ui/core'
 import RegisterItem from './RegisterItem/RegisterItem';
 import axios from '../../../axios'
+import Sidebar from '../../Sidebar/Sidebar';
 
 function Register() {
 
@@ -21,19 +22,22 @@ function Register() {
     }, [])
 
     const EmptyCamp = () => (
-        <Grid container className={classes.empty} justify="center" style={{height: '70vh', fontFamily: 'Lato'}}>
-            <div>
-                <Typography variant="h4" style={{fontFamily: 'Lato'}}>Sorry, registration for the 4AM Camp is not open at this time. </Typography>
-            </div>
-            <div>
-                <br/>
-                <Typography variant="body1" style={{fontFamily: 'Lato'}}>Stay tuned to our social media accounts or Registration announcements. Thank you for your interest!</Typography>
-            </div>
-        </Grid>
+        <>
+            <Grid container className={classes.empty} justify="center" style={{height: '70vh', fontFamily: 'Lato'}}>
+                <div>
+                    <Typography variant="h4" style={{fontFamily: 'Lato'}}>Sorry, registration for the 4AM Camp is not open at this time. </Typography>
+                </div>
+                <div>
+                    <br/>
+                    <Typography variant="body1" style={{fontFamily: 'Lato'}}>Stay tuned to our social media accounts or Registration announcements. Thank you for your interest!</Typography>
+                </div>
+            </Grid>
+        </>
+        
     )
 
     const RegisterCamp = () => (
-        <div className={classes.outer}>
+        <div className={classes.outer}>            
             <div className={classes.information} >
                 <Typography variant="h4" gutterBottom style={{fontFamily: 'Lato'}}>Register for the 2020 4AM Camp by clicking on one of the product icons below.</Typography>
                 <Typography variant="h6" style={{fontFamily: 'Lato'}} gutterBottom>Before you register, make sure to read and understand the following, and watch the video below:</Typography>
@@ -63,6 +67,7 @@ function Register() {
 
     return (
         <div>
+            <Sidebar />
             {products.length ? <RegisterCamp /> : <EmptyCamp />}
         </div>
     )

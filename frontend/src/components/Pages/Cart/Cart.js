@@ -4,6 +4,7 @@ import useStyles from './styles'
 import CartItem from './CartItem/CartItem'
 import { useStateValue } from '../../StateProvider';
 import { getBasketTotal } from '../../reducer';
+import Sidebar from '../../Sidebar/Sidebar';
 
 function Cart() {
 
@@ -19,8 +20,7 @@ function Cart() {
 
 
     const FilledCart = () => (
-        <>
-            
+        <>            
             <Grid container spacing={3}>
                 {Object.values(basket).map((item) => (
                     <Grid item xs={12} sm={4} key={item.id}>
@@ -44,10 +44,14 @@ function Cart() {
 
 
     return (
-        <Container>
-            <Typography className={classes.title} variant="h3" gutterBottom style={{fontFamily: 'Lato'}}>Your Shopping Cart</Typography>
-            { Object.values(basket).length === 0  ? <EmptyCart /> : <FilledCart />}
-        </Container>
+        <>
+            <Sidebar />
+            <Container>
+                <Typography className={classes.title} variant="h3" gutterBottom style={{fontFamily: 'Lato'}}>Your Shopping Cart</Typography>
+                { Object.values(basket).length === 0  ? <EmptyCart /> : <FilledCart />}
+            </Container>
+        </>
+        
     )
 }
 
