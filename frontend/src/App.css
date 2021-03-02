@@ -8,9 +8,28 @@
 
 .home {
   height: 100vh;
+<<<<<<< HEAD
   background-image: url("./images/wall.jpg");
+=======
+  background-image: linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)), url('./images/IMG_3840.JPG');
+>>>>>>> a38abe884491a7fec87088a6eb1bdbb0174df832
   background-position: center;
   background-size: cover;
   color: #fff;
   background-repeat: no-repeat;
+  /* display: flex; */
+  /* height: 100vh; */
+  
+}
+
+.subHome {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  font-size: 3rem;
+  font-weight: 500;
+  font-family: 'PT Sans', sans-serif ; 
+  height: 90vh;
+  padding-bottom: 2rem;
 }

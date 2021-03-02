@@ -9,6 +9,11 @@ import { IconContext } from "react-icons/lib";
 import "./Sidebar.css";
 
 const Nav = styled.div`
+<<<<<<< HEAD
+=======
+  // background: #15171c;
+  background: transparent;
+>>>>>>> a38abe884491a7fec87088a6eb1bdbb0174df832
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -47,10 +52,20 @@ const Sidebar = () => {
 
   return (
     <>
+<<<<<<< HEAD
       <IconContext.Provider value={{ color: "#fff" }}>
         <Nav className="color">
           <NavIcon to="#" style={{ margin: 0 }}>
             <FaIcons.FaBars onClick={showSidebar} />
+=======
+      <IconContext.Provider value={{ color: '#fff' }}>
+        <Nav>
+            <Link to='/' className='image'>
+                <img src={Logo} alt='logo' />
+            </Link>
+          <NavIcon to='#'>
+            <FaIcons.FaBars onClick={showSidebar} style={{color: '#fe4e50'}}/>
+>>>>>>> a38abe884491a7fec87088a6eb1bdbb0174df832
           </NavIcon>
         </Nav>
         <SidebarNav sidebar={sidebar}>

@@ -1,3 +1,7 @@
+## 1.8 (@Liam-So)
+
+* Created camp registration page and linked data to Mongo.
+
 ## 1.7 (@Liam-So)
 
 * Setup Express and MongoDB to project. Created schema for Donate products.

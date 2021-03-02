@@ -1,7 +1,7 @@
 export const homeObjOne = {
-    lightBg: false,
-    lightText: true,
-    lightTextDesc: true,
+    lightBg: true,
+    lightText: false,
+    lightTextDesc: false,
     topLine: 'Thank you in advance for your generous support!',
     headline: 'Make a donation',
     description:
