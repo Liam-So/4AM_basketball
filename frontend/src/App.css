@@ -14,11 +14,19 @@
   background-size: cover;
   color: #fff;
   background-repeat: no-repeat;
-  /* display: flex; */
-  /* height: 100vh; */
 }
 
-.subHome {
+.gear {
+  height: 100vh;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+    url("./images/IMG_7609.JPG");
+  background-position: center;
+  background-size: cover;
+  color: #fff;
+  background-repeat: no-repeat;
+}
+
+.subHome, .subGear {
   display: flex;
   align-items: center;
   justify-content: center;

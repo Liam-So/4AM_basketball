@@ -27,7 +27,7 @@ function DonateProduct({ product }) {
 
     return (
         <Card className={classes.root}>
-            <CardMedia  title={product.name}>
+            <CardMedia title={product.name}>
                 <img src={Logo} alt={product.name} />
             </CardMedia>
             <CardContent>
@@ -41,7 +41,7 @@ function DonateProduct({ product }) {
                 </div>
                 <Typography variant="body2" color="textSecondary">{product.description}</Typography>
             </CardContent>
-            <CardActions disableSpacing className={classes.cardActions}>
+            <CardActions className={classes.cardActions}>
                 <IconButton onClick={addToBasket} aria-label="Add to Cart"><AddShoppingCart /></IconButton>
             </CardActions>
         </Card>

@@ -1,7 +1,7 @@
 export const DropdownData = [
   {
     title: "About",
-    path: "/",
+    path: "#",
 
     subNav: [
       {
@@ -28,7 +28,7 @@ export const DropdownData = [
   },
   {
     title: "Services",
-    path: "/",
+    path: "#",
 
     subNav: [
       {

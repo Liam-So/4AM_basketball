@@ -42,7 +42,7 @@ function RegisterItem({ product }) {
                 </div>
                 <Typography variant="body1" color="textSecondary">{product.description}</Typography>
             </CardContent>
-            <CardActions disableSpacing className={classes.cardActions}>
+            <CardActions className={classes.cardActions}>
                 <IconButton onClick={addToBasket} aria-label="Add to Cart"><AddShoppingCart /></IconButton>
             </CardActions>
         </Card>

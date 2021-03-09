@@ -91,7 +91,7 @@ function Register() {
 
   return (
     <div>
-      <Topbar />
+      <Topbar transparent={true}/>
       {products.length ? <RegisterCamp /> : <EmptyCamp />}
     </div>
   );

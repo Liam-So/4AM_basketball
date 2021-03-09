@@ -14,6 +14,18 @@ export const getBasketTotal = (basket) => {
     return total ;
 }
 
+export const getTotalItems = (basket) => {
+    let productQuantities = Object.values(basket) ;
+
+    let cartTotal = 0 ;
+
+    for (var i = 0 ; i < productQuantities.length ; i++) {
+        cartTotal += productQuantities[i].quantity ; 
+    }
+
+    return cartTotal ; 
+}
+
 
 const reducer = (state, action) => {
     console.log(action) ; 

@@ -57,7 +57,7 @@ function Cart() {
 
   return (
     <>
-      <Topbar />
+      <Topbar transparent={true}/>
       <Container>
         <Typography
           className={classes.title}
