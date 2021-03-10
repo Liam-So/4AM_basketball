@@ -35,7 +35,7 @@ function Cart() {
       </Grid>
       <div className={classes.cardDetails}>
         <Typography variant="h4" style={{ fontFamily: "Lato" }}>
-          Subtotal: ${getBasketTotal(Object.values(basket))}
+          Subtotal: ${getBasketTotal(Object.values(basket))}          
         </Typography>
         <div style={{ paddingBottom: "20px" }}>
           <Button

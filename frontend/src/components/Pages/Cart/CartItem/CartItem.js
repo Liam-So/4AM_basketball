@@ -29,9 +29,11 @@ function CartItem({ item }) {
                 price: item.price,
                 description: item.description,
                 quantity: item.quantity,
+                addedSize: item.addedSize
             }
         })
     }
+
 
     return (
         <Card className="cart-item">
@@ -40,8 +42,11 @@ function CartItem({ item }) {
             </CardMedia> 
             <CardContent className={classes.cardContent} >
                 <Typography style={{fontFamily: 'Lato'}} variant="h5">{item.title}</Typography>
-                <Typography style={{fontFamily: 'Lato'}} variant="h5">${item.price}</Typography>
+                <Typography style={{fontFamily: 'Lato'}} variant="h5">${item.price}</Typography>                
             </CardContent>
+            <Typography variant="subtitle1">
+                {item.addedSize !== undefined ? `Size: ${item.addedSize}` : `${item.description}`}
+            </Typography>
             <CardActions className={classes.cartActions}>
                 <div className={classes.buttons} >
                     <Button type="button" size="small" onClick={removeFromBasket}>-</Button>

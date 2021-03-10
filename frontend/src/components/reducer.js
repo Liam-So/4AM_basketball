@@ -26,21 +26,30 @@ export const getTotalItems = (basket) => {
     return cartTotal ; 
 }
 
+export const getGearItems = (basket) => {
+    let gearSizes = Object.values(basket) ;
+
+    return gearSizes.toString
+}
+
 
 const reducer = (state, action) => {
     console.log(action) ; 
     switch(action.type) {
         case 'ADD_TO_BASKET' :
-            let newBasket = state.basket ; 
-            console.log(newBasket)
+            let newAddGearBasket = state.basket ; 
 
-            if (newBasket[action.item.id] !== undefined) {
-                newBasket[action.item.id].quantity += 1 ;
+            let newId = action.item.id ;     
+
+            if (newAddGearBasket[newId] === undefined) {
+                newAddGearBasket[newId] = action.item ; 
             } else {
-                newBasket[action.item.id] = action.item ; 
+                newAddGearBasket[newId].quantity += 1 ; 
+                console.log("This should be working")
             }
 
-            return { ...state, basket: newBasket } ; 
+            console.log(newAddGearBasket)
+            return { ...state, basket:newAddGearBasket }
 
         case 'REMOVE_FROM_BASKET' :
             let newRemoveBasket = state.basket ; 

@@ -17,7 +17,7 @@ function Gear() {
             quantity: 1,
             img: image,
             description: "T-shirt for camp",
-            size: ""
+            addedSize: ""
         }
     ]);
 
