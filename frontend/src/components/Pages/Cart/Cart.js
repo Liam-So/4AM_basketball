@@ -24,13 +24,6 @@ function Cart() {
 
   const FilledCart = () => (
     <>
-      {/* <Grid container spacing={3}>
-        {Object.values(basket).map((item) => (
-          <Grid item xs={12} sm={4} key={item.id}>
-            <CartItem item={item} />
-          </Grid>
-        ))}
-      </Grid> */}
       <div className="container my-12 mx-auto px-4 md:px-12">
             <div className="flex flex-wrap -mx-1 lg:-mx-4">
               {Object.values(basket).map((item) => (

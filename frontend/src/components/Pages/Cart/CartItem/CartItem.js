@@ -37,7 +37,7 @@ function CartItem({ item }) {
         <div className="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3">
 
             <article className="overflow-hidden rounded-lg shadow-lg">
-                <img alt="Placeholder" className="block h-auto w-full" src={item.image} />
+                <img alt={item.title} className="object-contain md:object-scale-down block w-full h-96" src={item.image} />
 
                 <header className="flex items-center justify-between leading-tight p-2 md:p-4">
                     <h1 className="text-lg">
@@ -52,11 +52,11 @@ function CartItem({ item }) {
 
                 <footer className="flex items-center justify-between leading-none p-2 md:p-4">
                     <div className="flex items-center no-underline text-black">
-                        <RemoveIcon fontSize="inherit" onClick={removeFromBasket}/>
+                        <RemoveIcon className="cursor-pointer" fontSize="inherit" onClick={removeFromBasket}/>
                         <Typography className="pl-2 pr-2 md:plr-4" variant="subtitle1">{item.quantity}</Typography>
-                        <AddIcon fontSize="inherit" onClick={addToBasket}/>
+                        <AddIcon className="cursor-pointer" fontSize="inherit" onClick={addToBasket}/>
                     </div>
-                    <DeleteIcon onClick={removeFromBasket}/>
+                    <DeleteIcon className="cursor-pointer" onClick={removeFromBasket}/>
                 </footer>
             </article>
         </div>
