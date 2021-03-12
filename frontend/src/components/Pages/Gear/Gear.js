@@ -1,25 +1,25 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Topbar from '../../Topbar/Topbar'
-import image from '../../../images/1a.png'
 import useStyles from "./styles"
 import GearProduct from './GearProduct/GearProduct';
 import { Grid } from "@material-ui/core"
+import axios from "../../../axios"
 
 function Gear() {
 
     const classes = useStyles();
 
-    const [products, setProducts] = useState([
-        {
-            id: "9",
-            name: "T-Shirt",
-            price: 20,
-            quantity: 1,
-            img: image,
-            description: "T-shirt for camp",
-            addedSize: ""
+    const [products, setProducts] = useState([]);
+
+    useEffect(() => {
+        async function fetchData() {
+          const req = await axios.get("/gear");
+    
+          setProducts(req.data);
         }
-    ]);
+    
+        fetchData();
+      }, []);
 
     return (
         <>

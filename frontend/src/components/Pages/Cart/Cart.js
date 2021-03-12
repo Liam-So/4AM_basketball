@@ -11,8 +11,6 @@ function Cart() {
 
   const [{ basket }] = useStateValue();
 
-  console.log(basket);
-
   const EmptyCart = () => {
     return (
       <Typography

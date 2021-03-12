@@ -7,8 +7,6 @@ import { useStateValue } from '../../../StateProvider'
 function CartItem({ item }) {
     const classes = useStyles() ; 
 
-    console.log(item) ; 
-
     const [{ basket }, dispatch] = useStateValue() ; 
 
 

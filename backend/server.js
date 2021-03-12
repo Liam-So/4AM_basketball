@@ -3,6 +3,7 @@ import mongoose from 'mongoose' ;
 import Cors from 'cors' ; 
 import Products from './dbProducts.js'
 import Camps from './dbCamps.js'
+import Gear from './dbGear.js'
 
 
 // App config
@@ -28,6 +29,7 @@ mongoose.connect(connection_url, {
 // API Endpoints
 app.get('/', (req, res) => res.status(200).send('Yooo')) ; 
 
+// Donate Products
 app.post('/products', (req, res) => {
     const dbProduct = req.body ; 
 
@@ -50,6 +52,7 @@ app.get('/products', (req, res) => {
     }) ; 
 });
 
+// Registration
 app.post('/registration', (req, res) => {
     const dbProduct = req.body ; 
 
@@ -64,6 +67,30 @@ app.post('/registration', (req, res) => {
 
 app.get('/registration', (req, res) => {
     Camps.find((err, data) => {
+        if (err) {
+            res.status(500).send(err)
+        } else {
+            res.status(200).send(data)
+        }
+    }) ; 
+});
+
+
+// Gear Products
+app.post('/gear', (req, res) => {
+    const gearProduct = req.body ; 
+
+    Gear.create(gearProduct, (err, data) => {
+        if (err) {
+            res.status(500).send(err)
+        } else {
+            res.status(201).send(data)
+        }
+    }) ; 
+});
+
+app.get('/gear', (req, res) => {
+    Gear.find((err, data) => {
         if (err) {
             res.status(500).send(err)
         } else {

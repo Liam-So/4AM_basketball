@@ -3,7 +3,6 @@ import { Card, CardMedia, CardContent, CardActions, Typography, IconButton } fro
 import { AddShoppingCart } from '@material-ui/icons'
 import useStyles from './styles'
 import { useStateValue } from '../../../StateProvider'
-import Logo from '../../../../images/logo.png'
 
 function DonateProduct({ product }) {
 
@@ -17,7 +16,7 @@ function DonateProduct({ product }) {
             item: {
                 id: product.id,
                 title: product.name,
-                image: Logo,
+                image: product.img,
                 price: product.price,
                 description: product.description,
                 quantity: product.quantity,
@@ -28,7 +27,7 @@ function DonateProduct({ product }) {
     return (
         <Card className={classes.root}>
             <CardMedia title={product.name}>
-                <img src={Logo} alt={product.name} />
+                <img src={product.img} alt={product.name} />
             </CardMedia>
             <CardContent>
                 <div className={classes.cardContent}>
