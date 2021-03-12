@@ -11,8 +11,6 @@ function Cart() {
 
   const [{ basket }] = useStateValue();
 
-  console.log(basket);
-
   const EmptyCart = () => {
     return (
       <Typography
@@ -35,7 +33,7 @@ function Cart() {
       </Grid>
       <div className={classes.cardDetails}>
         <Typography variant="h4" style={{ fontFamily: "Lato" }}>
-          Subtotal: ${getBasketTotal(Object.values(basket))}
+          Subtotal: ${getBasketTotal(Object.values(basket))}          
         </Typography>
         <div style={{ paddingBottom: "20px" }}>
           <Button
@@ -57,7 +55,7 @@ function Cart() {
 
   return (
     <>
-      <Topbar />
+      <Topbar transparent={true}/>
       <Container>
         <Typography
           className={classes.title}

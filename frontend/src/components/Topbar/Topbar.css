@@ -1,5 +1,14 @@
 .dropbtn {
   color: white;
+  /* color: black; */
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.drop-btn-blk {
+  color: black;
   padding: 16px;
   font-size: 16px;
   border: none;
@@ -46,6 +55,7 @@
   display: flex;
   justify-content: space-between;
   float: right;
+  color: #252831;
 }
 
 .MuiContainer-root {
