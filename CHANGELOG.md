@@ -1,3 +1,7 @@
+## 1.10 (@Liam-So)
+
+* Added Gear products to project. 
+
 ## 1.9 (@Ryan-Hong)
 
 * Created responsive topbar 
