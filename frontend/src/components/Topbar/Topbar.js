@@ -5,14 +5,23 @@ import {
   IconButton,
   List,
   Container,
+  Badge
 } from "@material-ui/core";
 import { DropdownData } from "./DropdownData";
 import "./Topbar.css";
 import { Link } from "react-router-dom";
 import Logo from "../../images/logo.png";
 import Sidebar from "../Sidebar/Sidebar";
+import { ShoppingCart } from '@material-ui/icons'
+import { useStateValue } from "../StateProvider" 
+import { getTotalItems } from "../reducer"
 
-const Header = () => {
+
+
+function Topbar({ transparent }) {
+
+  const [{ basket }] = useStateValue();
+
   return (
     <AppBar position="static" color="secondary" elevation={0}>
       <Toolbar>
@@ -37,13 +46,13 @@ const Header = () => {
               className="navDisplay"
             >
               {DropdownData.map((item, index) => (
-                <div class="dropdown" key={index}>
+                <div className="dropdown" key={index}>
                   <Link to={item.path}>
-                    <button class="dropbtn">{item.title}</button>
+                    <button className={transparent ? "drop-btn-blk" : "dropbtn"}>{item.title === 'Cart' ? <Badge badgeContent={getTotalItems(Object.values(basket))} color="secondary"> <ShoppingCart /> </Badge>: item.title}</button>
                   </Link>
-                  <div class="dropdown-content">
+                  <div className="dropdown-content">
                     {item.subNav.map((s, i) => (
-                      <Link to={s.path}>{s.title}</Link>
+                      <Link to={s.path} key={i}>{s.title}</Link>
                     ))}
                   </div>
                 </div>
@@ -54,5 +63,6 @@ const Header = () => {
       </Toolbar>
     </AppBar>
   );
-};
-export default Header;
+}
+
+export default Topbar;

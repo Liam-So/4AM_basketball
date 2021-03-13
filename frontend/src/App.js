@@ -8,6 +8,7 @@ import Footer from "./components/Footer/Footer";
 import Cart from "./components/Pages/Cart/Cart";
 import Register from "./components/Pages/Register/Register";
 import Scholarship from "./components/Pages/Scholarship/Scholarship";
+import Gear from "./components/Pages/Gear/Gear";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/cart" exact component={Cart} />
         <Route path="/register" exact component={Register} />
         <Route path="/scholarship" exact component={Scholarship} />
+        <Route path="/gear" exact component={Gear} />
       </Switch>
       <Footer />
     </Router>

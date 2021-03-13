@@ -24,7 +24,7 @@ function Donate() {
 
   return (
     <div>
-      <Topbar />
+      <Topbar transparent={true}/>
       <HeroSection {...homeObjOne} />
       <main className={classes.content}>
         <div className={classes.toolbar} />

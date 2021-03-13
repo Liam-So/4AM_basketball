@@ -1,7 +1,6 @@
 import React from "react";
 import { homeObjOne, homeObjTwo } from "./Data";
 import HeroSection from "../../HeroSection/HeroSection";
-import { Button } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import Topbar from "../../Topbar/Topbar";
 
