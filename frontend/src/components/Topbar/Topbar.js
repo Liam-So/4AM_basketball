@@ -65,7 +65,7 @@ function Topbar({ transparent }) {
                       )}
                     </button>
                   </Link>
-                  <div className="dropdown-content px-2 py-2 rounded-b-lg rounded-tr-lg">
+                  <div className="dropdown-content rounded-b-lg rounded-tr-lg">
                     {item.subNav.map((s, i) => (
                       <Link to={s.path} key={i} className="rounded-lg">
                         {s.title}

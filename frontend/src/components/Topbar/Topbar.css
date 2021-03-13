@@ -27,12 +27,14 @@
 .dropdown-content a {
   color: white;
   padding: 12px 16px;
+  margin: 0.5rem;
   text-decoration: none;
   display: block;
 }
 
 .dropdown-content a:hover {
   background-color: #252831;
+  margin-top: 0.5rem;
 }
 
 .dropdown:hover .dropdown-content {
