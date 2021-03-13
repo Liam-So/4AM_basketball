@@ -27,7 +27,7 @@ function Cart() {
       <div className="container my-12 mx-auto px-4 md:px-12">
             <div className="flex flex-wrap -mx-1 lg:-mx-4">
               {Object.values(basket).map((item) => (
-              <CartItem item={item} />
+              <CartItem key={item.id} item={item} />
               ))}
             </div>
       </div>

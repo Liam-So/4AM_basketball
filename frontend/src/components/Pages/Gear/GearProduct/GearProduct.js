@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
-import useStyles from './styles'
-import { Card, CardMedia, CardContent, CardActions, Typography, IconButton, ButtonGroup, Button } from '@material-ui/core'
+import { IconButton } from '@material-ui/core'
 import { AddShoppingCart } from '@material-ui/icons'
 import { useStateValue } from "../../../StateProvider"
 
@@ -43,38 +42,35 @@ function GearProduct({ product }) {
         }
     }
 
-
-
-    const classes = useStyles() ; 
-
     return (
+        <div className="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3">
 
-        <Card className={classes.root}>
-            <CardMedia title={product.name}>
-                <img src={product.img} alt={product.name} />
-            </CardMedia>
-            <CardContent>
-                <div className={classes.cardContent}>
-                    <Typography variant="h5" gutterBottom>
-                        {product.name}
-                    </Typography>
-                    <Typography variant="h5" >
+            <article className="overflow-hidden rounded-lg shadow-lg">
+                <img alt={product.title} className="object-contain md:object-scale-down block w-full h-96" src={product.img} />
+
+                <header className="flex items-center justify-between leading-tight p-4 md:p-4">
+                    <h1 className="text-lg">
+                        <a className="no-underline hover:underline text-black" href="#">
+                            {product.name}
+                        </a>
+                    </h1>
+                    <p className="text-grey-darker text-lg">
                         ${product.price}
-                    </Typography>
-                </div>
-            </CardContent>
-            
-            <CardActions className={classes.cardActions}>
-            <ButtonGroup aria-label="outlined primary button group">
-                <Button onClick={handleClick} value="xs">XS</Button>
-                <Button onClick={handleClick} value="s">S</Button>
-                <Button onClick={handleClick} value="m">M</Button>
-                <Button onClick={handleClick} value="l">L</Button>
-                <Button onClick={handleClick} value="xl">XL</Button>
-            </ButtonGroup>
-                <IconButton onClick={addToBasket} aria-label="Add to Cart"><AddShoppingCart /></IconButton>
-            </CardActions>
-        </Card>
+                    </p>
+                </header>
+
+                <footer className="flex items-center justify-between leading-none p-2 md:p-2">
+                    <div className="space-x-1 flex">
+                        <button className="w-9 h-9 flex items-center justify-center" onClick={handleClick} value="xs">XS</button>
+                        <button className="w-9 h-9 flex items-center justify-center" onClick={handleClick} value="s">S</button>
+                        <button className="w-9 h-9 flex items-center justify-center" onClick={handleClick} value="m">M</button>
+                        <button className="w-9 h-9 flex items-center justify-center" onClick={handleClick} value="l">L</button>
+                        <button className="w-9 h-9 flex items-center justify-center" onClick={handleClick} value="xl">XL</button>
+                    </div>
+                    <IconButton onClick={addToBasket} aria-label="Add to Cart"><AddShoppingCart /></IconButton>
+                </footer>
+            </article>
+        </div>
     )
 }
 
