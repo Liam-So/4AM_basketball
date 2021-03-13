@@ -48,8 +48,8 @@ function Topbar({ transparent }) {
                     <button
                       className={
                         transparent
-                          ? "drop-btn-blk rounded-t-lg"
-                          : "dropbtn rounded-t-lg"
+                          ? "drop-btn-blk hover:bg-gray-300 rounded-t-lg"
+                          : "dropbtn hover:bg-gray-300 rounded-t-lg"
                       }
                     >
                       {item.title === "Cart" ? (
@@ -67,7 +67,11 @@ function Topbar({ transparent }) {
                   </Link>
                   <div className="dropdown-content rounded-b-lg rounded-tr-lg">
                     {item.subNav.map((s, i) => (
-                      <Link to={s.path} key={i} className="rounded-lg">
+                      <Link
+                        to={s.path}
+                        key={i}
+                        className="hover:bg-gray-300 rounded-lg"
+                      >
                         {s.title}
                       </Link>
                     ))}
