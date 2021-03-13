@@ -5,8 +5,7 @@ const Scholarship = () => {
   return (
     <div>
       <div className="header">
-        <Topbar />
-        <h1 className="leading-10 pb-36">Scholarship</h1>
+        <Topbar transparent={true} />
       </div>
 
       <section className="bg-gray-100 max-w-7x1 mx-auto py-6 sm:px-6 lg:px-8">
