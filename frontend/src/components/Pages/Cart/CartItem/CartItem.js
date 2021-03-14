@@ -30,7 +30,6 @@ function CartItem({ item }) {
         })
     }
 
-
     return (        
             <tr>
                 <td className="hidden pb-4 md:table-cell">
@@ -40,14 +39,14 @@ function CartItem({ item }) {
                 </td>
             <td>
 
-            <p>{item.title}</p>
+            <p>{item.addedSize !== undefined ? `${item.addedSize} ${item.title}` : `${item.title}`}</p>
             </td>
                 <td className="justify-center md:justify-end md:flex mt-6">
                     <div className="w-20 h-10">
-                        <div className="relative flex flex-row w-full h-8">
-                            <div className="w-full flex items-center justify-around no-underline text-black ">
+                        <div className="relative flex flex-row w-full h-8 mt-3">
+                            <div className="w-full flex items-center justify-around no-underline text-black">
                                 <RemoveIcon fontSize="inherit" className="cursor-pointer" onClick={removeFromBasket}>-</RemoveIcon>
-                                <button className="pl-2 pr-2 md:plr-4 text-sm lg:text-base font-medium" variant="subtitle1">{item.quantity}</button>
+                                <button className=" text-sm lg:text-base font-medium" variant="subtitle1">{item.quantity}</button>
                                 <AddIcon fontSize="inherit" className="cursor-pointer" onClick={addToBasket}>+</AddIcon>
 
                             </div>
@@ -61,7 +60,7 @@ function CartItem({ item }) {
                 </td>
                 <td className="text-right">
                     <span className="text-sm lg:text-base font-medium">
-                        20.00€
+                        ${item.price * item.quantity}
                     </span>
                 </td>
             </tr> 
