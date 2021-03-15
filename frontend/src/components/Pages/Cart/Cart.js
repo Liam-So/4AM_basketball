@@ -15,15 +15,40 @@ function Cart() {
     "currency" : "CAD"
   }
 
+  const arrayOfItems = () => {
+    let items = Object.values(basket) ; 
+    let newItem = {}
+    let result = [] ; 
+
+    items.forEach(item => {
+      newItem["unit_amount"] = item.price ;
+      newItem["name"] = item.title ; 
+      newItem["itemQuantity"] = item.quantity ; 
+      result.push(newItem) ; 
+    })
+    
+    return result ; 
+  }
+
   const createOrder = (data, actions) => {
+
+    console.log(arrayOfItems())
+
     return actions.order.create({
       purchase_units: [
         {
           amount: {
             value: getBasketTotal(Object.values(basket)),
-          },
-        },
-      ],
+          }
+        //   "breakdown": {
+        //     "item_total": {
+        //       value: getBasketTotal(Object.values(basket)),
+        //     }
+        //   },
+        //   "items": arrayOfItems()
+        // },
+        }
+      ]
     });
   }
 
@@ -35,7 +60,7 @@ function Cart() {
 
   const EmptyCart = () => {
     return (
-      <div className="flex flex-col justify-center items-center" style={{ height: "70vh", fontFamily: "Lato" }}>
+      <div className="flex flex-col justify-center items-center" style={{ height: "71vh", fontFamily: "Lato" }}>
         <img className="object-fill" src="https://www.rypen.com/assets/images/cart-empty.svg" />
         <h1 className="px-5 text-xl md:text-2xl">You have no items in your shopping cart, start adding some!</h1>
       </div>
