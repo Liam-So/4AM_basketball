@@ -4,6 +4,7 @@ import Cors from 'cors' ;
 import Products from './dbProducts.js'
 import Camps from './dbCamps.js'
 import Gear from './dbGear.js'
+import Transactions from './dbTransactions.js'
 
 
 // App config
@@ -98,6 +99,30 @@ app.get('/gear', (req, res) => {
         }
     }) ; 
 });
+
+// Transactions
+app.post('/transactions', (req, res) => {
+    const transactionProduct = req.body ; 
+
+    Transactions.create(transactionProduct, (err, data) => {
+        if (err) {
+            res.status(500).send(err)
+        } else {
+            res.status(201).send(data)
+        }
+    }) ; 
+});
+
+app.get('/transactions', (req, res) => {
+    Transactions.find((err, data) => {
+        if (err) {
+            res.status(500).send(err)
+        } else {
+            res.status(200).send(data)
+        }
+    }) ; 
+});
+
 
 // Listener 
 app.listen(port, () => console.log(`listening on localhost: ${port}`)) ;

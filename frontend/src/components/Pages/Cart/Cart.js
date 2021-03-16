@@ -4,7 +4,7 @@ import { useStateValue } from "../../StateProvider";
 import { getBasketTotal } from "../../reducer";
 import Topbar from "../../Topbar/Topbar";
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
-
+import axios from "../../../axios"
 
 function Cart() {
 
@@ -22,7 +22,7 @@ function Cart() {
 
     items.forEach(item => {
       newItem["unit_amount"] = item.price ;
-      newItem["name"] = item.title ; 
+      newItem["id"] = item.id ; 
       newItem["itemQuantity"] = item.quantity ; 
       result.push(newItem) ; 
     })
@@ -32,21 +32,12 @@ function Cart() {
 
   const createOrder = (data, actions) => {
 
-    console.log(arrayOfItems())
-
     return actions.order.create({
       purchase_units: [
         {
           amount: {
             value: getBasketTotal(Object.values(basket)),
           }
-        //   "breakdown": {
-        //     "item_total": {
-        //       value: getBasketTotal(Object.values(basket)),
-        //     }
-        //   },
-        //   "items": arrayOfItems()
-        // },
         }
       ]
     });
@@ -54,8 +45,13 @@ function Cart() {
 
 
   const onApprove = (data, actions) => {
-    console.log("Thank you for your order!")
-    return actions.order.capture() ;
+    // console.log(actions.order.capture())
+    return axios.post("/transactions", {
+      id: 1,
+      amount: getBasketTotal(Object.values(basket)),
+      items: arrayOfItems()
+    })
+    .then(console.log("thank you for your order!"));
   }
 
   const EmptyCart = () => {
