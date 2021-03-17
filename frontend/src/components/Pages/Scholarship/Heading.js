@@ -3,10 +3,10 @@ import React from "react";
 function Heading() {
   return (
     <div className="text-center sm: mx-10 md:mx-20">
-      <h1 className="mt-10 text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl">
+      <h1 className="mt-10 text-4xl tracking-tight font-extrabold text-gray-900">
         Andrew Milner Memorial Scholarship
       </h1>
-      <p className="mt-10 mb-10 text-base text-gray-700 sm:text-lg sm:max-w-7xl sm:mx-auto md:mt-20 md:text-xl md:mb-20">
+      <p className="mt-10 mb-10 text-base text-gray-700 text-lg sm:max-w-7xl sm:mx-auto md:mt-20 md:mb-20">
         The goal of the camp is to honour Andrew's legacy by paying his impact
         forward to the next generation of basketball players. All of the
         proceeds from the camp go towards an annual scholarhsip in Andrew's

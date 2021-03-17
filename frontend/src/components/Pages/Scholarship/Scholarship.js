@@ -1,9 +1,50 @@
-import React from "react";
+import React, { useState } from "react";
 import Topbar from "../../Topbar/Topbar";
 import Heading from "./Heading";
+import axios from "../../../axios";
 import "./Scholarship.css";
 
 function Scholarship() {
+  const [status, setStatus] = useState("Submit");
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setStatus("Sending...");
+    const {
+      first_name,
+      last_name,
+      email,
+      phone,
+      city,
+      school,
+      team,
+      application,
+    } = e.target.elements;
+
+    let msg = {
+      first_name: first_name.value,
+      last_name: last_name.value,
+      email: email.value,
+      phone: phone.value,
+      city: city.value,
+      school: school.value,
+      team: team.value,
+      application: application.value,
+    };
+
+    let response = await fetch("http://localhost:8001/scholarship", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json;charset=utf-8",
+      },
+      body: JSON.stringify(msg),
+    });
+
+    setStatus("Submit");
+    let result = await response.json();
+    alert(result.status);
+  };
+
   return (
     <div>
       <div className="header">
@@ -24,7 +65,7 @@ function Scholarship() {
               </div>
             </div>
             <div className="mt-5 md:mt-0 md:col-span-2">
-              <form action="#" method="POST">
+              <form onSubmit={handleSubmit}>
                 <div className="shadow overflow-hidden sm:rounded-md">
                   <div className="px-4 py-5 bg-white sm:p-6">
                     <div className="grid grid-cols-6 gap-6">
@@ -39,6 +80,7 @@ function Scholarship() {
                           type="text"
                           name="first_name"
                           id="first_name"
+                          required
                           className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                         />
                       </div>
@@ -54,36 +96,39 @@ function Scholarship() {
                           type="text"
                           name="last_name"
                           id="last_name"
+                          required
                           className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                         />
                       </div>
 
                       <div className="col-span-6 sm:col-span-3">
                         <label
-                          htmlFor="email_address"
+                          htmlFor="email"
                           className="block text-sm font-medium text-gray-700"
                         >
                           Email address
                         </label>
                         <input
                           type="text"
-                          name="email_address"
-                          id="email_address"
+                          name="email"
+                          id="email"
+                          required
                           className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                         />
                       </div>
 
                       <div className="col-span-6 sm:col-span-3">
                         <label
-                          htmlFor="phone_number"
+                          htmlFor="phone"
                           className="block text-sm font-medium text-gray-700"
                         >
                           Phone Number
                         </label>
                         <input
                           type="text"
-                          name="phone_number"
-                          id="phone_number"
+                          name="phone"
+                          id="phone"
+                          required
                           className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                         />
                       </div>
@@ -99,6 +144,7 @@ function Scholarship() {
                           type="text"
                           name="city"
                           id="city"
+                          required
                           className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                         />
                       </div>
@@ -114,6 +160,7 @@ function Scholarship() {
                           type="text"
                           name="school"
                           id="school"
+                          required
                           className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                         />
                       </div>
@@ -128,6 +175,7 @@ function Scholarship() {
                         <select
                           id="team"
                           name="team"
+                          required
                           className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                         >
                           <option>U15</option>
@@ -165,6 +213,7 @@ function Scholarship() {
                             className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border-gray-300 rounded-md"
                             placeholder="Your response here..."
                             maxLength="3100"
+                            required
                           ></textarea>
                         </div>
                       </div>
@@ -176,7 +225,7 @@ function Scholarship() {
                       type="submit"
                       className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                     >
-                      Save
+                      {status}
                     </button>
                   </div>
                 </div>
