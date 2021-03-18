@@ -133,18 +133,44 @@ app.post("/scholarship", (req, res) => {
   const city = req.body.city;
   const school = req.body.school;
   const team = req.body.team;
-  const application = req.body.application;
+  const application = req.body.application.replace(/\n/g, "<br />");
+  console.log(application);
   const mail = {
     from: fname,
     to: config.user,
     subject: "Scholarship Application",
+    // using text, we can preserve whitespace and linebreaks, however this code is messier as you can see (its just longer)
+    // text:
+    //   "Name: " +
+    //   fname +
+    //   " " +
+    //   lname +
+    //   "\n" +
+    //   "\nEmail: " +
+    //   email +
+    //   "\n" +
+    //   "\nPhone: " +
+    //   phone +
+    //   "\n" +
+    //   "\nCity: " +
+    //   city +
+    //   "\n" +
+    //   "\nSchool: " +
+    //   school +
+    //   "\n" +
+    //   "\nTeam: " +
+    //   team +
+    //   "\n" +
+    //   "\nQuestion Response: \n\n" +
+    //   application,
+    // using html, the code is short and simple and pretty clean to look at and linebreaks are preserverd, BUT whitespaces are not
     html: `<p>Name: ${fname} ${lname}</p>
-               <p>Email: ${email}</p>
-               <p>Phone: ${phone}</p>
-               <p>City: ${city}</p>
-               <p>School: ${school}</p>
-               <p>Team: ${team}</p>
-               <p>Question Response: <br />${application}</p>`,
+          <p>Email: ${email}</p>
+          <p>Phone: ${phone}</p>
+          <p>City: ${city}</p>
+          <p>School: ${school}</p>
+          <p>Team: ${team}</p>
+          <p>Question Response: <br /><br />${application}</p>`,
   };
   contactEmail.sendMail(mail, (error) => {
     if (error) {

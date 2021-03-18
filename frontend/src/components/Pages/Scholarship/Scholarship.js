@@ -3,6 +3,7 @@ import Topbar from "../../Topbar/Topbar";
 import Heading from "./Heading";
 import axios from "../../../axios";
 import "./Scholarship.css";
+import { Fragment } from "react";
 
 function Scholarship() {
   const [status, setStatus] = useState("Submit");
@@ -43,6 +44,9 @@ function Scholarship() {
     setStatus("Submit");
     let result = await response.json();
     alert(result.status);
+
+    //reset form after submit
+    e.target.reset();
   };
 
   return (
@@ -65,7 +69,7 @@ function Scholarship() {
               </div>
             </div>
             <div className="mt-5 md:mt-0 md:col-span-2">
-              <form onSubmit={handleSubmit}>
+              <form id="application-form" onSubmit={handleSubmit}>
                 <div className="shadow overflow-hidden sm:rounded-md">
                   <div className="px-4 py-5 bg-white sm:p-6">
                     <div className="grid grid-cols-6 gap-6">
@@ -210,7 +214,7 @@ function Scholarship() {
                             id="application"
                             name="application"
                             rows="10"
-                            className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border-gray-300 rounded-md"
+                            className="txt shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border-gray-300 rounded-md whitespace-pre-wrap"
                             placeholder="Your response here..."
                             maxLength="3100"
                             required
