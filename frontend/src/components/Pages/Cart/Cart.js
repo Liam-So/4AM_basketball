@@ -6,6 +6,7 @@ import Topbar from "../../Topbar/Topbar";
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 import axios from "../../../axios"
 
+
 function Cart() {
 
   const [{ basket }] = useStateValue();
@@ -22,8 +23,8 @@ function Cart() {
 
     items.forEach(item => {
       newItem["unit_amount"] = item.price ;
-      newItem["id"] = item.id ; 
-      newItem["itemQuantity"] = item.quantity ; 
+      newItem["name"] = item.title ; 
+      newItem["quantity"] = item.quantity ; 
       result.push(newItem) ; 
     })
     
@@ -31,27 +32,34 @@ function Cart() {
   }
 
   const createOrder = (data, actions) => {
-
     return actions.order.create({
-      purchase_units: [
-        {
-          amount: {
-            value: getBasketTotal(Object.values(basket)),
-          }
+      purchase_units: [{
+        amount: {
+        currency_code: "CAD",
+        value: "100",
+        breakdown: {
+        item_total: {currency_code:"CAD", value:"100.00"}
         }
-      ]
+        },
+        items: [{name:"product_1", quantity:"1", unit_amount:{currency_code:"CAD", value:"100.00"}}]
+        }],
+        redirect_urls: {
+          return_url: 'http://localhost:3000/order/success',
+          cancel_url: 'http://localhost:3000/order/cancel'
+        }
     });
   }
 
 
   const onApprove = (data, actions) => {
-    // console.log(actions.order.capture())
-    return axios.post("/transactions", {
-      id: 1,
-      amount: getBasketTotal(Object.values(basket)),
-      items: arrayOfItems()
-    })
-    .then(console.log("thank you for your order!"));
+    console.log("Thank you for your order!")
+    return actions.order.capture() ;
+    // return axios.post("/transactions", {
+    //   id: 1,
+    //   amount: getBasketTotal(Object.values(basket)),
+    //   items: arrayOfItems()
+    // })
+    // .then(console.log("thank you for your order!"));
   }
 
   const EmptyCart = () => {
