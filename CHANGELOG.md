@@ -1,3 +1,7 @@
+## 1.11 (@Liam-So)
+
+* Added Paypal functionality and send transaction data to Mongo.
+
 ## 1.10 (@Liam-So)
 
 * Added Gear products to project. 
