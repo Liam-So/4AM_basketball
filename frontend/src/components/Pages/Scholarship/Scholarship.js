@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import Topbar from "../../Topbar/Topbar";
 import Heading from "./Heading";
-import axios from "../../../axios";
 import "./Scholarship.css";
-import { Fragment } from "react";
 
 function Scholarship() {
   const [status, setStatus] = useState("Submit");
@@ -216,7 +214,7 @@ function Scholarship() {
                             rows="10"
                             className="txt shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border-gray-300 rounded-md whitespace-pre-wrap"
                             placeholder="Your response here..."
-                            maxLength="3100"
+                            maxLength="3500"
                             required
                           ></textarea>
                         </div>
