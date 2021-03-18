@@ -1,12 +1,15 @@
 import mongoose from 'mongoose'
 
 const transactionSchema = mongoose.Schema({
-    id: Number,
+    id: String,
     amount: Number,
     items: [{
-        unit_amount: String,
+        description: String,
         id: String,
-        itemQuantity: Number
+        image: String,
+        price: Number,
+        quantity: Number,
+        title: String
     }]
 })
 

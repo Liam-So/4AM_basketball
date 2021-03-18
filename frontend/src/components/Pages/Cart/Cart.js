@@ -18,30 +18,33 @@ function Cart() {
 
   const arrayOfItems = () => {
     let items = Object.values(basket) ; 
-    let newItem = {}
     let result = [] ; 
+    let newItem = {}; 
 
-    items.forEach(item => {
-      newItem["unit_amount"] = item.price ;
+    items.forEach(item => {      
+      newItem = {"unit_amount": {"currency_code": "CAD"}}
       newItem["name"] = item.title ; 
       newItem["quantity"] = item.quantity ; 
+      newItem.unit_amount["value"] = item.price ;
       result.push(newItem) ; 
+      newItem = {} ; 
     })
     
     return result ; 
   }
 
   const createOrder = (data, actions) => {
+    let total = getBasketTotal(Object.values(basket))
     return actions.order.create({
       purchase_units: [{
         amount: {
         currency_code: "CAD",
-        value: "100",
+        value: total,
         breakdown: {
-        item_total: {currency_code:"CAD", value:"100.00"}
+        item_total: {currency_code:"CAD", value:total}
         }
         },
-        items: [{name:"product_1", quantity:"1", unit_amount:{currency_code:"CAD", value:"100.00"}}]
+        items: arrayOfItems()
         }],
         redirect_urls: {
           return_url: 'http://localhost:3000/order/success',
@@ -52,14 +55,17 @@ function Cart() {
 
 
   const onApprove = (data, actions) => {
-    console.log("Thank you for your order!")
-    return actions.order.capture() ;
-    // return axios.post("/transactions", {
-    //   id: 1,
-    //   amount: getBasketTotal(Object.values(basket)),
-    //   items: arrayOfItems()
-    // })
-    // .then(console.log("thank you for your order!"));
+    actions.order.capture() ;
+
+    return axios.post("/transactions", {
+      id: data.orderID,
+      amount: getBasketTotal(Object.values(basket)),
+      items: Object.values(basket)
+    })
+    .then(
+      alert("Thank you for your order!")
+    );
+
   }
 
   const EmptyCart = () => {
