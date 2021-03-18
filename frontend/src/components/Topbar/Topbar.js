@@ -5,21 +5,18 @@ import {
   IconButton,
   List,
   Container,
-  Badge
+  Badge,
 } from "@material-ui/core";
 import { DropdownData } from "./DropdownData";
 import "./Topbar.css";
 import { Link } from "react-router-dom";
 import Logo from "../../images/logo.png";
 import Sidebar from "../Sidebar/Sidebar";
-import { ShoppingCart } from '@material-ui/icons'
-import { useStateValue } from "../StateProvider" 
-import { getTotalItems } from "../reducer"
-
-
+import { ShoppingCart } from "@material-ui/icons";
+import { useStateValue } from "../StateProvider";
+import { getTotalItems } from "../reducer";
 
 function Topbar({ transparent }) {
-
   const [{ basket }] = useStateValue();
 
   return (
@@ -48,11 +45,35 @@ function Topbar({ transparent }) {
               {DropdownData.map((item, index) => (
                 <div className="dropdown" key={index}>
                   <Link to={item.path}>
-                    <button className={transparent ? "drop-btn-blk" : "dropbtn"}>{item.title === 'Cart' ? <Badge badgeContent={getTotalItems(Object.values(basket))} color="secondary"> <ShoppingCart /> </Badge>: item.title}</button>
+                    <button
+                      className={
+                        transparent
+                          ? "drop-btn-blk hover:bg-gray-300 rounded-t-lg"
+                          : "dropbtn hover:bg-gray-300 rounded-t-lg"
+                      }
+                    >
+                      {item.title === "Cart" ? (
+                        <Badge
+                          badgeContent={getTotalItems(Object.values(basket))}
+                          color="secondary"
+                        >
+                          {" "}
+                          <ShoppingCart />{" "}
+                        </Badge>
+                      ) : (
+                        item.title
+                      )}
+                    </button>
                   </Link>
-                  <div className="dropdown-content">
+                  <div className="dropdown-content rounded-b-lg rounded-tr-lg">
                     {item.subNav.map((s, i) => (
-                      <Link to={s.path} key={i}>{s.title}</Link>
+                      <Link
+                        to={s.path}
+                        key={i}
+                        className="hover:bg-gray-300 rounded-lg"
+                      >
+                        {s.title}
+                      </Link>
                     ))}
                   </div>
                 </div>
