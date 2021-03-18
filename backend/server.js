@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import express from "express";
 import mongoose from "mongoose";
 import Cors from "cors";
@@ -6,6 +7,16 @@ import Products from "./dbProducts.js";
 import Camps from "./dbCamps.js";
 import Gear from "./dbGear.js";
 import config from "./config.js";
+=======
+import express from 'express' ; 
+import mongoose from 'mongoose' ; 
+import Cors from 'cors' ; 
+import Products from './dbProducts.js'
+import Camps from './dbCamps.js'
+import Gear from './dbGear.js'
+import Transactions from './dbTransactions.js'
+
+>>>>>>> d847329e731133c4e422bd95cac78c7591202428
 
 // App config
 const app = express();
@@ -181,5 +192,34 @@ app.post("/scholarship", (req, res) => {
   });
 });
 
+<<<<<<< HEAD
 // Listener
 app.listen(port, () => console.log(`listening on localhost: ${port}`));
+=======
+// Transactions
+app.post('/transactions', (req, res) => {
+    const transactionProduct = req.body ; 
+
+    Transactions.create(transactionProduct, (err, data) => {
+        if (err) {
+            res.status(500).send(err)
+        } else {
+            res.status(201).send(data)
+        }
+    }) ; 
+});
+
+app.get('/transactions', (req, res) => {
+    Transactions.find((err, data) => {
+        if (err) {
+            res.status(500).send(err)
+        } else {
+            res.status(200).send(data)
+        }
+    }) ; 
+});
+
+
+// Listener 
+app.listen(port, () => console.log(`listening on localhost: ${port}`)) ;
+>>>>>>> d847329e731133c4e422bd95cac78c7591202428

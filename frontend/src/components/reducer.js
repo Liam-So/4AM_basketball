@@ -45,10 +45,8 @@ const reducer = (state, action) => {
                 newAddGearBasket[newId] = action.item ; 
             } else {
                 newAddGearBasket[newId].quantity += 1 ; 
-                console.log("This should be working")
             }
 
-            console.log(newAddGearBasket)
             return { ...state, basket:newAddGearBasket }
 
         case 'REMOVE_FROM_BASKET' :
