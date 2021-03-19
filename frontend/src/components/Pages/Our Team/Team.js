@@ -176,9 +176,9 @@ function Team() {
 
   return (
     <div>
-      <Topbar />
+      <Topbar transparent={true} />
       <div className={classes.title}>
-        <h1 style={{ alignItems: "center", color: "#f00946" }}>
+        <h1 className="mt-1 text-4xl tracking-tight font-extrabold text-red-500">
           Our Coaching Staff
         </h1>
       </div>
