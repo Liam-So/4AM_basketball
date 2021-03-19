@@ -6,11 +6,7 @@
     "@craco/craco": "^6.1.1",
     "@material-ui/core": "^4.11.3",
     "@material-ui/icons": "^4.11.2",
-<<<<<<< HEAD
-    "@tailwindcss/forms": "^0.2.1",
-=======
     "@paypal/react-paypal-js": "^5.0.0",
->>>>>>> d847329e731133c4e422bd95cac78c7591202428
     "@tailwindcss/postcss7-compat": "^2.0.2",
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.5",
