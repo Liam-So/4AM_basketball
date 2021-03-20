@@ -1,66 +1,83 @@
-import React from 'react'
-import { Typography } from '@material-ui/core'
-import { useStateValue } from '../../../StateProvider'
-import AddIcon from '@material-ui/icons/Add';
-import RemoveIcon from '@material-ui/icons/Remove';
-import DeleteIcon from '@material-ui/icons/Delete';
+import React from "react";
+import { useStateValue } from "../../../StateProvider";
+import AddIcon from "@material-ui/icons/Add";
+import RemoveIcon from "@material-ui/icons/Remove";
 
 function CartItem({ item }) {
+  const [{ basket }, dispatch] = useStateValue();
 
-    const [{ basket }, dispatch] = useStateValue() ; 
+  const removeFromBasket = () => {
+    dispatch({
+      type: "REMOVE_FROM_BASKET",
+      id: item.id,
+    });
+  };
 
+  const addToBasket = () => {
+    dispatch({
+      type: "ADD_TO_BASKET",
+      item: {
+        id: item.id,
+        title: item.title,
+        image: item.image,
+        price: item.price,
+        description: item.description,
+        quantity: item.quantity,
+        addedSize: item.addedSize,
+      },
+    });
+  };
 
-    const removeFromBasket = () => {
-        dispatch({
-            type: "REMOVE_FROM_BASKET",
-            id: item.id,
-        })
-    };
-
-    const addToBasket = () => {
-        dispatch({
-            type: "ADD_TO_BASKET",
-            item: {
-                id: item.id,
-                title: item.title,
-                image: item.image,
-                price: item.price,
-                description: item.description,
-                quantity: item.quantity,
-                addedSize: item.addedSize
-            }
-        })
-    }
-
-
-    return (        
-        <div className="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3">
-
-            <article className="overflow-hidden rounded-lg shadow-lg">
-                <img alt={item.title} className="object-contain md:object-scale-down block w-full h-96" src={item.image} />
-
-                <header className="flex items-center justify-between leading-tight p-2 md:p-4">
-                    <h1 className="text-lg">
-                        <a className="no-underline hover:underline text-black" href="#">
-                            {item.addedSize !== undefined ? `${item.addedSize} ${item.title}` : `${item.title}`}
-                        </a>
-                    </h1>
-                    <p className="text-grey-darker text-lg">
-                        ${item.price}
-                    </p>
-                </header>
-
-                <footer className="flex items-center justify-between leading-none p-2 md:p-4">
-                    <div className="flex items-center no-underline text-black">
-                        <RemoveIcon className="cursor-pointer" fontSize="inherit" onClick={removeFromBasket}/>
-                        <Typography className="pl-2 pr-2 md:plr-4" variant="subtitle1">{item.quantity}</Typography>
-                        <AddIcon className="cursor-pointer" fontSize="inherit" onClick={addToBasket}/>
-                    </div>
-                    <DeleteIcon className="cursor-pointer" onClick={removeFromBasket}/>
-                </footer>
-            </article>
+  return (
+    <tr>
+      <td className="hidden pb-4 md:table-cell">
+        <img src={item.image} className="w-20 rounded" alt="Thumbnail" />
+      </td>
+      <td>
+        <p>
+          {item.addedSize !== undefined
+            ? `${item.addedSize} ${item.title}`
+            : `${item.title}`}
+        </p>
+      </td>
+      <td className="justify-center md:justify-end md:flex mt-6">
+        <div className="w-20 h-10">
+          <div className="relative flex flex-row w-full h-8 mt-3">
+            <div className="w-full flex items-center justify-around no-underline text-black">
+              <RemoveIcon
+                fontSize="inherit"
+                className="cursor-pointer"
+                onClick={removeFromBasket}
+              >
+                -
+              </RemoveIcon>
+              <button
+                className=" text-sm lg:text-base font-medium"
+                variant="subtitle1"
+              >
+                {item.quantity}
+              </button>
+              <AddIcon
+                fontSize="inherit"
+                className="cursor-pointer"
+                onClick={addToBasket}
+              >
+                +
+              </AddIcon>
+            </div>
+          </div>
         </div>
-    )
+      </td>
+      <td className="hidden text-right md:table-cell">
+        <span className="text-sm lg:text-base font-medium">${item.price}</span>
+      </td>
+      <td className="text-right">
+        <span className="text-sm lg:text-base font-medium">
+          ${item.price * item.quantity}
+        </span>
+      </td>
+    </tr>
+  );
 }
 
-export default CartItem
+export default CartItem;
