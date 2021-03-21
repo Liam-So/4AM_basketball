@@ -35,8 +35,8 @@ function CartItem({ item }) {
       </td>
       <td>
         <p>
-          {item.addedSize !== undefined
-            ? `${item.addedSize} ${item.title}`
+          {item.size !== undefined
+            ? `${item.size} ${item.title}`
             : `${item.title}`}
         </p>
       </td>

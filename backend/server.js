@@ -2,7 +2,7 @@ import express from "express";
 import mongoose from "mongoose";
 import Cors from "cors";
 import nodemailer from "nodemailer";
-import Products from "./dbProducts.js";
+import Donations from "./dbDonate.js";
 import Camps from "./dbCamps.js";
 import Gear from "./dbGear.js";
 import config from "./config.js";
@@ -56,11 +56,11 @@ mongoose
 // API Endpoints
 app.get("/", (req, res) => res.status(200).send("Yooo"));
 
-// Donate Products
-app.post("/products", (req, res) => {
-  const dbProduct = req.body;
+// Donations
+app.post("/donations", (req, res) => {
+  const donateProduct = req.body;
 
-  Products.create(dbProduct, (err, data) => {
+  Donations.create(donateProduct, (err, data) => {
     if (err) {
       res.status(500).send(err);
     } else {
@@ -69,8 +69,8 @@ app.post("/products", (req, res) => {
   });
 });
 
-app.get("/products", (req, res) => {
-  Products.find((err, data) => {
+app.get("/donations", (req, res) => {
+  Donations.find((err, data) => {
     if (err) {
       res.status(500).send(err);
     } else {

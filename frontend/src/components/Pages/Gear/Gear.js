@@ -16,6 +16,20 @@ function Gear() {
         fetchData();
       }, []);
 
+    const mapGlobalId = (arr) => {
+        let globals = {} ; 
+
+        arr.forEach(element => {
+            if (!(element.globalId in globals)) {
+                globals[element.globalId] = element ; 
+            }
+        });
+
+        return (Object.values(globals).map((product) => (
+            <GearProduct key={product.id} product={product} />
+        )))
+    }
+
     return (
         <>
             <div className="gear">
@@ -27,9 +41,10 @@ function Gear() {
 
             <div className="flex container my-12 mx-auto px-4 md:px-12">
                 <div className="flex flex-wrap">
-                        {products.map((product) => (
+                        {/* {products.map((product) => (
                             <GearProduct key={product.id} product={product} />
-                        ))}
+                        ))}                     */}
+                        {mapGlobalId(products)}
                 </div>
             </div>
     </>

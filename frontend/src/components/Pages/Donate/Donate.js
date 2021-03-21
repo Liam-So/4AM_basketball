@@ -12,7 +12,7 @@ function Donate() {
 
   useEffect(() => {
     async function fetchData() {
-      const req = await axios.get("/products");
+      const req = await axios.get("/donations");
 
       setProducts(req.data);
     }

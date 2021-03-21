@@ -12,13 +12,17 @@ function GearProduct({ product }) {
     dispatch({
       type: "ADD_TO_BASKET",
       item: {
-        id: product.id + state,
+        id: `${product.type}_${product.globalId}${state}`,
         title: product.name,
+        globalId: product.globalId,
+        type: product.type,
         image: product.img,
         price: product.price,
         description: product.description,
         quantity: product.quantity,
-        addedSize: state,
+        size: state,
+        sku: product.sku,
+        img: product.img
       },
     });
   };
