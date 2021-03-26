@@ -16,10 +16,12 @@ function RegisterItem({ product }) {
             item: {
                 id: product.id,
                 title: product.name,
+                type: product.type,
                 image: product.img,
                 price: product.price,
                 description: product.description,
                 quantity: product.quantity,
+                sku: product.sku
             }
         })
     } ; 

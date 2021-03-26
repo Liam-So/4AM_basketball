@@ -34,7 +34,52 @@ function Cart() {
   }
 
   const createOrder = (data, actions) => {
-    let total = getBasketTotal(Object.values(basket))
+    let total = getBasketTotal(Object.values(basket)) ; 
+
+    let basketData = Object.values(basket); 
+
+    // Before creating the order, we must verify if we have enough stock to purchase 
+    basketData.forEach(async function(basketItem, index) {
+      console.log(basketItem)
+      if (basketItem.type === "GR") {
+        const req = await axios.get("/gear");
+
+        let basketDataValues = Object.values(req.data) ; 
+
+        basketDataValues.forEach(item => {
+          if (item.id === basketItem.id && (item.sku - basketItem.quantity > 0)) {
+            console.log(item.sku - basketItem.quantity)
+            console.log("we good to buy")
+          }
+        })
+      }
+
+      if (basketItem.type === "DNT") {
+        const req = await axios.get("/donations") ; 
+
+        let basketDataValues = Object.values(req.data) ; 
+
+        basketDataValues.forEach(item => {
+          if (item.id === basketItem.id) {
+            console.log("we good to buy")
+          }
+        })
+      }
+
+      if (basketItem.type === "RGT") {
+        const req = await axios.get("/registration") ; 
+
+        let basketDataValues = Object.values(req.data) ; 
+
+        basketDataValues.forEach(item => {
+          if (item.id === basketItem.id && (item.sku - basketItem.quantity > 0)) {
+            console.log(item.sku - basketItem.quantity)
+            console.log("we good to buy")
+          }
+        })
+      }
+    })
+
     return actions.order.create({
       purchase_units: [{
         amount: {
@@ -71,7 +116,7 @@ function Cart() {
   const EmptyCart = () => {
     return (
       <div className="flex flex-col justify-center items-center" style={{ height: "71vh", fontFamily: "Lato" }}>
-        <img className="object-fill" src="https://www.rypen.com/assets/images/cart-empty.svg" />
+        <img className="object-fill" src="https://www.rypen.com/assets/images/cart-empty.svg" alt="cart"/>
         <h1 className="px-5 text-xl md:text-2xl">You have no items in your shopping cart, start adding some!</h1>
       </div>
       

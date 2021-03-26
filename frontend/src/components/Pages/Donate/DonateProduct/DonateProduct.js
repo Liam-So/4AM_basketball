@@ -15,11 +15,13 @@ function DonateProduct({ product }) {
             type: 'ADD_TO_BASKET',
             item: {
                 id: product.id,
+                type: product.type,
                 title: product.name,
                 image: product.img,
                 price: product.price,
                 description: product.description,
                 quantity: product.quantity,
+                sku: product.sku
             }
         })
     } ; 
