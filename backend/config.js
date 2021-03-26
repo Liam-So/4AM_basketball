@@ -4,9 +4,9 @@ const config = {
     "219916068332-l4r418pl5pm48i923fjsn3ehfg23v834.apps.googleusercontent.com",
   client_secret: "cmiUQMGf8Lvspuhw7_m6tTPT",
   refresh_token:
-    "1//04q_LwikCJ_OvCgYIARAAGAQSNwF-L9IrPElzJypy2ZoSr0QgTW969N02pgxAJv0aPpia9Vda2HG6ffJpWYzy_9qN6bQsYiMEfnA",
+    "1//04Ci5UTZ4YwdqCgYIARAAGAQSNwF-L9IrNYlr0Cvkrro8IuDIFNHFX6Nch-dE2Azy3yifXzHTHZt2zZ1RwM4-XRFyFlk0TFFhZdM",
   access_token:
-    "ya29.a0AfH6SMDTA7diH8VgHpwuYMmAj4WlfOY23f4tq-izve_0vfkWjRygssr6dS57eZjwlh4W52J7NH_7wt1crnEco3DTq1AtkNhpwGmOcBgWDjyOxIu7WteTH6fQW8MKKucgo5PsuO8DamloEP4tlQMOOdEtsBwv",
+    "ya29.a0AfH6SMB5nIsR_RM3hQgeBtcWyBQWPUH-VF_MypqHs9BQUkBLGBeof1aQn2OdKEtoRGc0UgpvyYOK-rB2JGdZzgMkFDvnA4WyLiP1Xvt58ELvMmk7Z9WswxDwGmjonmb8zhY2_PMnaxnSFzPaPglBSa05bWWg",
 };
 
 export default config;
