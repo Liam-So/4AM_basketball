@@ -24,7 +24,6 @@ const contactEmail = nodemailer.createTransport({
     clientSecret: config.client_secret,
     refreshToken: config.refresh_token,
     accessToken: config.access_token,
-    expires: 1484314697598,
   },
 });
 
