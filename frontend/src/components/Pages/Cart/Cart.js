@@ -39,9 +39,9 @@ function Cart() {
 
     basketDataValues.forEach(item => {
       if (item.id === basketItem.id) {
-
         if (item.sku != "n/a") {
           if (item.sku - basketItem.quantity > 0) {
+            console.log(item.sku - basketItem.quantity)
             inStock = true ; 
           }
         } else {
@@ -53,16 +53,16 @@ function Cart() {
     return inStock ; 
   }
 
-  const validateBasketData = (basketData) => {
-    let inStock = false ;
-    
-    basketData.forEach(async function(basketItem, index) {
-      console.log(inStock)
-      if (basketItem.type === "GR") {
-        const req = await axios.get("/gear");
-        let basketDataValues = Object.values(req.data) ; 
 
-        inStock = checkStockForItem(basketDataValues, basketItem) ; 
+  const getBasketStock = async (basketData) => {
+    let inStock = false;
+
+    for (const basketItem of basketData) {
+      if (basketItem.type === 'GR') {
+        const req = await axios.get("/gear");
+        let basketDataValues = Object.values(req.data);
+
+        inStock = checkStockForItem(basketDataValues, basketItem);
       }
 
       if (basketItem.type === "DNT") {
@@ -78,22 +78,18 @@ function Cart() {
 
         inStock = checkStockForItem(basketDataValues, basketItem) ; 
       }
-
-      console.log(inStock)
-    })
-
-    console.log(inStock)  
+    }
 
     return inStock ; 
   }
 
-  const createOrder = (data, actions) => {
+  const createOrder = async(data, actions) => {
     let total = getBasketTotal(Object.values(basket)) ; 
 
     let basketData = Object.values(basket); 
 
     // Before creating the order, we must verify if we have enough stock to purchase 
-    const isValid = validateBasketData(basketData) ; 
+    const isValid = await getBasketStock(basketData) ; 
 
     // Alert user if at least one object in there cart is out of stock
     if (isValid) {
