@@ -33,69 +33,89 @@ function Cart() {
     return result ; 
   }
 
+  const checkStockForItem = (basketDataValues, basketItem) => {
+
+    let inStock = false ; 
+
+    basketDataValues.forEach(item => {
+      if (item.id === basketItem.id) {
+
+        if (item.sku != "n/a") {
+          if (item.sku - basketItem.quantity > 0) {
+            inStock = true ; 
+          }
+        } else {
+          inStock = true ; 
+        }
+      }
+    })
+
+    return inStock ; 
+  }
+
+  const validateBasketData = (basketData) => {
+    let inStock = false ;
+    
+    basketData.forEach(async function(basketItem, index) {
+      console.log(inStock)
+      if (basketItem.type === "GR") {
+        const req = await axios.get("/gear");
+        let basketDataValues = Object.values(req.data) ; 
+
+        inStock = checkStockForItem(basketDataValues, basketItem) ; 
+      }
+
+      if (basketItem.type === "DNT") {
+        const req = await axios.get("/donations") ; 
+        let basketDataValues = Object.values(req.data) ; 
+
+        inStock = checkStockForItem(basketDataValues, basketItem) ; 
+      }
+
+      if (basketItem.type === "RGT") {
+        const req = await axios.get("/registration") ; 
+        let basketDataValues = Object.values(req.data) ; 
+
+        inStock = checkStockForItem(basketDataValues, basketItem) ; 
+      }
+
+      console.log(inStock)
+    })
+
+    console.log(inStock)  
+
+    return inStock ; 
+  }
+
   const createOrder = (data, actions) => {
     let total = getBasketTotal(Object.values(basket)) ; 
 
     let basketData = Object.values(basket); 
 
     // Before creating the order, we must verify if we have enough stock to purchase 
-    basketData.forEach(async function(basketItem, index) {
-      console.log(basketItem)
-      if (basketItem.type === "GR") {
-        const req = await axios.get("/gear");
+    const isValid = validateBasketData(basketData) ; 
 
-        let basketDataValues = Object.values(req.data) ; 
-
-        basketDataValues.forEach(item => {
-          if (item.id === basketItem.id && (item.sku - basketItem.quantity > 0)) {
-            console.log(item.sku - basketItem.quantity)
-            console.log("we good to buy")
+    // Alert user if at least one object in there cart is out of stock
+    if (isValid) {
+      return actions.order.create({
+        purchase_units: [{
+          amount: {
+          currency_code: "CAD",
+          value: total,
+          breakdown: {
+          item_total: {currency_code:"CAD", value:total}
           }
-        })
-      }
-
-      if (basketItem.type === "DNT") {
-        const req = await axios.get("/donations") ; 
-
-        let basketDataValues = Object.values(req.data) ; 
-
-        basketDataValues.forEach(item => {
-          if (item.id === basketItem.id) {
-            console.log("we good to buy")
+          },
+          items: arrayOfItems()
+          }],
+          redirect_urls: {
+            return_url: 'http://localhost:3000/order/success',
+            cancel_url: 'http://localhost:3000/order/cancel'
           }
-        })
-      }
-
-      if (basketItem.type === "RGT") {
-        const req = await axios.get("/registration") ; 
-
-        let basketDataValues = Object.values(req.data) ; 
-
-        basketDataValues.forEach(item => {
-          if (item.id === basketItem.id && (item.sku - basketItem.quantity > 0)) {
-            console.log(item.sku - basketItem.quantity)
-            console.log("we good to buy")
-          }
-        })
-      }
-    })
-
-    return actions.order.create({
-      purchase_units: [{
-        amount: {
-        currency_code: "CAD",
-        value: total,
-        breakdown: {
-        item_total: {currency_code:"CAD", value:total}
-        }
-        },
-        items: arrayOfItems()
-        }],
-        redirect_urls: {
-          return_url: 'http://localhost:3000/order/success',
-          cancel_url: 'http://localhost:3000/order/cancel'
-        }
-    });
+      });
+    } else {
+      alert("One or more of your items is currently out of stock")
+    }
   }
 
 
