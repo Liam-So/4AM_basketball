@@ -102,6 +102,28 @@ app.get("/registration", (req, res) => {
   });
 });
 
+app.get("/registration/:id", async (req, res) => {
+  try {
+    const item = await Camps.findById(req.params.id) ; 
+    res.json(item) ; 
+  } catch (err) {
+    console.error(err.message) ; 
+    res.send(400).send('Server Error') ; 
+  }
+})
+
+app.put("/registration/:id", async (req, res) => {
+  try {
+    await Camps.findByIdAndUpdate(req.params.id, {
+      sku: req.body.sku
+    });
+    res.send("Item Updated!") ; 
+  } catch(err) {
+    console.error(err.message) ; 
+    res.send(400).send("Server Error") ;
+  }
+})
+
 // Gear Products
 app.post("/gear", (req, res) => {
   const gearProduct = req.body;

@@ -83,10 +83,28 @@ function Cart() {
     return inStock ; 
   }
 
+  const updateStock = async (basketData) => {
+    for (const basketItem of basketData) {
+      if (basketItem.type === 'RGT') {
+        await axios.put(`/registration/${basketItem._id}`, {
+          "sku": basketItem.sku - basketItem.quantity
+        })
+        .then(response => {
+          console.log(response)
+        })
+        .catch(error => {
+          console.log("there was an error")
+        })
+      }
+    }
+  }
+
   const createOrder = async(data, actions) => {
     let total = getBasketTotal(Object.values(basket)) ; 
 
     let basketData = Object.values(basket); 
+
+    console.log(basketData)
 
     // Before creating the order, we must verify if we have enough stock to purchase 
     const isValid = await getBasketStock(basketData) ; 
@@ -117,6 +135,9 @@ function Cart() {
 
   const onApprove = (data, actions) => {
     actions.order.capture() ;
+
+    let basketData = Object.values(basket); 
+    updateStock(basketData) ; 
 
     return axios.post("/transactions", {
       id: data.orderID,

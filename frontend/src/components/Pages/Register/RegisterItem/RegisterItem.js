@@ -14,6 +14,7 @@ function RegisterItem({ product }) {
         dispatch({
             type: 'ADD_TO_BASKET',
             item: {
+                _id: product._id,
                 id: product.id,
                 title: product.name,
                 type: product.type,
