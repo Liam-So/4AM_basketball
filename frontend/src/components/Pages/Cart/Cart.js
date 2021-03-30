@@ -33,22 +33,12 @@ function Cart() {
     return result ; 
   }
 
-  const checkStockForItem = (basketDataValues, basketItem) => {
-
+  const checkStockForItem = (requestData, basketItem) => {
     let inStock = false ; 
 
-    basketDataValues.forEach(item => {
-      if (item.id === basketItem.id) {
-        if (item.sku != "n/a") {
-          if (item.sku - basketItem.quantity > 0) {
-            console.log(item.sku - basketItem.quantity)
-            inStock = true ; 
-          }
-        } else {
-          inStock = true ; 
-        }
-      }
-    })
+    if (requestData.sku - basketItem.quantity >= 0) {
+      inStock = true ;
+    }
 
     return inStock ; 
   }
@@ -59,24 +49,17 @@ function Cart() {
 
     for (const basketItem of basketData) {
       if (basketItem.type === 'GR') {
-        const req = await axios.get("/gear");
-        let basketDataValues = Object.values(req.data);
-
-        inStock = checkStockForItem(basketDataValues, basketItem);
+        const req = await axios.get(`/gear/${basketItem._id}`) ; 
+        inStock = checkStockForItem(req.data, basketItem);
       }
 
       if (basketItem.type === "DNT") {
-        const req = await axios.get("/donations") ; 
-        let basketDataValues = Object.values(req.data) ; 
-
-        inStock = checkStockForItem(basketDataValues, basketItem) ; 
+        inStock = true ; 
       }
 
       if (basketItem.type === "RGT") {
-        const req = await axios.get("/registration") ; 
-        let basketDataValues = Object.values(req.data) ; 
-
-        inStock = checkStockForItem(basketDataValues, basketItem) ; 
+        const req = await axios.get(`/registration/${basketItem._id}`) ; 
+        inStock = checkStockForItem(req.data, basketItem) ; 
       }
     }
 
@@ -86,9 +69,33 @@ function Cart() {
   const updateStock = async (basketData) => {
     for (const basketItem of basketData) {
       if (basketItem.type === 'RGT') {
+        const req = await axios.get(`/registration/${basketItem._id}`) ; 
+
+        let serverStock = req.data.sku ; 
+
         await axios.put(`/registration/${basketItem._id}`, {
-          "sku": basketItem.sku - basketItem.quantity
+          "sku": serverStock - basketItem.quantity
         })
+        .then(response => {
+          console.log(response)
+        })
+        .catch(error => {
+          console.log("there was an error")
+        })
+      }
+      if (basketItem.type === 'GR') {
+
+        console.log(basketItem)
+
+        const req = await axios.get(`/gear/${basketItem._id}`) ; 
+
+        let serverStock = req.data.sku ; 
+
+        console.log(serverStock)
+
+        await axios.put(`/gear/${basketItem._id}`, {
+          "sku": serverStock - basketItem.quantity 
+        }) 
         .then(response => {
           console.log(response)
         })

@@ -9,6 +9,7 @@ function GearProduct({ product }) {
   const [{ basket }, dispatch] = useStateValue();
 
   const addToBasket = () => {
+    console.log(product)
     dispatch({
       type: "ADD_TO_BASKET",
       item: {

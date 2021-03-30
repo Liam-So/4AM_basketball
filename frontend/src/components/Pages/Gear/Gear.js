@@ -19,14 +19,19 @@ function Gear() {
     const mapGlobalId = (arr) => {
         let globals = {} ; 
 
+        /* THIS NEEDS TO BE CHANGED
+        It is sending each product as an instance of the first element (in this case GR1_XS)
+        */
         arr.forEach(element => {
             if (!(element.globalId in globals)) {
                 globals[element.globalId] = element ; 
             }
         });
 
+        console.log(globals)
+
         return (Object.values(globals).map((product) => (
-            <GearProduct key={product.id} product={product} />
+            <GearProduct key={product.globalId} product={product} />
         )))
     }
 
@@ -44,6 +49,7 @@ function Gear() {
                         {/* {products.map((product) => (
                             <GearProduct key={product.id} product={product} />
                         ))}                     */}
+                        {console.log(products)}
                         {mapGlobalId(products)}
                 </div>
             </div>

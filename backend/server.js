@@ -79,6 +79,7 @@ app.get("/donations", (req, res) => {
   });
 });
 
+
 // Registration
 app.post("/registration", (req, res) => {
   const dbProduct = req.body;
@@ -146,6 +147,28 @@ app.get("/gear", (req, res) => {
     }
   });
 });
+
+app.get("/gear/:id", async (req, res) => {
+  try {
+    const item = await Gear.findById(req.params.id) ; 
+    res.json(item) ; 
+  } catch (err) {
+    console.error(err.message) ; 
+    res.send(400).send('Server Error') ; 
+  }
+});
+
+app.put("/gear/:id", async (req, res) => {
+  try {
+    await Gear.findByIdAndUpdate(req.params.id, {
+      sku: req.body.sku
+    });
+    res.send("Item Updated!") ; 
+  } catch(err) {
+    console.error(err.message) ; 
+    res.send(400).send("Server Error") ;
+  }
+})
 
 // Scholarship Application
 app.post("/scholarship", (req, res) => {
