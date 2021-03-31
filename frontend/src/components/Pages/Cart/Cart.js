@@ -127,11 +127,7 @@ function Cart() {
           }
           },
           items: arrayOfItems()
-          }],
-          redirect_urls: {
-            return_url: 'http://localhost:3000/order/success',
-            cancel_url: 'http://localhost:3000/order/cancel'
-          }
+          }]
       });
     } else {
       alert("One or more of your items is currently out of stock")
@@ -149,13 +145,20 @@ function Cart() {
       id: data.orderID,
       amount: getBasketTotal(Object.values(basket)),
       items: Object.values(basket)
-    })
+    });
 
     if (responsePromise.status === 201) {
-      window.location.href = "http://localhost:3000/success" ; 
+      console.log("Payment was sent to DB!")
     } else {
-      window.location.href = "http://localhost:3000/paymentFailed"
+      console.log("Something went wrong...")
     }
+
+    window.location.href = "http://localhost:3000/success" ; 
+  }
+
+  
+  const onError = (err) => {
+    window.location.href = "http://localhost:3000/paymentFailed" ; 
   }
 
   const EmptyCart = () => {
@@ -208,7 +211,7 @@ function Cart() {
                       </div>
                     </div>
                     <PayPalScriptProvider options={initialOptions}>
-                      <PayPalButtons style={{ layout: "horizontal" }} createOrder={createOrder} onApprove={onApprove}/>
+                      <PayPalButtons style={{ layout: "horizontal" }} createOrder={createOrder} onApprove={onApprove} onError={onError}/>
                     </PayPalScriptProvider>
               </div>
             </div>
