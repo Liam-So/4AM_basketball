@@ -6,7 +6,6 @@ import Topbar from "../../Topbar/Topbar";
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 import axios from "../../../axios"
 
-
 function Cart() {
 
   const [{ basket }] = useStateValue();
@@ -140,21 +139,23 @@ function Cart() {
   }
 
 
-  const onApprove = (data, actions) => {
+  const onApprove = async (data, actions) => {
     actions.order.capture() ;
 
     let basketData = Object.values(basket); 
     updateStock(basketData) ; 
 
-    return axios.post("/transactions", {
+    const responsePromise = await axios.post("/transactions", {
       id: data.orderID,
       amount: getBasketTotal(Object.values(basket)),
       items: Object.values(basket)
     })
-    .then(
-      alert("Thank you for your order!")
-    );
 
+    if (responsePromise.status === 201) {
+      window.location.href = "http://localhost:3000/" ; 
+    } else {
+      window.location.href = "http://localhost:3000/donate"
+    }
   }
 
   const EmptyCart = () => {
