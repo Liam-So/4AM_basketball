@@ -6,7 +6,6 @@ import Topbar from "../../Topbar/Topbar";
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 import axios from "../../../axios"
 
-
 function Cart() {
 
   const [{ basket }] = useStateValue();
@@ -128,11 +127,7 @@ function Cart() {
           }
           },
           items: arrayOfItems()
-          }],
-          redirect_urls: {
-            return_url: 'http://localhost:3000/order/success',
-            cancel_url: 'http://localhost:3000/order/cancel'
-          }
+          }]
       });
     } else {
       alert("One or more of your items is currently out of stock")
@@ -140,21 +135,30 @@ function Cart() {
   }
 
 
-  const onApprove = (data, actions) => {
+  const onApprove = async (data, actions) => {
     actions.order.capture() ;
 
     let basketData = Object.values(basket); 
     updateStock(basketData) ; 
 
-    return axios.post("/transactions", {
+    const responsePromise = await axios.post("/transactions", {
       id: data.orderID,
       amount: getBasketTotal(Object.values(basket)),
       items: Object.values(basket)
-    })
-    .then(
-      alert("Thank you for your order!")
-    );
+    });
 
+    if (responsePromise.status === 201) {
+      console.log("Payment was sent to DB!")
+    } else {
+      console.log("Something went wrong...")
+    }
+
+    window.location.href = "http://localhost:3000/success" ; 
+  }
+
+  
+  const onError = (err) => {
+    window.location.href = "http://localhost:3000/paymentFailed" ; 
   }
 
   const EmptyCart = () => {
@@ -207,7 +211,7 @@ function Cart() {
                       </div>
                     </div>
                     <PayPalScriptProvider options={initialOptions}>
-                      <PayPalButtons style={{ layout: "horizontal" }} createOrder={createOrder} onApprove={onApprove}/>
+                      <PayPalButtons style={{ layout: "horizontal" }} createOrder={createOrder} onApprove={onApprove} onError={onError}/>
                     </PayPalScriptProvider>
               </div>
             </div>
