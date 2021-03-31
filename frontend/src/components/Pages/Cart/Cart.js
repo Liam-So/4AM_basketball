@@ -4,7 +4,8 @@ import { useStateValue } from "../../StateProvider";
 import { getBasketTotal } from "../../reducer";
 import Topbar from "../../Topbar/Topbar";
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
-import axios from "../../../axios"
+import axios from "../../../axios";
+import { arrayOfItems, getBasketStock, updateStock } from "./CartServices"
 
 function Cart() {
 
@@ -13,96 +14,6 @@ function Cart() {
   const initialOptions = {
     "client-id" : "Afq4BwL6MCfUAyFj8tLfzIn3EFFQ9GdEolc70MkUT1ZLvqfrxXKEXVRFrUi855gxHiK69KaPmKE1Txsm",
     "currency" : "CAD"
-  }
-
-  const arrayOfItems = () => {
-    let items = Object.values(basket) ; 
-    let result = [] ; 
-    let newItem = {}; 
-
-    items.forEach(item => {      
-      newItem = {"unit_amount": {"currency_code": "CAD"}}
-      newItem["name"] = item.title ; 
-      newItem["quantity"] = item.quantity ; 
-      newItem.unit_amount["value"] = item.price ;
-      result.push(newItem) ; 
-      newItem = {} ; 
-    })
-    
-    return result ; 
-  }
-
-  const checkStockForItem = (requestData, basketItem) => {
-    let inStock = false ; 
-
-    if (requestData.sku - basketItem.quantity >= 0) {
-      inStock = true ;
-    }
-
-    return inStock ; 
-  }
-
-
-  const getBasketStock = async (basketData) => {
-    let inStock = false;
-
-    for (const basketItem of basketData) {
-      if (basketItem.type === 'GR') {
-        const req = await axios.get(`/gear/${basketItem._id}`) ; 
-        inStock = checkStockForItem(req.data, basketItem);
-      }
-
-      if (basketItem.type === "DNT") {
-        inStock = true ; 
-      }
-
-      if (basketItem.type === "RGT") {
-        const req = await axios.get(`/registration/${basketItem._id}`) ; 
-        inStock = checkStockForItem(req.data, basketItem) ; 
-      }
-    }
-
-    return inStock ; 
-  }
-
-  const updateStock = async (basketData) => {
-    for (const basketItem of basketData) {
-      if (basketItem.type === 'RGT') {
-        const req = await axios.get(`/registration/${basketItem._id}`) ; 
-
-        let serverStock = req.data.sku ; 
-
-        await axios.put(`/registration/${basketItem._id}`, {
-          "sku": serverStock - basketItem.quantity
-        })
-        .then(response => {
-          console.log(response)
-        })
-        .catch(error => {
-          console.log("there was an error")
-        })
-      }
-      if (basketItem.type === 'GR') {
-
-        console.log(basketItem)
-
-        const req = await axios.get(`/gear/${basketItem._id}`) ; 
-
-        let serverStock = req.data.sku ; 
-
-        console.log(serverStock)
-
-        await axios.put(`/gear/${basketItem._id}`, {
-          "sku": serverStock - basketItem.quantity 
-        }) 
-        .then(response => {
-          console.log(response)
-        })
-        .catch(error => {
-          console.log("there was an error")
-        })
-      }
-    }
   }
 
   const createOrder = async(data, actions) => {
@@ -126,14 +37,13 @@ function Cart() {
           item_total: {currency_code:"CAD", value:total}
           }
           },
-          items: arrayOfItems()
+          items: arrayOfItems(basket)
           }]
       });
     } else {
       alert("One or more of your items is currently out of stock")
     }
   }
-
 
   const onApprove = async (data, actions) => {
     actions.order.capture() ;
@@ -155,7 +65,6 @@ function Cart() {
 
     window.location.href = "http://localhost:3000/success" ; 
   }
-
   
   const onError = (err) => {
     window.location.href = "http://localhost:3000/paymentFailed" ; 
@@ -221,7 +130,6 @@ function Cart() {
     </div>
     )
   }
-
 
   return (
     <>
