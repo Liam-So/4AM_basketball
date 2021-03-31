@@ -2,15 +2,14 @@ import mongoose from 'mongoose'
 
 const productSchema = mongoose.Schema({
     id: String,
-    globalId: String,
     type: String,
     name: String,
     description: String, 
     price: Number,
     quantity: Number,
     size: String,
-    sku: Number,
+    sku: String,
     img: String
 })
 
-export default mongoose.model('gear', productSchema)
+export default mongoose.model('donations', productSchema)

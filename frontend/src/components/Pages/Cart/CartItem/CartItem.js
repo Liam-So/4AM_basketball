@@ -17,6 +17,7 @@ function CartItem({ item }) {
     dispatch({
       type: "ADD_TO_BASKET",
       item: {
+        _id: item._id,
         id: item.id,
         title: item.title,
         image: item.image,
@@ -35,8 +36,8 @@ function CartItem({ item }) {
       </td>
       <td>
         <p>
-          {item.addedSize !== undefined
-            ? `${item.addedSize} ${item.title}`
+          {item.size !== undefined
+            ? `${item.size} ${item.title}`
             : `${item.title}`}
         </p>
       </td>

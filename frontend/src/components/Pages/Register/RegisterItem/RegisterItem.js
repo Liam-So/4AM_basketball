@@ -14,12 +14,15 @@ function RegisterItem({ product }) {
         dispatch({
             type: 'ADD_TO_BASKET',
             item: {
+                _id: product._id,
                 id: product.id,
                 title: product.name,
+                type: product.type,
                 image: product.img,
                 price: product.price,
                 description: product.description,
                 quantity: product.quantity,
+                sku: product.sku
             }
         })
     } ; 

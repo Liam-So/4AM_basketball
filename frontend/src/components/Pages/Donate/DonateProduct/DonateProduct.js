@@ -14,12 +14,15 @@ function DonateProduct({ product }) {
         dispatch({
             type: 'ADD_TO_BASKET',
             item: {
+                _id: product._id,
                 id: product.id,
+                type: product.type,
                 title: product.name,
                 image: product.img,
                 price: product.price,
                 description: product.description,
                 quantity: product.quantity,
+                sku: product.sku
             }
         })
     } ; 

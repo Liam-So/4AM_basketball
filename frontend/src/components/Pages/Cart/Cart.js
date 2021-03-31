@@ -33,29 +33,118 @@ function Cart() {
     return result ; 
   }
 
-  const createOrder = (data, actions) => {
-    let total = getBasketTotal(Object.values(basket))
-    return actions.order.create({
-      purchase_units: [{
-        amount: {
-        currency_code: "CAD",
-        value: total,
-        breakdown: {
-        item_total: {currency_code:"CAD", value:total}
-        }
-        },
-        items: arrayOfItems()
-        }],
-        redirect_urls: {
-          return_url: 'http://localhost:3000/order/success',
-          cancel_url: 'http://localhost:3000/order/cancel'
-        }
-    });
+  const checkStockForItem = (requestData, basketItem) => {
+    let inStock = false ; 
+
+    if (requestData.sku - basketItem.quantity >= 0) {
+      inStock = true ;
+    }
+
+    return inStock ; 
+  }
+
+
+  const getBasketStock = async (basketData) => {
+    let inStock = false;
+
+    for (const basketItem of basketData) {
+      if (basketItem.type === 'GR') {
+        const req = await axios.get(`/gear/${basketItem._id}`) ; 
+        inStock = checkStockForItem(req.data, basketItem);
+      }
+
+      if (basketItem.type === "DNT") {
+        inStock = true ; 
+      }
+
+      if (basketItem.type === "RGT") {
+        const req = await axios.get(`/registration/${basketItem._id}`) ; 
+        inStock = checkStockForItem(req.data, basketItem) ; 
+      }
+    }
+
+    return inStock ; 
+  }
+
+  const updateStock = async (basketData) => {
+    for (const basketItem of basketData) {
+      if (basketItem.type === 'RGT') {
+        const req = await axios.get(`/registration/${basketItem._id}`) ; 
+
+        let serverStock = req.data.sku ; 
+
+        await axios.put(`/registration/${basketItem._id}`, {
+          "sku": serverStock - basketItem.quantity
+        })
+        .then(response => {
+          console.log(response)
+        })
+        .catch(error => {
+          console.log("there was an error")
+        })
+      }
+      if (basketItem.type === 'GR') {
+
+        console.log(basketItem)
+
+        const req = await axios.get(`/gear/${basketItem._id}`) ; 
+
+        let serverStock = req.data.sku ; 
+
+        console.log(serverStock)
+
+        await axios.put(`/gear/${basketItem._id}`, {
+          "sku": serverStock - basketItem.quantity 
+        }) 
+        .then(response => {
+          console.log(response)
+        })
+        .catch(error => {
+          console.log("there was an error")
+        })
+      }
+    }
+  }
+
+  const createOrder = async(data, actions) => {
+    let total = getBasketTotal(Object.values(basket)) ; 
+
+    let basketData = Object.values(basket); 
+
+    console.log(basketData)
+
+    // Before creating the order, we must verify if we have enough stock to purchase 
+    const isValid = await getBasketStock(basketData) ; 
+
+    // Alert user if at least one object in there cart is out of stock
+    if (isValid) {
+      return actions.order.create({
+        purchase_units: [{
+          amount: {
+          currency_code: "CAD",
+          value: total,
+          breakdown: {
+          item_total: {currency_code:"CAD", value:total}
+          }
+          },
+          items: arrayOfItems()
+          }],
+          redirect_urls: {
+            return_url: 'http://localhost:3000/order/success',
+            cancel_url: 'http://localhost:3000/order/cancel'
+          }
+      });
+    } else {
+      alert("One or more of your items is currently out of stock")
+    }
   }
 
 
   const onApprove = (data, actions) => {
     actions.order.capture() ;
+
+    let basketData = Object.values(basket); 
+    updateStock(basketData) ; 
 
     return axios.post("/transactions", {
       id: data.orderID,
@@ -71,7 +160,7 @@ function Cart() {
   const EmptyCart = () => {
     return (
       <div className="flex flex-col justify-center items-center" style={{ height: "71vh", fontFamily: "Lato" }}>
-        <img className="object-fill" src="https://www.rypen.com/assets/images/cart-empty.svg" />
+        <img className="object-fill" src="https://www.rypen.com/assets/images/cart-empty.svg" alt="cart"/>
         <h1 className="px-5 text-xl md:text-2xl">You have no items in your shopping cart, start adding some!</h1>
       </div>
       
