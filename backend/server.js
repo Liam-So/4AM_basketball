@@ -53,6 +53,8 @@ mongoose
     console.log(Error, err.message);
   });
 
+mongoose.set('useFindAndModify', false) ;
+
 // API Endpoints
 app.get("/", (req, res) => res.status(200).send("Yooo"));
 
