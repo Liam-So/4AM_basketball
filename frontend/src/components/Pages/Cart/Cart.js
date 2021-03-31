@@ -154,7 +154,7 @@ function Cart() {
     if (responsePromise.status === 201) {
       window.location.href = "http://localhost:3000/success" ; 
     } else {
-      window.location.href = "http://localhost:3000/donate"
+      window.location.href = "http://localhost:3000/paymentFailed"
     }
   }
 
