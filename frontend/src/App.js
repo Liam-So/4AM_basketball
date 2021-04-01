@@ -9,6 +9,8 @@ import Cart from "./components/Pages/Cart/Cart";
 import Register from "./components/Pages/Register/Register";
 import Scholarship from "./components/Pages/Scholarship/Scholarship";
 import Gear from "./components/Pages/Gear/Gear";
+import Why from "./components/Pages/Why/Why";
+import Slider from "./components/Pages/Why/Slider";
 
 function App() {
   return (
@@ -21,6 +23,7 @@ function App() {
         <Route path="/register" exact component={Register} />
         <Route path="/scholarship" exact component={Scholarship} />
         <Route path="/gear" exact component={Gear} />
+        <Route path="/why" exact component={Why} />
       </Switch>
       <Footer />
     </Router>

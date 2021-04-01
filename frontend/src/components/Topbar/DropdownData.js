@@ -6,7 +6,7 @@ export const DropdownData = [
     subNav: [
       {
         title: "Why 4AM",
-        path: "/users",
+        path: "/why",
       },
       {
         title: "Our Mission",
