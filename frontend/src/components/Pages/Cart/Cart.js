@@ -4,8 +4,8 @@ import { useStateValue } from "../../StateProvider";
 import { getBasketTotal } from "../../reducer";
 import Topbar from "../../Topbar/Topbar";
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
-import axios from "../../../axios"
-
+import axios from "../../../axios";
+import { arrayOfItems, getBasketStock, updateStock } from "./CartServices"
 
 function Cart() {
 
@@ -16,62 +16,64 @@ function Cart() {
     "currency" : "CAD"
   }
 
-  const arrayOfItems = () => {
-    let items = Object.values(basket) ; 
-    let result = [] ; 
-    let newItem = {}; 
+  const createOrder = async(data, actions) => {
+    let total = getBasketTotal(Object.values(basket)) ; 
 
-    items.forEach(item => {      
-      newItem = {"unit_amount": {"currency_code": "CAD"}}
-      newItem["name"] = item.title ; 
-      newItem["quantity"] = item.quantity ; 
-      newItem.unit_amount["value"] = item.price ;
-      result.push(newItem) ; 
-      newItem = {} ; 
-    })
-    
-    return result ; 
+    let basketData = Object.values(basket); 
+
+    console.log(basketData)
+
+    // Before creating the order, we must verify if we have enough stock to purchase 
+    const isValid = await getBasketStock(basketData) ; 
+
+    // Alert user if at least one object in there cart is out of stock
+    if (isValid) {
+      return actions.order.create({
+        purchase_units: [{
+          amount: {
+          currency_code: "CAD",
+          value: total,
+          breakdown: {
+          item_total: {currency_code:"CAD", value:total}
+          }
+          },
+          items: arrayOfItems(basket)
+          }]
+      });
+    } else {
+      alert("One or more of your items is currently out of stock")
+    }
   }
 
-  const createOrder = (data, actions) => {
-    let total = getBasketTotal(Object.values(basket))
-    return actions.order.create({
-      purchase_units: [{
-        amount: {
-        currency_code: "CAD",
-        value: total,
-        breakdown: {
-        item_total: {currency_code:"CAD", value:total}
-        }
-        },
-        items: arrayOfItems()
-        }],
-        redirect_urls: {
-          return_url: 'http://localhost:3000/order/success',
-          cancel_url: 'http://localhost:3000/order/cancel'
-        }
-    });
-  }
-
-
-  const onApprove = (data, actions) => {
+  const onApprove = async (data, actions) => {
     actions.order.capture() ;
 
-    return axios.post("/transactions", {
+    let basketData = Object.values(basket); 
+    updateStock(basketData) ; 
+
+    const responsePromise = await axios.post("/transactions", {
       id: data.orderID,
       amount: getBasketTotal(Object.values(basket)),
       items: Object.values(basket)
-    })
-    .then(
-      alert("Thank you for your order!")
-    );
+    });
 
+    if (responsePromise.status === 201) {
+      console.log("Payment was sent to DB!")
+    } else {
+      console.log("Something went wrong...")
+    }
+
+    window.location.href = "http://localhost:3000/success" ; 
+  }
+  
+  const onError = (err) => {
+    window.location.href = "http://localhost:3000/paymentFailed" ; 
   }
 
   const EmptyCart = () => {
     return (
       <div className="flex flex-col justify-center items-center" style={{ height: "71vh", fontFamily: "Lato" }}>
-        <img className="object-fill" src="https://www.rypen.com/assets/images/cart-empty.svg" />
+        <img className="object-fill" src="https://www.rypen.com/assets/images/cart-empty.svg" alt="cart"/>
         <h1 className="px-5 text-xl md:text-2xl">You have no items in your shopping cart, start adding some!</h1>
       </div>
       
@@ -118,7 +120,7 @@ function Cart() {
                       </div>
                     </div>
                     <PayPalScriptProvider options={initialOptions}>
-                      <PayPalButtons style={{ layout: "horizontal" }} createOrder={createOrder} onApprove={onApprove}/>
+                      <PayPalButtons style={{ layout: "horizontal" }} createOrder={createOrder} onApprove={onApprove} onError={onError}/>
                     </PayPalScriptProvider>
               </div>
             </div>
@@ -128,7 +130,6 @@ function Cart() {
     </div>
     )
   }
-
 
   return (
     <>

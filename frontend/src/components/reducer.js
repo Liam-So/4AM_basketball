@@ -39,6 +39,10 @@ const reducer = (state, action) => {
         case 'ADD_TO_BASKET' :
             let newAddGearBasket = state.basket ; 
 
+            console.log(newAddGearBasket)
+
+            console.log(action.item._id)
+
             let newId = action.item.id ;     
 
             if (newAddGearBasket[newId] === undefined) {
@@ -46,6 +50,8 @@ const reducer = (state, action) => {
             } else {
                 newAddGearBasket[newId].quantity += 1 ; 
             }
+
+            console.log(newAddGearBasket)
 
             return { ...state, basket:newAddGearBasket }
 

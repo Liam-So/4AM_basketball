@@ -10,7 +10,8 @@ import Register from "./components/Pages/Register/Register";
 import Scholarship from "./components/Pages/Scholarship/Scholarship";
 import Gear from "./components/Pages/Gear/Gear";
 import Why from "./components/Pages/Why/Why";
-import Slider from "./components/Pages/Why/Slider";
+import PaymentSuccess from "./components/Pages/Payment/PaymentSuccess";
+import PaymentFailed from "./components/Pages/Payment/PaymentFailed";
 
 function App() {
   return (
@@ -24,6 +25,8 @@ function App() {
         <Route path="/scholarship" exact component={Scholarship} />
         <Route path="/gear" exact component={Gear} />
         <Route path="/why" exact component={Why} />
+        <Route path="/success" exact component={PaymentSuccess} />
+        <Route path="/paymentFailed" exact component={PaymentFailed} />
       </Switch>
       <Footer />
     </Router>

@@ -8,35 +8,59 @@ function GearProduct({ product }) {
 
   const [{ basket }, dispatch] = useStateValue();
 
+  const findProduct = (arr) => {
+    let res ; 
+    arr.forEach(e => {
+      console.log(e.size === state)
+      if (e.size === state) {
+        res = e ; 
+      }
+    })
+
+    return res ; 
+  }
+
   const addToBasket = () => {
+    console.log(product)
+    let dispatchedProduct = findProduct(product) ; 
+
+    console.log(dispatchedProduct)
+
     dispatch({
       type: "ADD_TO_BASKET",
       item: {
-        id: product.id + state,
-        title: product.name,
-        image: product.img,
-        price: product.price,
-        description: product.description,
-        quantity: product.quantity,
-        addedSize: state,
+        _id: dispatchedProduct._id,
+        id: dispatchedProduct.id,
+        title: dispatchedProduct.name,
+        globalId: dispatchedProduct.globalId,
+        type: dispatchedProduct.type,
+        image: dispatchedProduct.img,
+        price: dispatchedProduct.price,
+        description: dispatchedProduct.description,
+        quantity: dispatchedProduct.quantity,
+        size: state,
+        sku: dispatchedProduct.sku,
+        img: dispatchedProduct.img
       },
     });
   };
 
+
   const handleClick = (e) => {
-    if (e.currentTarget.value === "xs") {
+    console.log(e.currentTarget.value)
+    if (e.currentTarget.value === "XS") {
       setState("XS");
     }
-    if (e.currentTarget.value === "s") {
+    if (e.currentTarget.value === "S") {
       setState("S");
     }
-    if (e.currentTarget.value === "m") {
+    if (e.currentTarget.value === "M") {
       setState("M");
     }
-    if (e.currentTarget.value === "l") {
+    if (e.currentTarget.value === "L") {
       setState("L");
     }
-    if (e.currentTarget.value === "xl") {
+    if (e.currentTarget.value === "XL") {
       setState("XL");
     }
   };
@@ -47,51 +71,25 @@ function GearProduct({ product }) {
         <img
           alt={product.title}
           className="object-contain md:object-scale-down block w-full h-96"
-          src={product.img}
+          src={product[0].img}
         />
 
         <header className="flex items-center justify-between leading-tight p-4 md:p-4">
-          <h1 className="text-lg">{product.name}</h1>
-          <p className="text-grey-darker text-lg">${product.price}</p>
+          <h1 className="text-lg">{product[0].name}</h1>
+          <p className="text-grey-darker text-lg">${product[0].price}</p>
         </header>
 
         <footer className="flex items-center justify-between leading-none p-2 md:p-2">
           <div className="space-x-1 flex">
-            <button
-              className="w-9 h-9 flex items-center justify-center"
-              onClick={handleClick}
-              value="xs"
-            >
-              XS
-            </button>
-            <button
-              className="w-9 h-9 flex items-center justify-center"
-              onClick={handleClick}
-              value="s"
-            >
-              S
-            </button>
-            <button
-              className="w-9 h-9 flex items-center justify-center"
-              onClick={handleClick}
-              value="m"
-            >
-              M
-            </button>
-            <button
-              className="w-9 h-9 flex items-center justify-center"
-              onClick={handleClick}
-              value="l"
-            >
-              L
-            </button>
-            <button
-              className="w-9 h-9 flex items-center justify-center"
-              onClick={handleClick}
-              value="xl"
-            >
-              XL
-            </button>
+            {product.map(size => (
+              <button className="w-9 h-9 flex items-center justify-center"
+                      onClick={handleClick}
+                      value={size.size}
+                      key={size.id}
+              >
+                {size.size}
+              </button>
+            ))}
           </div>
           <IconButton onClick={addToBasket} aria-label="Add to Cart">
             <AddShoppingCart />

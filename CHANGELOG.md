@@ -1,3 +1,7 @@
+## 1.12 (@Liam-So)
+
+* Updated stock for product units after approved Paypal transaction.
+
 ## 1.11 (@Liam-So)
 
 * Added Paypal functionality and send transaction data to Mongo.
