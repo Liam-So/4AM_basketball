@@ -12,7 +12,7 @@ function Cart() {
   const [{ basket }] = useStateValue();
 
   const initialOptions = {
-    "client-id" : "Afq4BwL6MCfUAyFj8tLfzIn3EFFQ9GdEolc70MkUT1ZLvqfrxXKEXVRFrUi855gxHiK69KaPmKE1Txsm",
+    "client-id" : process.env.REACT_APP_PAYPAL_CLIENT_ID,
     "currency" : "CAD"
   }
 
@@ -63,11 +63,13 @@ function Cart() {
       console.log("Something went wrong...")
     }
 
-    window.location.href = "http://localhost:3000/success" ; 
+    // window.location.href = "http://localhost:3000/success" ; 
+    window.location.href = `${process.env.REACT_APP_LOCAL_ENV}/success`
   }
   
   const onError = (err) => {
-    window.location.href = "http://localhost:3000/paymentFailed" ; 
+    // window.location.href = "http://localhost:3000/paymentFailed" ; 
+    window.location.href = `${process.env.REACT_APP_LOCAL_ENV}/paymentFailed` ; 
   }
 
   const EmptyCart = () => {
