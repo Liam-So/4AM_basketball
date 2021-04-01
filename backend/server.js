@@ -7,12 +7,11 @@ import Camps from "./dbCamps.js";
 import Gear from "./dbGear.js";
 import config from "./config.js";
 import Transactions from "./dbTransactions.js";
-import env from "dotenv"
+import env from "dotenv";
 
 // App config
 const app = express();
 env.config();
-const router = express.Router();
 const port = process.env.PORT || 8001;
 const connection_url = process.env.REACT_APP_MONGO_CONNECTION_URL;
 
