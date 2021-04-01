@@ -7,12 +7,14 @@ import Camps from "./dbCamps.js";
 import Gear from "./dbGear.js";
 import config from "./config.js";
 import Transactions from "./dbTransactions.js";
+import env from "dotenv"
 
 // App config
 const app = express();
+env.config();
 const router = express.Router();
 const port = process.env.PORT || 8001;
-const connection_url = `mongodb+srv://admin:debutStance738@cluster0.t9hwl.mongodb.net/4am-basketball?retryWrites=true&w=majority`;
+const connection_url = process.env.REACT_APP_MONGO_CONNECTION_URL;
 
 // nodemailer
 const contactEmail = nodemailer.createTransport({
