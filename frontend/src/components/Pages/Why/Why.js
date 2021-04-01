@@ -34,32 +34,13 @@ function Why() {
               </div>
             </div>
           </div>
-          <div
-            className="top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden"
-            style={{ height: "80px" }}
-          >
-            <svg
-              className="absolute bottom-0 overflow-hidden"
-              xmlns="http://www.w3.org/2000/svg"
-              preserveAspectRatio="none"
-              version="1.1"
-              viewBox="0 0 2560 100"
-              x="0"
-              y="0"
-            >
-              <polygon
-                className="text-gray-300 fill-current"
-                points="2560 0 2560 100 0 100"
-              ></polygon>
-            </svg>
-          </div>
         </div>
 
         <section className="pb-32 bg-gray-300 -mt-24 flex flex-wrap">
-          <div className="carousel w-9/12 mx-auto md:hidden">
+          <div className="carousel w-9/12 mx-auto xl:hidden">
             <Slider />
           </div>
-          <div className="container hidden md:flex w-full md:w-6/12 mx-auto">
+          <div className="container hidden xl:flex w-full xl:w-6/12 mx-auto">
             <div className="flex flex-wrap">
               <div className="2xl:pt-12 pt-6 w-full 2xl:w-4/12 px-4 text-center">
                 <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 ">
@@ -93,13 +74,13 @@ function Why() {
             </div>
           </div>
 
-          <div className="container md:w-6/12">
+          <div className="container xl:w-6/12 mx-auto">
             <div className="flex flex-wrap items-center mt-10 md:mt-32">
               <div className="w-full md:w-9/12 mx-auto">
                 <h3 className="text-3xl mb-2 font-semibold leading-normal">
                   Impact beyond the lines of the basketball court
                 </h3>
-                <p className="text-base md:text-lg font-light leading-relaxed mt-4 mb-4 text-gray-700">
+                <p className="text-base md:text-lg lg:text-2xl xl:text-lg font-light leading-relaxed mt-4 mb-4 text-gray-700">
                   Residing in Antigonish, Andrew's passion for basketball meant
                   sacrificing time and money in order to play for the Nova
                   Scotia Provincial Team. But all of this paid off in 2015, when
@@ -107,7 +88,7 @@ function Why() {
                   on Nova Scotian soil and again the following summer.
                 </p>
                 <br />
-                <p className="text-base md:text-lg font-light leading-relaxed mt-0 mb-4 text-gray-700">
+                <p className="text-base md:text-lg lg:text-2xl xl:text-lg font-light leading-relaxed mt-0 mb-4 text-gray-700">
                   Andrew was an exceptional leader, never wanting or needing any
                   recognition. He wasn't the MVP or Tournament All-Star in
                   either of the National Championships, and the average fan
@@ -116,7 +97,7 @@ function Why() {
                   no statistic or box score could quanitfy.
                 </p>
                 <br />
-                <p className="font-bold text-gray-800 mt-0">
+                <p className="text-base md:text-lg lg:text-2xl xl:text-lg font-bold text-gray-800 mt-0">
                   He was a leader in every sense of the word.
                 </p>
               </div>
@@ -157,7 +138,7 @@ function Why() {
               <div className="w-full md:w-6/12 mx-auto">
                 <div>
                   <h3 className="text-3xl font-semibold">Paying it forward</h3>
-                  <p className="mt-4 text-base md:text-lg leading-relaxed text-gray-600">
+                  <p className="mt-4 text-base md:text-lg lg:text-2xl xl:text-lg leading-relaxed text-gray-600">
                     After his time at Rothesay Netherwood School, Andrew joined
                     the Calgary Dinos. During his rookie season, the Dinos would
                     win the U Sports National Championship, their first ever
@@ -165,10 +146,10 @@ function Why() {
                     3.
                   </p>
                   <br />
-                  <p className="mt-4 text-base md:text-lg leading-relaxed text-gray-600">
+                  <p className="mt-4 text-base md:text-lg lg:text-2xl xl:text-lg leading-relaxed text-gray-600">
                     However, one of the most inspiring accomplishments of
                     Andrew's career was the impact he made on aspiring young
-                    basketabll players through Calgary's Develop a Dino program.
+                    basketball players through Calgary's Develop a Dino program.
                     Andrew was a coach, role model, and friend to all kids in
                     the program - one of many acts that truly exemplifies
                     Andrew's leadership.
