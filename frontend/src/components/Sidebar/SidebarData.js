@@ -37,24 +37,8 @@ export const SidebarData = [
     ],
   },
   {
-    title: "Services",
-    iconClosed: <RiIcons.RiArrowDownSFill />,
-    iconOpened: <RiIcons.RiArrowUpSFill />,
-
-    subNav: [
-      {
-        title: "Register",
-        path: "/register",
-        icon: <IoIcons.IoIosPaper />,
-        cName: "sub-nav",
-      },
-      {
-        title: "Gear",
-        path: "/gear",
-        icon: <IoIcons.IoIosShirt />,
-        cName: "sub-nav",
-      },
-    ],
+    title: "Register",
+    path: "/register"
   },
   {
     title: "Donate",

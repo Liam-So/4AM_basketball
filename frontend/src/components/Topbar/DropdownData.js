@@ -27,19 +27,10 @@ export const DropdownData = [
     ],
   },
   {
-    title: "Services",
-    path: "#",
+    title: "Register",
+    path: "/register",
 
-    subNav: [
-      {
-        title: "Register",
-        path: "/register",
-      },
-      {
-        title: "Gear",
-        path: "/gear",
-      },
-    ],
+    subNav: [],
   },
   {
     title: "Donate",
