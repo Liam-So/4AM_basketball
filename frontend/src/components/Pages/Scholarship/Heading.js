@@ -6,7 +6,7 @@ function Heading() {
       <h1 className="mt-10 text-4xl tracking-tight font-extrabold text-gray-900">
         Andrew Milner Memorial Scholarship
       </h1>
-      <p className="mt-10 mb-10 text-base text-gray-700 text-lg sm:max-w-7xl sm:mx-auto md:mt-20 md:mb-20">
+      <p className="mt-10 text-base text-gray-700 text-lg">
         The goal of the camp is to honour Andrew's legacy by paying his impact
         forward to the next generation of basketball players. All of the
         proceeds from the camp go towards an annual scholarhsip in Andrew's
