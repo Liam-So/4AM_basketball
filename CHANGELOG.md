@@ -1,3 +1,11 @@
+## 1.14 (@Ryan-Hong)
+
+* Added Why 4AM page
+
+## 1.13 (@Ryan-Hong)
+
+* Added Scholarship application functionality
+
 ## 1.12 (@Liam-So)
 
 * Updated stock for product units after approved Paypal transaction.
