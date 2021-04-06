@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import Topbar from "../../Topbar/Topbar";
 import Heading from "./Heading";
 import "./Scholarship.css";
+import HeroSection from "../../HeroSection/HeroSection"
+import { homeObjOne } from "./Data";
 
 function Scholarship() {
   const [status, setStatus] = useState("Submit");
@@ -51,6 +53,7 @@ function Scholarship() {
     <>
       <Topbar transparent={true} />
       <Heading />
+      <HeroSection {...homeObjOne} />
       <section className="bg-gray-100 max-w-7x1 mx-auto py-1 sm:py-5 lg:py-6 sm:px-6 lg:px-8">
         <div className="mt-10 sm:mt-0">
           <div className="mt-5 md:mt-0 md:w-9/12 mx-auto">

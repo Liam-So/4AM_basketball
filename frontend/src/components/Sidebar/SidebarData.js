@@ -15,11 +15,6 @@ export const SidebarData = [
         icon: <IoIcons.IoIosPaper />,
       },
       {
-        title: "Our Mission",
-        path: "/mission",
-        icon: <IoIcons.IoIosTrophy />,
-      },
-      {
         title: "Our Team",
         path: "/team",
         icon: <IoIcons.IoMdPeople />,

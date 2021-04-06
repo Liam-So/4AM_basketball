@@ -9,10 +9,6 @@ export const DropdownData = [
         path: "/why",
       },
       {
-        title: "Our Mission",
-        path: "/mission",
-      },
-      {
         title: "Our Team",
         path: "/team",
       },
