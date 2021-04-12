@@ -226,7 +226,7 @@ function Team() {
         </Grid>
       </div>
 
-      <div className={classes.title} style={{ color: "#f00946" }}>
+      <div className="mt-1 text-4xl tracking-tight font-extrabold text-red-500 flex justify-center">
         <h1>Guest Coaches</h1>
       </div>
 
