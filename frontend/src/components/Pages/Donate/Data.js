@@ -9,5 +9,6 @@ export const homeObjOne = {
     buttonLabel: 'Get Started',
     imgStart: '',
     img: 'images/champ.jpg',
-    alt: 'calgary_dinos'
+    alt: 'calgary_dinos',
+    button: true
   };
