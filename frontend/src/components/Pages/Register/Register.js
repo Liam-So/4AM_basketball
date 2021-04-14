@@ -1,13 +1,10 @@
 import React, { useState, useEffect } from "react";
-import useStyles from "./styles";
-import { Typography, Grid } from "@material-ui/core";
 import RegisterItem from "./RegisterItem/RegisterItem";
 import axios from "../../../axios";
 import Topbar from "../../Topbar/Topbar";
+import Logo from "../../../images/logo.png"
 
 function Register() {
-  const classes = useStyles();
-
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
@@ -23,27 +20,22 @@ function Register() {
   const availableProducts = products.filter(product => product.sku > 0);
 
   const EmptyCamp = () => (
-    <>
-      <Grid
-        container
-        className={classes.empty}
-        justify="center"
-        style={{ height: "70vh", fontFamily: "Lato" }}
-      >
-        <div>
-          <Typography variant="h4" style={{ fontFamily: "Lato" }}>
-            Sorry, registration for the 4AM Camp is not open at this time.{" "}
-          </Typography>
+    <div className="gradient text-gray-600 min-h-screen flex items-center">
+      <div className="container mx-auto p-4 flex flex-wrap items-center">
+        <div className="w-full md:w-5/12 text-center p-4">
+          <img src={Logo} alt="logo" />
         </div>
-        <div>
-          <br />
-          <Typography variant="body1" style={{ fontFamily: "Lato" }}>
-            Stay tuned to our social media accounts or Registration
-            announcements. Thank you for your interest!
-          </Typography>
+        <div className="w-full md:w-7/12 text-center md:text-left p-4">
+          <div className="text-6xl font-medium">Sorry...</div>
+          <div className="text-xl md:text-3xl font-medium mb-4">
+          Registrations are currently closed.
+          </div>
+          <div className="text-lg mb-8">
+            Stay tuned to our social media accounts or Registration announcements. Thank you for your interest!
+          </div>
         </div>
-      </Grid>
-    </>
+      </div>
+    </div>
   );
 
   const RegisterCamp = () => (
