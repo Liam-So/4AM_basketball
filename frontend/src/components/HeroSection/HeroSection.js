@@ -11,6 +11,7 @@ function HeroSection({
   img,
   alt,
   imgStart,
+  button
 }) {
   return (
     <>
@@ -40,6 +41,15 @@ function HeroSection({
                 >
                   {description}
                 </p>
+                {button ? (
+                  <div className="flex justify-center md:justify-start">
+                    <form action="https://www.paypal.com/donate" method="post" target="_top">
+                      <input type="hidden" name="hosted_button_id" value="N7M2RLZ8WXB78" />
+                      <input className="h-32" type="image" src="https://www.svgrepo.com/show/86407/donate.svg" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
+                      <img alt="" border="0" src="https://www.paypal.com/en_CA/i/scr/pixel.gif" width="1" height="1" />
+                    </form>
+                  </div>
+                ): <></>}
               </div>
             </div>
             <div className="col">

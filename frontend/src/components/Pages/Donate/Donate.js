@@ -1,42 +1,38 @@
-import React, { useState, useEffect } from "react";
-import { Grid } from "@material-ui/core";
-import DonateProduct from "./DonateProduct/DonateProduct";
-import useStyles from "./styles";
-import HeroSection from "../../HeroSection/HeroSection";
-import { homeObjOne } from "./Data";
-import axios from "../../../axios";
+import React from "react";
 import Topbar from "../../Topbar/Topbar";
+import image from "../../../images/donate.JPG"
 
 function Donate() {
-  const [products, setProducts] = useState([]);
-
-  useEffect(() => {
-    async function fetchData() {
-      const req = await axios.get("/donations");
-
-      setProducts(req.data);
-    }
-
-    fetchData();
-  }, []);
-
-  const classes = useStyles();
 
   return (
     <div>
       <Topbar transparent={true}/>
-      <HeroSection {...homeObjOne} />
-      <main className={classes.content}>
-        <div className={classes.toolbar} />
-        <Grid container justify="center" spacing={4}>
-          {products.map((product) => (
-            <Grid item key={product.id} xs={12} sm={6} md={4} lg={3}>
-              <DonateProduct product={product} />
-            </Grid>
-          ))}
-        </Grid>
-      </main>
-    </div>
+      <div className="py-16">
+        <div className="container m-auto px-6">
+
+        <div className="lg:flex justify-between items-center">
+            <div className="lg:w-6/12 lg:p-0 p-7">
+                <h1 className="text-2xl font-bold leading-tight mb-5 capitalize">  Thank you in advance for your generous support! </h1>
+                <p className="text-l">  If you would like to donate to our cause, you can do so through the links below. Your donation will go directly towards the Andrew Milner Memorial Scholarship Fund. This scholarship is presented to an athlete playing for Basketball Nova Scotia that truly embodies the character of Andrew- traits like work ethic, leadership, humbleness, and gratitude. </p>
+
+                <div className="py-4 flex justify-center md:justify-start">
+                    <form action="https://www.paypal.com/donate" method="post" target="_top">
+                      <input type="hidden" name="hosted_button_id" value="N7M2RLZ8WXB78" />
+                      <input className="h-32" type="image" src="https://www.svgrepo.com/show/86407/donate.svg" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
+                      <img alt="" border="0" src="https://www.paypal.com/en_CA/i/scr/pixel.gif" width="1" />
+                    </form>
+                </div>
+
+              </div>
+              <div className="lg:w-5/12 order-2">
+                <img src={image}
+                alt="" className="rounded"/>
+              </div>
+          </div>
+
+        </div>
+      </div>
+      </div>
   );
 }
 

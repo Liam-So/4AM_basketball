@@ -2,7 +2,6 @@ import express from "express";
 import mongoose from "mongoose";
 import Cors from "cors";
 import nodemailer from "nodemailer";
-import Donations from "./dbDonate.js";
 import Camps from "./dbCamps.js";
 import Gear from "./dbGear.js";
 import config from "./config.js";
@@ -58,30 +57,6 @@ mongoose.set('useFindAndModify', false) ;
 
 // API Endpoints
 app.get("/", (req, res) => res.status(200).send("Yooo"));
-
-// Donations
-app.post("/donations", (req, res) => {
-  const donateProduct = req.body;
-
-  Donations.create(donateProduct, (err, data) => {
-    if (err) {
-      res.status(500).send(err);
-    } else {
-      res.status(201).send(data);
-    }
-  });
-});
-
-app.get("/donations", (req, res) => {
-  Donations.find((err, data) => {
-    if (err) {
-      res.status(500).send(err);
-    } else {
-      res.status(200).send(data);
-    }
-  });
-});
-
 
 // Registration
 app.post("/registration", (req, res) => {
