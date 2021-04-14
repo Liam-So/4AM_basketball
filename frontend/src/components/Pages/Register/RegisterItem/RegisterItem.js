@@ -28,27 +28,23 @@ function RegisterItem({ product }) {
     } ; 
 
     return (
-        <div>
+    <div>
             <Card className={classes.root}>
             <CardMedia title={product.name}>
                 <img className={classes.image} src={product.img} alt={product.name} />
             </CardMedia>
             <CardContent>
                 <div className={classes.cardContent}>
-                    <Typography variant="h5" gutterBottom>
-                        {product.name}
-                    </Typography>
-                    <Typography variant="h5" >
-                        ${product.price}
-                    </Typography>
+                    <p className="text-xl text-gray-900 font-bold">{product.name}</p>
+                    <p className="font-bold text-xl">${product.price}</p>
                 </div>
-                <Typography variant="body1" color="textSecondary">{product.description}</Typography>
+                <div className="flex justify-between">
+                    <p className="pt-3 text-m text-gray-500">{product.description}</p>
+                    <IconButton onClick={addToBasket} aria-label="Add to Cart"><AddShoppingCart /></IconButton>
+                </div>
             </CardContent>
-            <CardActions className={classes.cardActions}>
-                <IconButton onClick={addToBasket} aria-label="Add to Cart"><AddShoppingCart /></IconButton>
-            </CardActions>
         </Card>
-        </div>
+    </div>
     )
 }
 
