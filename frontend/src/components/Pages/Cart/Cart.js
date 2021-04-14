@@ -49,7 +49,7 @@ function Cart() {
     actions.order.capture() ;
 
     let basketData = Object.values(basket); 
-    updateStock(basketData) ; 
+    await updateStock(basketData) ; 
 
     const responsePromise = await axios.post("/transactions", {
       id: data.orderID,
@@ -63,12 +63,10 @@ function Cart() {
       console.log("Something went wrong...")
     }
 
-    // window.location.href = "http://localhost:3000/success" ; 
     window.location.href = `${process.env.REACT_APP_LOCAL_ENV}/success`
   }
   
   const onError = (err) => {
-    // window.location.href = "http://localhost:3000/paymentFailed" ; 
     window.location.href = `${process.env.REACT_APP_LOCAL_ENV}/paymentFailed` ; 
   }
 
