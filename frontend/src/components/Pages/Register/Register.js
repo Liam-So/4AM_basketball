@@ -20,6 +20,8 @@ function Register() {
     fetchData();
   }, []);
 
+  const availableProducts = products.filter(product => product.sku > 0);
+
   const EmptyCamp = () => (
     <>
       <Grid
@@ -79,7 +81,7 @@ function Register() {
       </div>
       <main className={classes.content}>
         <Grid container justify="center" spacing={4}>
-          {products.map((product) => (
+          {availableProducts.map((product) => (
             <Grid item key={product.id} xs={12} sm={6} md={4} lg={3}>
               <RegisterItem product={product} />
             </Grid>
@@ -92,7 +94,7 @@ function Register() {
   return (
     <div>
       <Topbar transparent={true}/>
-      {products.length ? <RegisterCamp /> : <EmptyCamp />}
+      {availableProducts.length ? <RegisterCamp /> : <EmptyCamp />}
     </div>
   );
 }
