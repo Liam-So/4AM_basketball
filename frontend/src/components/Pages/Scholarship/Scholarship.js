@@ -50,13 +50,14 @@ function Scholarship() {
   };
 
 
-  let isAvailable = false ; 
+  const isAvailable = false ; 
 
   return (
     <>
       <Topbar transparent={true} />
       <Heading />
       <HeroSection {...homeObjOne} />
+
       {isAvailable === true ? (
         <section className="bg-gray-100 max-w-7x1 mx-auto py-1 sm:py-5 lg:py-6 sm:px-6 lg:px-8">
         <div className="mt-10 sm:mt-0">
@@ -232,7 +233,6 @@ function Scholarship() {
       ) : (
         <div></div>
       )}
-        
         
     </>
   );
