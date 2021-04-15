@@ -1,11 +1,12 @@
 import React from "react";
 import Topbar from "../../Topbar/Topbar";
 import image from "../../../images/donate.JPG"
+import { motion } from 'framer-motion'
 
 function Donate() {
 
   return (
-    <div>
+    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} >
       <Topbar transparent={true}/>
       <div className="py-16">
         <div className="container m-auto px-6">
@@ -32,7 +33,7 @@ function Donate() {
 
         </div>
       </div>
-      </div>
+      </motion.div>
   );
 }
 

@@ -1,10 +1,11 @@
 import React from "react";
 import Topbar from "../../Topbar/Topbar";
 import Slider from "./Slider";
+import { motion } from "framer-motion"
 
 function Why() {
   return (
-    <>
+    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
       <main>
         <div
           className="relative pt-16 pb-32 flex content-center items-center justify-center"
@@ -201,7 +202,7 @@ function Why() {
           </div>
         </section>
       </main>
-    </>
+    </motion.div>
   );
 }
 

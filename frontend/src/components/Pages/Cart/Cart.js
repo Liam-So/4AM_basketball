@@ -6,6 +6,7 @@ import Topbar from "../../Topbar/Topbar";
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 import axios from "../../../axios";
 import { arrayOfItems, getBasketStock, updateStock } from "./CartServices"
+import { motion } from 'framer-motion'
 
 function Cart() {
 
@@ -72,7 +73,7 @@ function Cart() {
 
   const EmptyCart = () => {
     return (
-      <div className="flex flex-col justify-center items-center" style={{ height: "71vh", fontFamily: "Lato" }}>
+      <div className="flex flex-col justify-center items-center" style={{ height: "80vh", fontFamily: "Lato" }}>
         <img className="object-fill" src="https://www.rypen.com/assets/images/cart-empty.svg" alt="cart"/>
         <h1 className="px-5 text-xl md:text-2xl">You have no items in your shopping cart, start adding some!</h1>
       </div>
@@ -132,10 +133,10 @@ function Cart() {
   }
 
   return (
-    <>
+    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
       <Topbar transparent={true} />
       {Object.values(basket).length === 0 ? <EmptyCart /> : <FilledCart />}
-    </>
+    </motion.div>
   );
 }
 
