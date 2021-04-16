@@ -114,21 +114,17 @@ function Media() {
       {/* TODO: REFACTOR THIS!!!! TO SOMETHING SIMILAR TO HERO SECTION */}
 
       <section className="pb-32 bg-gray-300 -mt-24 flex flex-wrap">
-        <div className="rothesay container mx-auto">
-          <div className="container xl:w-6/12 mx-auto">
-            <div className="flex flex-wrap items-center mt-10 md:mt-32">
-              <div className="w-full md:w-9/12 mx-auto">
-                <iframe
-                  src="https://webapps.9c9media.com/vidi-player/1.9.19/share/iframe.html?currentId=1879560&config=ctvnews/share.json&kruxId=&rsid=bellmedianewsprod,bellmediaglobalprod&siteName=CTVNews&cid=%5B%7B%22contentId%22%3A1879560%2C%22ad%22%3A%7B%22adsite%22%3A%22ctv.ctvnews%22%2C%22adzone%22%3A%22embed%22%7D%7D%5D"
-                  width="640"
-                  height="360"
-                  frameborder="0"
-                  allowfullscreen
-                  scrolling="no"
-                  title="CTV News"
-                  className="mx-auto"
-                ></iframe>
-              </div>
+        <div className="rothesay award container mx-auto flex flex-wrap 3xl:h-96 mb-10">
+          <div className="container xl:w-6/12 mx-auto mb-10">
+            <div className="flex flex-wrap items-center mt-10 md:mt-32 h-full xl:h-3/4 w-9/12">
+              <iframe
+                src="https://webapps.9c9media.com/vidi-player/1.9.19/share/iframe.html?currentId=1879560&config=ctvnews/share.json&kruxId=&rsid=bellmedianewsprod,bellmediaglobalprod&siteName=CTVNews&cid=%5B%7B%22contentId%22%3A1879560%2C%22ad%22%3A%7B%22adsite%22%3A%22ctv.ctvnews%22%2C%22adzone%22%3A%22embed%22%7D%7D%5D"
+                frameborder="0"
+                allowfullscreen
+                scrolling="no"
+                title="CTV News"
+                className="mx-auto md:w-full md:h-full"
+              ></iframe>
             </div>
           </div>
           <div className="container xl:w-6/12 mx-auto">
@@ -153,21 +149,17 @@ function Media() {
             </div>
           </div>
         </div>
-        <div className="dinos container mx-auto">
-          <div className="container xl:w-6/12 mx-auto">
-            <div className="flex flex-wrap items-center mt-10 md:mt-32">
-              <div className="w-full md:w-9/12 mx-auto">
-                <iframe
-                  src="https://www.youtube.com/embed/2kgtp22YufU"
-                  width="640"
-                  height="360"
-                  frameborder="0"
-                  allowfullscreen
-                  scrolling="no"
-                  title="Dinos Youtube"
-                  className="mx-auto"
-                ></iframe>
-              </div>
+        <div className="dinos award container mx-auto flex flex-wrap 3xl:h-96 mb-10">
+          <div className="container xl:w-6/12 mx-auto mb-10">
+            <div className="flex flex-wrap items-center mt-10 md:mt-32 h-full xl:h-3/4 w-9/12">
+              <iframe
+                src="https://www.youtube.com/embed/2kgtp22YufU"
+                frameborder="0"
+                allowfullscreen
+                scrolling="no"
+                title="Dinos Youtube"
+                className="mx-auto md:w-full md:h-full"
+              ></iframe>
             </div>
           </div>
           <div className="container xl:w-6/12 mx-auto">
@@ -181,21 +173,17 @@ function Media() {
             </div>
           </div>
         </div>
-        <div className="leadership award container mx-auto">
-          <div className="container xl:w-6/12 mx-auto">
-            <div className="flex flex-wrap items-center mt-10 md:mt-32">
-              <div className="w-full md:w-9/12 mx-auto">
-                <iframe
-                  src="https://www.youtube.com/embed/SogfWJW4uT8"
-                  width="640"
-                  height="360"
-                  frameborder="0"
-                  allowfullscreen
-                  scrolling="no"
-                  title="Leadership award Youtube"
-                  className="mx-auto"
-                ></iframe>
-              </div>
+        <div className="leadership award container mx-auto flex flex-wrap 3xl:h-96 mb-10">
+          <div className="container xl:w-6/12 mx-auto mb-10">
+            <div className="flex flex-wrap items-center mt-10 md:mt-32 h-full xl:h-3/4 w-9/12">
+              <iframe
+                src="https://www.youtube.com/embed/SogfWJW4uT8"
+                frameborder="0"
+                allowfullscreen
+                scrolling="no"
+                title="Leadership award Youtube"
+                className="mx-auto md:w-full md:h-full"
+              ></iframe>
             </div>
           </div>
           <div className="container xl:w-6/12 mx-auto">
