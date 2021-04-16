@@ -11,8 +11,10 @@ function Cart() {
 
   const [{ basket }] = useStateValue();
 
+  const isProd = false;
+
   const initialOptions = {
-    "client-id" : process.env.REACT_APP_PAYPAL_CLIENT_ID,
+    "client-id" : isProd === true ? process.env.REACT_APP_PAYPAL_PROD : process.env.REACT_APP_PAYPAL_SANDBOX,
     "currency" : "CAD"
   }
 
