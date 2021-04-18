@@ -16,153 +16,156 @@ function Media() {
         </p>
         <div className="container mx-auto mt-10">
           <div className="items-center flex flex-wrap">
-            <div className="w-full md:w-6/12 mx-auto px-5">
-              <ReactPlayer url="https://www.youtube.com/watch?v=9tkIgVc2PIw" />
+            <div className="w-full md:w-6/12 mx-auto px-5 mb-10 md:mb-0">
+              <iframe
+                src="https://www.youtube.com/embed/9tkIgVc2PIw"
+                frameborder="0"
+                allowfullscreen
+                scrolling="no"
+                title="Dinos Youtube"
+                className="mx-auto md:w-full md:h-full"
+              ></iframe>
             </div>
             <div className="w-full md:w-6/12 mx-auto px-5">
-              <ReactPlayer url="https://www.youtube.com/watch?v=3Zm23S8-Sdg" />
+              <iframe
+                src="https://www.youtube.com/embed/3Zm23S8-Sdg"
+                frameborder="0"
+                allowfullscreen
+                scrolling="no"
+                title="Dinos Youtube"
+                className="mx-auto md:w-full md:h-full"
+              ></iframe>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="interviews text-center bg-gray-100 pt-10 pb-10">
+      <section className="interviews text-center bg-gray-100 pt-10 pb-10 mb-10">
         <h1 className="mt-10 text-4xl tracking-tight font-extrabold text-gray-900">
           News Interviews
         </h1>
         <p className="mt-10 text-base text-gray-700 text-lg">
           Paul Brothers talks to coaches of the 4AM Camp
         </p>
-        <div className="container mx-auto mt-10">
+        <div className="container mx-auto mt-10 flex flex-wrap mb-10">
           <div className="items-center flex flex-wrap">
             <div className="w-full md:w-6/12 mx-auto px-5">
-              <h2 className="mt-2 text-base text-gray-700 text-lg">2020</h2>
+              <h2 className="mt-2 text-base text-gray-700 text-lg font-bold">
+                Global News 2020
+              </h2>
               <iframe
                 src="https://globalnews.ca/video/embed/7254196/"
-                width="640"
-                height="360"
                 frameborder="0"
                 allowfullscreen
                 scrolling="no"
                 title="Iframe contains video URL"
-                className="mx-auto"
+                className="mx-auto md:w-full md:h-full"
               ></iframe>
             </div>
             <div className="w-full md:w-6/12 mx-auto px-5">
-              <h2 className="mt-2 text-base text-gray-700 text-lg">2019</h2>
+              <h2 className="mt-2 text-base text-gray-700 text-lg font-bold">
+                Global News 2019
+              </h2>
               <iframe
                 src="https://globalnews.ca/video/embed/5754156/"
-                width="640"
-                height="360"
                 frameborder="0"
                 allowfullscreen
                 scrolling="no"
                 title="Iframe contains video URL"
-                className="mx-auto"
+                className="mx-auto md:w-full md:h-full"
               ></iframe>
             </div>
             <div className="mt-10 mx-auto">
+              <h2 className="mt-2 text-base text-gray-700 text-lg font-bold">
+                CTV News
+              </h2>
               <iframe
                 src="https://webapps.9c9media.com/vidi-player/1.9.19/share/iframe.html?currentId=2018060&config=ctvnews/share.json&kruxId=&rsid=bellmedianewsprod,bellmediaglobalprod&siteName=CTVNews&cid=%5B%7B%22contentId%22%3A2018060%2C%22ad%22%3A%7B%22adsite%22%3A%22ctv.ctvnews%22%2C%22adzone%22%3A%22embed%22%7D%7D%5D"
-                width="640"
-                height="360"
                 frameborder="0"
                 allowfullscreen
                 scrolling="no"
                 title="CTV News"
-                className="mx-auto"
+                className="mx-auto md:w-full md:h-full"
               ></iframe>
             </div>
           </div>
         </div>
       </section>
 
-      {/* <section className="relative py-20">
-        <div className="container mx-auto mb-10">
-          <div className="items-center flex flex-wrap">
-            <div className="w-full md:w-3/12 mx-auto px-10 text-center">
-              <h1 className="font-semibold text-4xl">Articles</h1>
-            </div>
-            <div className="w-full md:w-9/12 mx-auto">
-              <div>
-                <h3 className="text-2xl font-semibold">
-                  "Camp to honour 'selfless and generous' Nova Scotian"
-                </h3>
-                <a
-                  href="https://www.cbc.ca/amp/1.5238878"
-                  className="mt-4 text-base md:text-lg lg:text-xl xl:text-lg leading-relaxed text-gray-600"
-                >
-                  - CBC News Article (Click here)
-                </a>
-                <br />
-                <br />
-                <h3 className="text-2xl font-semibold">
-                  "'4AM Night' Dinos honour Milner"
-                </h3>
-                <a
-                  href="https://godinos.com/news/2019/10/9/mens-basketball-dinos-honour-milner-on-4am-night-friday.aspx"
-                  className="mt-4 text-base md:text-lg lg:text-xl xl:text-lg leading-relaxed text-gray-600"
-                >
-                  - Dinos Article (Click here)
-                </a>
+      <section className="articles flex flex-col md:flex-row justify-center relative mb-12 pb-12">
+        <div className="flex items-center justify-center px-5 py-5">
+          <div
+            className="min-h-full w-full mx-auto rounded-lg bg-white shadow-lg px-5 pt-5 pb-10 text-gray-800"
+            style={{ maxWidth: "500px" }}
+          >
+            <div className="w-full pt-1 pb-5">
+              <div className="overflow-hidden rounded-full w-20 h-20 -mt-16 mx-auto shadow-lg">
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/CBC_Logo_1992-Present.svg/1024px-CBC_Logo_1992-Present.svg.png"
+                  alt=""
+                />
               </div>
+            </div>
+            <div className="w-full mb-10">
+              <div className="text-3xl text-indigo-500 text-left leading-tight h-3">
+                “
+              </div>
+              <p className="text-xl text-gray-600 text-center px-5 font-semibold">
+                Camp to honour 'selfless and generous' Nova Scotian
+              </p>
+              <div className="text-3xl text-indigo-500 text-right leading-tight h-3 -mt-3">
+                ”
+              </div>
+            </div>
+            <div className="w-full">
+              <p className="text-md text-indigo-500 font-bold text-center">
+                CBC News Article
+              </p>
+              <p className="text-xs text-gray-500 text-center">Click here</p>
             </div>
           </div>
         </div>
-      </section> */}
-
-      {/* DECIDE IF WE WANT THIS INSTEAD */}
-      
-      <div className="flex flex-col md:flex-row justify-center relative">
 
         <div className="flex items-center justify-center px-5 py-5">
-            <div className="min-h-full w-full mx-auto rounded-lg bg-white shadow-lg px-5 pt-5 pb-10 text-gray-800" style={{maxWidth: '500px'}}>
-                <div className="w-full pt-1 pb-5">
-                    <div className="overflow-hidden rounded-full w-20 h-20 -mt-16 mx-auto shadow-lg">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/CBC_Logo_1992-Present.svg/1024px-CBC_Logo_1992-Present.svg.png" alt=""/>
-                    </div>
-                </div>
-                <div className="w-full mb-10">
-                    <div className="text-3xl text-indigo-500 text-left leading-tight h-3">“</div>
-                    <p className="text-xl text-gray-600 text-center px-5 font-semibold">Camp to honour 'selfless and generous' Nova Scotian</p>
-                    <div className="text-3xl text-indigo-500 text-right leading-tight h-3 -mt-3">”</div>
-                </div>
-                <div className="w-full">
-                    <p className="text-md text-indigo-500 font-bold text-center">CBC News Article</p>
-                    <p className="text-xs text-gray-500 text-center">Click here</p>
-                </div>
+          <div
+            className="min-h-full w-full mx-auto rounded-lg bg-white shadow-lg px-5 pt-5 pb-10 text-gray-800"
+            style={{ maxWidth: "500px" }}
+          >
+            <div className="w-full pt-1 pb-5">
+              <div className="overflow-hidden rounded-full w-20 h-20 -mt-16 mx-auto shadow-lg">
+                <img
+                  src="https://content.sportslogos.net/logos/77/2379/full/7465_calgary_dinos-partial-2013.png"
+                  alt=""
+                />
+              </div>
             </div>
-        </div>
-
-        <div className="flex items-center justify-center px-5 py-5">
-            <div className="min-h-full w-full mx-auto rounded-lg bg-white shadow-lg px-5 pt-5 pb-10 text-gray-800" style={{maxWidth: '500px'}}>
-                <div className="w-full pt-1 pb-5">
-                    <div className="overflow-hidden rounded-full w-20 h-20 -mt-16 mx-auto shadow-lg">
-                        <img src="https://content.sportslogos.net/logos/77/2379/full/7465_calgary_dinos-partial-2013.png" alt=""/>
-                    </div>
-                </div>
-                <div className="w-full mb-10">
-                    <div className="text-3xl text-indigo-500 text-left leading-tight h-3">“</div>
-                    <p className="text-xl text-gray-600 text-center px-5 font-semibold">4AM Night' Dinos honour Milner</p>
-                    <div className="text-3xl text-indigo-500 text-right leading-tight h-3 -mt-3">”</div>
-                </div>
-                <div className="w-full">
-                    <p className="text-md text-indigo-500 font-bold text-center">Dinos Article</p>
-                    <p className="text-xs text-gray-500 text-center">Click here</p>
-                </div>
+            <div className="w-full mb-10">
+              <div className="text-3xl text-indigo-500 text-left leading-tight h-3">
+                “
+              </div>
+              <p className="text-xl text-gray-600 text-center px-5 font-semibold">
+                4AM Night' Dinos honour Milner
+              </p>
+              <div className="text-3xl text-indigo-500 text-right leading-tight h-3 -mt-3">
+                ”
+              </div>
             </div>
+            <div className="w-full">
+              <p className="text-md text-indigo-500 font-bold text-center">
+                Dinos Article
+              </p>
+              <p className="text-xs text-gray-500 text-center">Click here</p>
+            </div>
+          </div>
         </div>
-      </div>
-
-      
-
+      </section>
 
       {/* TODO: REFACTOR THIS!!!! TO SOMETHING SIMILAR TO HERO SECTION */}
 
-      <section className="pb-32 bg-gray-100 -mt-24 flex flex-wrap">
+      <section className="pb-32 bg-gray-100 -mt-24 flex flex-wrap mx-auto">
         <div className="rothesay award container mx-auto flex flex-wrap 3xl:h-96 mb-10">
           <div className="container xl:w-6/12 mx-auto mb-10">
-            <div className="flex flex-wrap items-center mt-10 md:mt-32 h-full xl:h-3/4 w-9/12">
+            <div className="mt-10 md:mt-32 h-full xl:h-3/4 xl:w-9/12">
               <iframe
                 src="https://webapps.9c9media.com/vidi-player/1.9.19/share/iframe.html?currentId=1879560&config=ctvnews/share.json&kruxId=&rsid=bellmedianewsprod,bellmediaglobalprod&siteName=CTVNews&cid=%5B%7B%22contentId%22%3A1879560%2C%22ad%22%3A%7B%22adsite%22%3A%22ctv.ctvnews%22%2C%22adzone%22%3A%22embed%22%7D%7D%5D"
                 frameborder="0"
@@ -197,7 +200,7 @@ function Media() {
         </div>
         <div className="dinos award container mx-auto flex flex-wrap 3xl:h-96 mb-10">
           <div className="container xl:w-6/12 mx-auto mb-10">
-            <div className="flex flex-wrap items-center mt-10 md:mt-32 h-full xl:h-3/4 w-9/12">
+            <div className="mt-10 md:mt-32 h-full xl:h-3/4 xl:w-9/12">
               <iframe
                 src="https://www.youtube.com/embed/2kgtp22YufU"
                 frameborder="0"
@@ -221,7 +224,7 @@ function Media() {
         </div>
         <div className="leadership award container mx-auto flex flex-wrap 3xl:h-96 mb-10">
           <div className="container xl:w-6/12 mx-auto mb-10">
-            <div className="flex flex-wrap items-center mt-10 md:mt-32 h-full xl:h-3/4 w-9/12">
+            <div className=" mt-10 md:mt-32 h-full xl:h-3/4 xl:w-9/12">
               <iframe
                 src="https://www.youtube.com/embed/SogfWJW4uT8"
                 frameborder="0"
