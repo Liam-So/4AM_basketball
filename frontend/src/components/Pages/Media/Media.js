@@ -1,6 +1,5 @@
 import React from "react";
 import Topbar from "../../Topbar/Topbar";
-import ReactPlayer from "react-player/youtube";
 
 function Media() {
   return (
