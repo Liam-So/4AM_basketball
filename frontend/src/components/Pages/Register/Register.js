@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import RegisterItem from "./RegisterItem/RegisterItem";
 import axios from "../../../axios";
 import Topbar from "../../Topbar/Topbar";
-import Logo from "../../../images/logo.png"
+import Logo from "../../../images/logo.png";
+import { motion } from 'framer-motion';
 
 function Register() {
   const [products, setProducts] = useState([]);
@@ -20,7 +21,7 @@ function Register() {
   const availableProducts = products.filter(product => product.sku > 0);
 
   const EmptyCamp = () => (
-    <div className="gradient text-gray-600 min-h-screen flex items-center">
+    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="gradient text-gray-600 min-h-screen flex items-center">
       <div className="container mx-auto p-4 flex flex-wrap items-center">
         <div className="w-full md:w-5/12 text-center p-4">
           <img src={Logo} alt="logo" />
@@ -35,11 +36,11 @@ function Register() {
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 
   const RegisterCamp = () => (
-    <main className="font-sans bg-white">
+    <motion.main initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="font-sans bg-white">
         <div>
             <section className="bg-white mt-20 mb-20">
                 <div className="max-w-2xl px-6 text-center mx-auto">
@@ -60,7 +61,7 @@ function Register() {
                 </div>
             </section>
         </div>
-    </main>
+    </motion.main>
   );
 
   return (

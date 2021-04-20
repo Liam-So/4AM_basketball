@@ -1,10 +1,12 @@
 import React from "react";
 import Topbar from "../../Topbar/Topbar";
+import { motion } from 'framer-motion';
 
 function Donate() {
 
   return (
     <div className="donate">
+      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
       <Topbar />
       <div class="w-full h-screen flex justify-center items-center">
         <div class="mx-4 text-center text-white">
@@ -21,6 +23,7 @@ function Donate() {
 
         </div>
     </div>
+    </motion.div>
     </div>
   );
 }

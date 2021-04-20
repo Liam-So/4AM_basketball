@@ -4,13 +4,14 @@ import Typography from "@material-ui/core/Typography";
 import { Card, CardMedia } from "@material-ui/core/";
 import useStyles from "./styles";
 import Topbar from "../../Topbar/Topbar";
-import { coaches, guestCoaches } from "./Data"
+import { coaches, guestCoaches } from "./Data";
+import { motion } from 'framer-motion';
 
 function Team() {
   const classes = useStyles();
 
   return (
-    <div>
+    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
       <Topbar transparent={true} />
       <div className={classes.title}>
         <h1 className="mt-1 text-4xl tracking-tight font-extrabold text-red-500">
@@ -96,7 +97,7 @@ function Team() {
           </Grid>
         </Grid>
       </div>
-    </div>
+    </motion.div>
   );
 }
 
