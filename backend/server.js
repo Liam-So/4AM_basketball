@@ -53,7 +53,7 @@ mongoose
     console.log(Error, err.message);
   });
 
-mongoose.set('useFindAndModify', false) ;
+mongoose.set("useFindAndModify", false);
 
 // API Endpoints
 app.get("/", (req, res) => res.status(200).send("Yooo"));
@@ -83,25 +83,25 @@ app.get("/registration", (req, res) => {
 
 app.get("/registration/:id", async (req, res) => {
   try {
-    const item = await Camps.findById(req.params.id) ; 
-    res.json(item) ; 
+    const item = await Camps.findById(req.params.id);
+    res.json(item);
   } catch (err) {
-    console.error(err.message) ; 
-    res.send(400).send('Server Error') ; 
+    console.error(err.message);
+    res.send(400).send("Server Error");
   }
-})
+});
 
 app.put("/registration/:id", async (req, res) => {
   try {
     await Camps.findByIdAndUpdate(req.params.id, {
-      sku: req.body.sku
+      sku: req.body.sku,
     });
-    res.send("Item Updated!") ; 
-  } catch(err) {
-    console.error(err.message) ; 
-    res.send(400).send("Server Error") ;
+    res.send("Item Updated!");
+  } catch (err) {
+    console.error(err.message);
+    res.send(400).send("Server Error");
   }
-})
+});
 
 // Gear Products
 app.post("/gear", (req, res) => {
@@ -128,25 +128,25 @@ app.get("/gear", (req, res) => {
 
 app.get("/gear/:id", async (req, res) => {
   try {
-    const item = await Gear.findById(req.params.id) ; 
-    res.json(item) ; 
+    const item = await Gear.findById(req.params.id);
+    res.json(item);
   } catch (err) {
-    console.error(err.message) ; 
-    res.send(400).send('Server Error') ; 
+    console.error(err.message);
+    res.send(400).send("Server Error");
   }
 });
 
 app.put("/gear/:id", async (req, res) => {
   try {
     await Gear.findByIdAndUpdate(req.params.id, {
-      sku: req.body.sku
+      sku: req.body.sku,
     });
-    res.send("Item Updated!") ; 
-  } catch(err) {
-    console.error(err.message) ; 
-    res.send(400).send("Server Error") ;
+    res.send("Item Updated!");
+  } catch (err) {
+    console.error(err.message);
+    res.send(400).send("Server Error");
   }
-})
+});
 
 // Scholarship Application
 app.post("/scholarship", (req, res) => {
