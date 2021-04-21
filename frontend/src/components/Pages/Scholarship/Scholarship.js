@@ -4,6 +4,7 @@ import Heading from "./Heading";
 import "./Scholarship.css";
 import HeroSection from "../../HeroSection/HeroSection"
 import { homeObjOne } from "./Data";
+import { motion } from 'framer-motion';
 
 function Scholarship() {
   const [status, setStatus] = useState("Submit");
@@ -53,7 +54,7 @@ function Scholarship() {
   const isAvailable = false ; 
 
   return (
-    <>
+    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
       <Topbar transparent={true} />
       <Heading />
       <HeroSection {...homeObjOne} />
@@ -234,7 +235,7 @@ function Scholarship() {
         <div></div>
       )}
         
-    </>
+    </motion.div>
   );
 }
 
