@@ -6,7 +6,7 @@ function Media() {
     <>
       <Topbar transparent={true} />
       <section className="andrew text-center pb-10">
-        <h1 className="mt-10 text-4xl tracking-tight font-extrabold text-gray-900">
+        <h1 className="mt-10 text-xl md:text-4xl tracking-tight font-extrabold text-gray-900">
           When I Think About Andrew...
         </h1>
         <p className="mt-10 text-base text-gray-700 text-lg">
