@@ -10,7 +10,7 @@ function HeroSection({
   description,
   img,
   alt,
-  imgStart,
+  imgStart
 }) {
   return (
     <>

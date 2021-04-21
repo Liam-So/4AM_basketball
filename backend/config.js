@@ -1,12 +1,12 @@
 const config = {
-  user: "sunchoi1999@gmail.com",
+  user: "4am.information@gmail.com",
   client_id:
-    "219916068332-l4r418pl5pm48i923fjsn3ehfg23v834.apps.googleusercontent.com",
-  client_secret: "cmiUQMGf8Lvspuhw7_m6tTPT",
+    "226073801380-bi37s04jqrbm0kajobdpen766rsht2vt.apps.googleusercontent.com",
+  client_secret: "bTSi6K-cAhbpGpw-sne9FZwz",
   refresh_token:
-    "1//04ZwN3wpEFWaPCgYIARAAGAQSNwF-L9IrnMz4umKPKdqeChmq-PCr9rRm0RkgKbAIzxTDcpMO9njIcVbJb6zkZIharEJMYfOCyK0",
+    "1//04Q3eg3N7OGRgCgYIARAAGAQSNwF-L9IrAt3liQ8bKzCwy5fsb4r9sl0souyxFb_mCHvSVjd3_SIR5LKrbnix57PyItX-mMc8EJQ",
   access_token:
-    "ya29.a0AfH6SMCgCc9fb4koB1OFRY3L8vPgyVgSb1L8BjGbyj5xbTqBhxfgCF8wUgHBLwIwFUezh6lD2txXu2iY-tZYUk1hrd16xMEWQOB1oNjbt08Bc7uoTcnH-uUCZs3gUeVJx7jOuiXJL7rKCeiwQlMGVK3xlHQz",
+    "ya29.a0AfH6SMCLLt7KkywTOC6St466QCBM_nd8O-C7bc2NMIwXzrMBwx8vmHzYmbE-LlXU2HssJ9RpUdjlqIigqHLyMgxsUIYEuKbFyGZEFBboCMFGL_Gd8qjMX0PiX-iJAlxhZfFuZpwPZQ9luGUqp-L-IAP688Yy",
 };
 
 export default config;

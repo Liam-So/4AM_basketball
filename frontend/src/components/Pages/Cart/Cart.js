@@ -5,14 +5,17 @@ import { getBasketTotal } from "../../reducer";
 import Topbar from "../../Topbar/Topbar";
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 import axios from "../../../axios";
-import { arrayOfItems, getBasketStock, updateStock } from "./CartServices"
+import { arrayOfItems, getBasketStock, updateStock } from "./CartServices";
+import { motion } from 'framer-motion';
 
 function Cart() {
 
   const [{ basket }] = useStateValue();
 
+  const isProd = false;
+
   const initialOptions = {
-    "client-id" : process.env.REACT_APP_PAYPAL_CLIENT_ID,
+    "client-id" : isProd === true ? process.env.REACT_APP_PAYPAL_PROD : process.env.REACT_APP_PAYPAL_SANDBOX,
     "currency" : "CAD"
   }
 
@@ -49,7 +52,7 @@ function Cart() {
     actions.order.capture() ;
 
     let basketData = Object.values(basket); 
-    updateStock(basketData) ; 
+    await updateStock(basketData) ; 
 
     const responsePromise = await axios.post("/transactions", {
       id: data.orderID,
@@ -63,12 +66,10 @@ function Cart() {
       console.log("Something went wrong...")
     }
 
-    // window.location.href = "http://localhost:3000/success" ; 
     window.location.href = `${process.env.REACT_APP_LOCAL_ENV}/success`
   }
   
   const onError = (err) => {
-    // window.location.href = "http://localhost:3000/paymentFailed" ; 
     window.location.href = `${process.env.REACT_APP_LOCAL_ENV}/paymentFailed` ; 
   }
 
@@ -134,10 +135,10 @@ function Cart() {
   }
 
   return (
-    <>
+    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
       <Topbar transparent={true} />
       {Object.values(basket).length === 0 ? <EmptyCart /> : <FilledCart />}
-    </>
+    </motion.div>
   );
 }
 

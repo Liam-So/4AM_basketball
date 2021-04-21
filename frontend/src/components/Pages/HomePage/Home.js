@@ -3,10 +3,11 @@ import { homeObjOne, homeObjTwo } from "./Data";
 import HeroSection from "../../HeroSection/HeroSection";
 import { Link } from "react-router-dom";
 import Topbar from "../../Topbar/Topbar";
+import { motion } from 'framer-motion';
 
 function Home() {
   return (
-    <section>
+    <motion.section initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
       <div className="home">
         <Topbar />
         <div className="subHome text-3xl md:text-5xl">
@@ -22,7 +23,7 @@ function Home() {
       </div>
       <HeroSection {...homeObjOne} />
       <HeroSection {...homeObjTwo} />
-    </section>
+    </motion.section>
   );
 }
 

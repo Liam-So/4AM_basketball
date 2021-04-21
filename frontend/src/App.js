@@ -13,23 +13,26 @@ import Why from "./components/Pages/Why/Why";
 import PaymentSuccess from "./components/Pages/Payment/PaymentSuccess";
 import PaymentFailed from "./components/Pages/Payment/PaymentFailed";
 import Media from "./components/Pages/Media/Media";
+import { AnimatePresence, motion } from "framer-motion";
 
 function App() {
   return (
     <Router>
-      <Switch>
-        <Route path="/" exact component={Home} />
-        <Route path="/donate" exact component={Donate} />
-        <Route path="/team" exact component={Team} />
-        <Route path="/cart" exact component={Cart} />
-        <Route path="/register" exact component={Register} />
-        <Route path="/scholarship" exact component={Scholarship} />
-        <Route path="/gear" exact component={Gear} />
-        <Route path="/why" exact component={Why} />
-        <Route path="/media" exact component={Media} />
-        <Route path="/success" exact component={PaymentSuccess} />
-        <Route path="/paymentFailed" exact component={PaymentFailed} />
-      </Switch>
+      <AnimatePresence>
+        <Switch>
+          <Route path="/" exact component={Home} />
+          <Route path="/donate" exact component={Donate} />
+          <Route path="/team" exact component={Team} />
+          <Route path="/cart" exact component={Cart} />
+          <Route path="/register" exact component={Register} />
+          <Route path="/scholarship" exact component={Scholarship} />
+          <Route path="/gear" exact component={Gear} />
+          <Route path="/why" exact component={Why} />
+          <Route path="/success" exact component={PaymentSuccess} />
+          <Route path="/paymentFailed" exact component={PaymentFailed} />
+          <Route path="/media" exact component={Media} />
+        </Switch>
+      </AnimatePresence>
       <Footer />
     </Router>
   );
