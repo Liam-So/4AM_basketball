@@ -159,8 +159,11 @@ function Media() {
         </div>
       </section>
 
-      {/* TODO: REFACTOR THIS!!!! TO SOMETHING SIMILAR TO HERO SECTION */}
+      <div className="flex justify-center items-center py-4 semibold text-red-600">
+        <h1 className="font-sans text-4xl">Other 4AM Initiatives</h1>
+      </div>
 
+      {/* TODO: REFACTOR THIS!!!! TO SOMETHING SIMILAR TO HERO SECTION */}
       <section className="pb-32 bg-gray-100 -mt-24 flex flex-wrap mx-auto">
         <div className="rothesay award container mx-auto flex flex-wrap 3xl:h-96 mb-10">
           <div className="container xl:w-6/12 mx-auto mb-10">

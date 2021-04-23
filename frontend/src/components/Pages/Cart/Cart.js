@@ -66,11 +66,11 @@ function Cart() {
       console.log("Something went wrong...")
     }
 
-    window.location.href = `${process.env.REACT_APP_LOCAL_ENV}/success`
+    window.location.href = `/success`
   }
   
   const onError = (err) => {
-    window.location.href = `${process.env.REACT_APP_LOCAL_ENV}/paymentFailed` ; 
+    window.location.href = `/paymentFailed` ; 
   }
 
   const EmptyCart = () => {

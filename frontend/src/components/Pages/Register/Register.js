@@ -51,7 +51,7 @@ function Register() {
                 </div>
             </section>
           
-            <section className="pattern">
+            <section className="pattern pb-56">
                 <div className="flex flex-col pb-16 md:px-12 lg:flex-row lg:px-60 xl:px-96">
                 {availableProducts.map((product) => (
                     <div className="flex container mx-auto max-w-sm w-full p-4 sm:w-1/2">

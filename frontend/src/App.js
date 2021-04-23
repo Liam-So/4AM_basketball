@@ -13,7 +13,7 @@ import Why from "./components/Pages/Why/Why";
 import PaymentSuccess from "./components/Pages/Payment/PaymentSuccess";
 import PaymentFailed from "./components/Pages/Payment/PaymentFailed";
 import Media from "./components/Pages/Media/Media";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence } from "framer-motion";
 
 function App() {
   return (
