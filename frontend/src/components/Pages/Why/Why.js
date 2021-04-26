@@ -151,7 +151,7 @@ function Why() {
                   alt="..."
                   src="images/damian.png"
                   className="shadow-lg rounded-full max-w-full mx-auto"
-                  style={{ maxWidth: "120px" }}
+                  style={{ maxWidth: "180px" }}
                 />
                 <div className="pt-6 text-center">
                   <h5 className="text-2xl font-bold">Coach Damian Gay</h5>
@@ -168,7 +168,7 @@ function Why() {
                   alt="..."
                   src="images/calgary_heads.png"
                   className="shadow-lg rounded-full max-w-full mx-auto"
-                  style={{ maxWidth: "120px" }}
+                  style={{ maxWidth: "180px" }}
                 />
                 <div className="pt-6 text-center">
                   <h5 className="text-2xl font-bold">Coach Dan Vanhooren</h5>

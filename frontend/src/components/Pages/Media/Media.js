@@ -25,7 +25,7 @@ function Media() {
                 className="mx-auto md:w-full md:h-full"
               ></iframe>
             </div>
-            <div className="w-full md:w-6/12 mx-auto px-5">
+            {/* <div className="w-full md:w-6/12 mx-auto px-5">
               <iframe
                 src="https://www.youtube.com/embed/3Zm23S8-Sdg"
                 frameborder="0"
@@ -34,7 +34,7 @@ function Media() {
                 title="Dinos Youtube"
                 className="mx-auto md:w-full md:h-full"
               ></iframe>
-            </div>
+            </div> */}
           </div>
         </div>
       </section>
@@ -43,9 +43,9 @@ function Media() {
         <h1 className="mt-10 text-4xl tracking-tight font-extrabold text-gray-900">
           News Interviews
         </h1>
-        <p className="mt-10 text-base text-gray-700 text-lg">
+        {/* <p className="mt-10 text-base text-gray-700 text-lg">
           Paul Brothers talks to coaches of the 4AM Camp
-        </p>
+        </p> */}
         <div className="container mx-auto mt-10 flex flex-wrap mb-10">
           <div className="items-center flex flex-wrap">
             <div className="w-full md:w-6/12 mx-auto px-5">
@@ -66,7 +66,7 @@ function Media() {
                 Global News 2019
               </h2>
               <iframe
-                src="https://globalnews.ca/video/embed/5754156/"
+                src="https://webapps.9c9media.com/vidi-player/1.9.19/share/iframe.html?currentId=2018060&config=ctvnews/share.json&kruxId=&rsid=bellmedianewsprod,bellmediaglobalprod&siteName=CTVNews&cid=%5B%7B%22contentId%22%3A2018060%2C%22ad%22%3A%7B%22adsite%22%3A%22ctv.ctvnews%22%2C%22adzone%22%3A%22embed%22%7D%7D%5D"
                 frameborder="0"
                 allowfullscreen
                 scrolling="no"
@@ -74,7 +74,7 @@ function Media() {
                 className="mx-auto md:w-full md:h-full"
               ></iframe>
             </div>
-            <div className="mt-10 mx-auto">
+            {/* <div className="mt-10 mx-auto">
               <h2 className="mt-2 text-base text-gray-700 text-lg font-bold">
                 CTV News
               </h2>
@@ -86,12 +86,12 @@ function Media() {
                 title="CTV News"
                 className="mx-auto md:w-full md:h-full"
               ></iframe>
-            </div>
+            </div> */}
           </div>
         </div>
       </section>
 
-      <section className="articles flex flex-col md:flex-row justify-center relative mb-12 pb-12">
+      {/* <section className="articles flex flex-col md:flex-row justify-center relative mb-12 pb-12">
         <div className="flex items-center justify-center px-5 py-5">
           <div
             className="min-h-full w-full mx-auto rounded-lg bg-white shadow-lg px-5 pt-5 pb-10 text-gray-800"
@@ -157,7 +157,7 @@ function Media() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       <div className="flex justify-center items-center py-4 semibold text-red-600">
         <h1 className="font-sans text-4xl">Other 4AM Initiatives</h1>
