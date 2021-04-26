@@ -8,20 +8,13 @@ function Heading() {
               <div className="max-w-3xl px-6 text-center mx-auto">
                   <h2 className="text-4xl font-semibold text-gray-800">Andrew Milner Memorial Scholarship</h2>
                   <p className="text-xl text-gray-600 mt-4">
-                    The goal of the camp is to honour Andrew's legacy by paying his impact
+                    The goal of the 4AM camp is to honour Andrew's legacy by paying his impact
                   forward to the next generation of basketball players. All of the
-                  proceeds from the camp go towards an annual scholarhsip in Andrew's
+                  proceeds from the camp go towards an annual scholarship in Andrew's
                   name.
                   </p>
                   <p className="text-xl text-gray-600 mt-4">
-                    The 1st Annual 4AM camp was held in August 2019 and raised $4000 for the very first Annual Andrew Milner Memorial Scholarship.
-                  </p>
-                  <p className="text-xl text-gray-600 mt-4">
-                  The Milner/MacIntosh family has decided they would like to award this
-                  scholarhsip to a BNS athlete. This scholarship is intended to help a BNS
-                  athlete to alleviate the costs associated with playing for BNS. The
-                  scholarship will be awarded to a male BNS athlete on either the U15 or
-                  U17 team. To be a scholarship prospect, please fill out the form below.
+                  Andrew’s family decided the scholarship should be awarded to a BNS athlete. Preference will be given to those residing outside HRM to help alleviate the costs of travel to/from the city.
                   </p>
 
               </div>
