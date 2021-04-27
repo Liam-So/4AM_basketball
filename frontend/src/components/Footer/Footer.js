@@ -13,14 +13,13 @@ import Logo from "../../images/logo.png";
 function Footer() {
   return (
     <div className="footer-container">
-      <section className="social-media">
+      <section className="social-media mb-10">
         <div className="social-media-wrap">
           <div className="footer-logo">
             <Link to="/" className="social-logo">
               <img src={Logo} alt="logo" />
             </Link>
           </div>
-          <small className="website-rights">4AM © 2019</small>
           <div className="social-icons">
             <a
               className="social-icon-link"
