@@ -237,6 +237,29 @@ function Scholarship() {
       ) : (
         <div></div>
       )}
+
+<div className="bg-white pb-4 px-4 rounded-md w-full flex justify-center">
+
+<div className="overflow-x-auto mt-6 w-10/12 pb-12">
+  <h1 className="text-4xl text-gray-800 pb-8">Past Recipients</h1>
+      <table className="table-auto border-collapse w-full">
+        <thead>
+          <tr className="rounded-lg text-m font-medium text-gray-700 text-left" style={{fontSize: '0.9674rem'}}>
+            <th className="px-4 py-2 bg-gray-200 " style={{backgroundColor: '#f8f8f8'}}>Recipient</th>
+            <th className="px-4 py-2 " style={{backgroundColor: '#f8f8f8'}}>Hometown</th>
+            <th className="px-4 py-2 " style={{backgroundColor: '#f8f8f8'}}>Year</th>
+          </tr>
+        </thead>
+        <tbody className="text-m font-normal text-gray-700">
+        <tr className="hover:bg-gray-100 border-b border-gray-200 py-10">
+            <td className="px-4 py-4">Coby Tunnicliff</td>
+            <td className="px-4 py-4">Cape Breton, Nova Scotia</td>
+            <td className="px-4 py-4">2018-19</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    </div>
     </motion.div>
   );
 }
