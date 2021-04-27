@@ -20,6 +20,7 @@ function Footer() {
               <img src={Logo} alt="logo" />
             </Link>
           </div>
+          <small className="website-rights hidden sm:flex">4AM © 2019</small>
           <div className="social-icons">
             <a
               className="social-icon-link"
