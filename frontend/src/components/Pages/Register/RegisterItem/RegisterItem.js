@@ -32,6 +32,7 @@ function RegisterItem({ product }) {
             <Card className={classes.root}>
             <CardMedia title={product.name}>
                 <img className={classes.image} src={product.img} alt={product.name} />
+                {console.log(product.img)}
             </CardMedia>
             <CardContent>
                 <div className={classes.cardContent}>
