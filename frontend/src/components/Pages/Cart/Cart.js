@@ -110,9 +110,6 @@ function Cart() {
           <hr className="pb-6 mt-6"/>
           <div className="my-4 mt-6 -mx-2 lg:flex">
             <div className="lg:px-2 lg:w-1/2">
-              <div className="p-4 bg-gray-100 rounded-full">
-                <h1 className="ml-2 font-bold uppercase">Order Details</h1>
-              </div>
               <div className="p-4">
                     <div className="flex justify-between pt-4 border-b">
                       <div className="lg:px-4 lg:py-2 m-2 text-lg lg:text-xl font-bold text-center text-gray-800">

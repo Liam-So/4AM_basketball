@@ -81,20 +81,11 @@ function Why() {
                 Impact beyond the lines of the basketball court
               </h3>
               <p className="text-base md:text-lg lg:text-xl xl:text-lg font-light leading-relaxed mt-4 mb-4 text-gray-700">
-                Residing in Antigonish, Andrew's passion for basketball meant
-                sacrificing time and money in order to play for the Nova
-                Scotia Provincial Team. But all of this paid off in 2015, when
-                Andrew and his U17 BNS teammates won a National Championship
-                on Nova Scotian soil and again the following summer.
+              Residing in Antigonish, Andrew’s passion for basketball meant sacrificing time and money in order to play for Basketball Nova Scotia Provincial Teams. But this sacrifice paid off in 2015, when Andrew and his BNS U17 teammates won a National Championship on Nova Scotian soil. The following summer he repeated as a National Champion.
               </p>
               <br />
               <p className="text-base md:text-lg lg:text-xl xl:text-lg font-light leading-relaxed mt-0 mb-4 text-gray-700">
-                Andrew was an exceptional leader, never wanting or needing any
-                recognition. He wasn't the MVP or Tournament All-Star in
-                either of the National Championships, and the average fan
-                probably wouldn't recognize his impact. But his coaches and
-                teammates did. Andrew did all the little things, things that
-                no statistic or box score could quanitfy.
+              Andrew wasn’t the MVP or a Tournament All-Star in either of the National Championships, and the average fan probably wouldn’t recognize his impact. But his coaches and teammates did. Andrew did all the little things, things that no statistic or box score could quantify.
               </p>
               <br />
               <p className="text-base md:text-lg lg:text-xl xl:text-lg font-bold text-gray-800 mt-0">
@@ -139,20 +130,11 @@ function Why() {
               <div>
                 <h3 className="text-3xl font-semibold">Paying it forward</h3>
                 <p className="mt-4 text-base md:text-lg lg:text-xl xl:text-lg leading-relaxed text-gray-600">
-                  After his time at Rothesay Netherwood School, Andrew joined
-                  the Calgary Dinos. During his rookie season, the Dinos would
-                  win the U Sports National Championship, their first ever
-                  National Title, and bringing Andrew's Championship count to
-                  3.
+                Andrew was a pioneer of the basketball program at Rothesay Netherwood School. After which, he joined the Calgary Dinos. In his rookie season, the Dinos would win the U Sports National Championship, their first ever National Title, which brought Andrew’s National Championship count to 3.
                 </p>
                 <br />
                 <p className="mt-4 text-base md:text-lg lg:text-xl xl:text-lg leading-relaxed text-gray-600">
-                  However, one of the most inspiring accomplishments of
-                  Andrew's career was the impact he made on aspiring young
-                  basketball players through Calgary's Develop a Dino program.
-                  Andrew was a coach, role model, and friend to all kids in
-                  the program - one of many acts that truly exemplifies
-                  Andrew's leadership.
+                However, one of the most inspiring accomplishments of Andrew’s career was the impact he made on aspiring young basketball players through Calgary’s Develop a Dino program. Andrew was a coach, role model, and friend to many kids in the program.
                 </p>
               </div>
             </div>
@@ -169,11 +151,11 @@ function Why() {
                   alt="..."
                   src="images/damian.png"
                   className="shadow-lg rounded-full max-w-full mx-auto"
-                  style={{ maxWidth: "120px" }}
+                  style={{ maxWidth: "180px" }}
                 />
                 <div className="pt-6 text-center">
-                  <h5 className="text-xl font-bold">Coach Damian Gay</h5>
-                  <p className="mt-1 text-sm text-gray-500 font-semibold">
+                  <h5 className="text-2xl font-bold">Coach Damian Gay</h5>
+                  <p className="mt-1 text-xl text-gray-500 font-semibold">
                     "Not too many kids his age have a legitimate legacy - its
                     inspiring."
                   </p>
@@ -186,11 +168,11 @@ function Why() {
                   alt="..."
                   src="images/calgary_heads.png"
                   className="shadow-lg rounded-full max-w-full mx-auto"
-                  style={{ maxWidth: "120px" }}
+                  style={{ maxWidth: "180px" }}
                 />
                 <div className="pt-6 text-center">
-                  <h5 className="text-xl font-bold">Coach Dan Vanhooren</h5>
-                  <p className="mt-1 text-sm text-gray-500 font-semibold">
+                  <h5 className="text-2xl font-bold">Coach Dan Vanhooren</h5>
+                  <p className="mt-1 text-xl text-gray-500 font-semibold">
                     "In all my years of coaching, I've never come across a
                     better leader."
                   </p>

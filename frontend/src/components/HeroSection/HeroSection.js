@@ -1,5 +1,6 @@
 import React from "react";
 import "./HeroSection.css";
+import { Link } from "react-router-dom"
 
 function HeroSection({
   lightBg,
@@ -10,7 +11,8 @@ function HeroSection({
   description,
   img,
   alt,
-  imgStart
+  imgStart,
+  button
 }) {
   return (
     <>
@@ -40,11 +42,18 @@ function HeroSection({
                 >
                   {description}
                 </p>
+                {button ? (
+                  <button className="py-2 px-2 rounded-full bg-yellow-500">
+                    <Link to="/why">
+                      Read more here
+                    </Link>
+                  </button>
+                ): (<></>)}
               </div>
             </div>
             <div className="col">
               <div className="home__hero-img-wrapper">
-                <img src={img} alt={alt} className="home__hero-img" />
+                <img src={img} alt={alt} className="home__hero-img" style={{borderRadius: '10px'}} />
               </div>
             </div>
           </div>
