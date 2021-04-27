@@ -28,14 +28,6 @@ function Footer() {
             >
               <FaEnvelope />
             </a>
-            {/* <Link
-              className="social-icon-link"
-              to={"//mailto:test@gmail.com"}
-              target="_blank"
-              aria-label="E-mail"
-            >
-              <FaEnvelope />
-            </Link> */}
             <Link
               className="social-icon-link"
               to={"//www.instagram.com/4am_basketball/"}
