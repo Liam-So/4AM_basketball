@@ -6,6 +6,10 @@ import { useStateValue } from "../../../StateProvider";
 function GearProduct({ product }) {
   const [state, setState] = useState("");
 
+<<<<<<< HEAD
+=======
+  // eslint-disable-next-line
+>>>>>>> d6a00fd8c231cc83119450a05b8930cfad0b2f8c
   const [{ basket }, dispatch] = useStateValue();
 
   const findProduct = (arr) => {

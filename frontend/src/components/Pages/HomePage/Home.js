@@ -32,7 +32,11 @@ function Home() {
         <div className="subHome text-3xl md:text-5xl">
           4AM Basketball Camp
           <Link
+<<<<<<< HEAD
             to="/donate"
+=======
+            to={availableProducts.length ? "/register" : "/donate"}
+>>>>>>> d6a00fd8c231cc83119450a05b8930cfad0b2f8c
             style={{ color: "#fff", textDecoration: "none" }}
             className="my-4 py-3 px-5 bg-yellow-500 rounded-full text-sm hover:bg-yellow-300 transition duration-300 ease-in-out flex items-center animate-bounce"
           >
