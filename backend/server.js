@@ -6,12 +6,26 @@ import Camps from './dbCamps.js';
 import Gear from './dbGear.js';
 import Transactions from './dbTransactions.js';
 import env from 'dotenv';
+import google from 'google';
 
 // App config
 const app = express();
 env.config();
 const port = process.env.PORT || 8001;
 const connection_url = process.env.MONGODB_URI;
+const OAuth2 = google.auth.OAuth2;
+
+const oauth2Client = new OAuth2(
+  process.env.client_id,
+  process.env.client_secret,
+  'https://developers.google.com/oauthplayground'
+);
+
+oauth2Client.setCrendentials({
+  refresh_token: process.env.refresh_token,
+});
+
+const accessToken = oauth2Client.getAccessToken();
 
 // nodemailer
 const contactEmail = nodemailer.createTransport({
@@ -22,7 +36,7 @@ const contactEmail = nodemailer.createTransport({
     clientId: process.env.client_id,
     clientSecret: process.env.client_secret,
     refreshToken: process.env.refresh_token,
-    accessToken: process.env.access_token,
+    accessToken: accessToken,
   },
 });
 
