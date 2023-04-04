@@ -6,30 +6,12 @@ import Camps from './dbCamps.js';
 import Gear from './dbGear.js';
 import Transactions from './dbTransactions.js';
 import env from 'dotenv';
-import { google } from 'googleapis';
 
 // App config
 const app = express();
 env.config();
 const port = process.env.PORT || 8001;
 const connection_url = process.env.MONGODB_URI;
-
-const oauth2Client = new google.auth.OAuth2({
-  clientId: process.env.client_id,
-  clientSecret: process.env.client_secret,
-  redirectUri: process.env.redirect_uri,
-});
-
-const url = oauth2Client.generateAuthUrl({
-  access_type: 'offline',
-  scope: 'https://mail.google.com/',
-});
-
-oauth2Client.setCrendentials({
-  refresh_token: process.env.refresh_token,
-});
-
-const accessToken = oauth2Client.getAccessToken();
 
 // nodemailer
 const contactEmail = nodemailer.createTransport({
@@ -40,7 +22,7 @@ const contactEmail = nodemailer.createTransport({
     clientId: process.env.client_id,
     clientSecret: process.env.client_secret,
     refreshToken: process.env.refresh_token,
-    accessToken: accessToken,
+    accessToken: process.env.access_token,
   },
 });
 
