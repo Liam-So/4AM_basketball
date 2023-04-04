@@ -173,7 +173,7 @@ app.post('/scholarship', (req, res) => {
   };
   contactEmail.sendMail(mail, (error) => {
     if (error) {
-      res.json({ status: 'ERROR' });
+      res.json({ status: error });
     } else {
       res.json({ status: 'Message Sent' });
     }
