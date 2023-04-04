@@ -6,7 +6,7 @@ import Camps from './dbCamps.js';
 import Gear from './dbGear.js';
 import Transactions from './dbTransactions.js';
 import env from 'dotenv';
-import google from 'google';
+import { google } from 'googleapis';
 
 // App config
 const app = express();
