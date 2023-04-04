@@ -13,13 +13,17 @@ const app = express();
 env.config();
 const port = process.env.PORT || 8001;
 const connection_url = process.env.MONGODB_URI;
-const OAuth2 = google.auth.OAuth2;
 
-const oauth2Client = new OAuth2(
-  process.env.client_id,
-  process.env.client_secret,
-  'https://developers.google.com/oauthplayground'
-);
+const oauth2Client = new google.auth.OAuth2({
+  clientId: process.env.client_id,
+  clientSecret: process.env.client_secret,
+  redirectUri: process.env.redirect_uri,
+});
+
+const url = oauth2Client.generateAuthUrl({
+  access_type: 'offline',
+  scope: 'https://mail.google.com/',
+});
 
 oauth2Client.setCrendentials({
   refresh_token: process.env.refresh_token,
