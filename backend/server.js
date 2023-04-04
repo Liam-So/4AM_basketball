@@ -160,7 +160,7 @@ app.post('/scholarship', (req, res) => {
   console.log(application);
   const mail = {
     from: fname,
-    to: config.user,
+    to: process.env.user,
     subject: 'Scholarship Application',
     // using html, the code is short and simple and pretty clean to look at and linebreaks are preserverd, BUT whitespaces are not
     html: `<p>Name: ${fname} ${lname}</p>
