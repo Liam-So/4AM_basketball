@@ -156,9 +156,10 @@ app.post('/scholarship', (req, res) => {
   const city = req.body.city;
   const school = req.body.school;
   const team = req.body.team;
-  const financial_need = req.body.financial_need.replace(/\n/g, '<br />');
-  const cost_of_travel = req.body.cost_of_travel.replace(/\n/g, '<br />');
   const character = req.body.character.replace(/\n/g, '<br />');
+  const reference_name = req.body.reference_name;
+  const reference_relationship = req.body.reference_relationship;
+  const reference_phone = req.body.reference_phone;
   const mail = {
     from: fname,
     to: process.env.user,
@@ -170,9 +171,10 @@ app.post('/scholarship', (req, res) => {
           <p>City: ${city}</p>
           <p>School: ${school}</p>
           <p>Team: ${team}</p>
-          <p>Question #1 Response: <br /><br />${financial_need}</p>
-          <p>Question #2 Response: <br /><br />${cost_of_travel}</p>
-          <p>Question #3 Response: <br /><br />${character}</p>`,
+          <p>Reference Name: ${reference_name}</p>
+          <p>Reference Relationship: ${reference_relationship}</p>
+          <p>Reference Phone: ${reference_phone}</p>
+          <p>Question Response: <br /><br />${character}</p>`,
   };
   contactEmail.sendMail(mail, (error) => {
     if (error) {
