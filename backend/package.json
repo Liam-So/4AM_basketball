@@ -19,7 +19,8 @@
     "mongoose": "^5.12.5",
     "nodemailer": "^6.5.0",
     "nodemon": "^2.0.7",
-    "npm": "^7.10.0"
+    "npm": "^7.10.0",
+    "resend": "^6.12.4"
   },
   "engines": {
     "node": ">=20 <21"

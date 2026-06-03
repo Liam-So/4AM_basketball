@@ -14,7 +14,7 @@ const port = process.env.PORT || 8001;
 const connection_url = process.env.MONGODB_URI;
 
 // nodemailer
-const contactEmail = nodemailer.createTransport({
+/*const contactEmail = nodemailer.createTransport({
   service: 'gmail',
   auth: {
     type: 'OAuth2',
@@ -24,7 +24,10 @@ const contactEmail = nodemailer.createTransport({
     refreshToken: process.env.refresh_token,
     accessToken: process.env.access_token,
   },
-});
+});*/
+
+const { Resend } = require('resend');
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 contactEmail.verify((error) => {
   if (error) {
@@ -176,7 +179,8 @@ app.post('/scholarship', (req, res) => {
           <p>Reference Phone: ${reference_phone}</p>
           <p>Question Response: <br /><br />${character}</p>`,
   };
-  contactEmail.sendMail(mail, (error) => {
+  
+  /*contactEmail.sendMail(mail, (error) => {
     if (error) {
       console.log(error);
       res.json({ status: 'ERROR' });
@@ -184,6 +188,27 @@ app.post('/scholarship', (req, res) => {
       res.json({ status: 'Message Sent' });
     }
   });
+});*/
+
+resend.emails.send({
+  from: 'onboarding@resend.dev',
+  to: process.env.user,
+  subject: 'Scholarship Application',
+  html: `<p>Name: ${fname} ${lname}</p>
+        <p>Email: ${email}</p>
+        <p>Phone: ${phone}</p>
+        <p>City: ${city}</p>
+        <p>School: ${school}</p>
+        <p>Team: ${team}</p>
+        <p>Reference Name: ${reference_name}</p>
+        <p>Reference Relationship: ${reference_relationship}</p>
+        <p>Reference Phone: ${reference_phone}</p>
+        <p>Question Response: <br /><br />${character}</p>`,
+}).then(() => {
+  res.json({ status: 'Message Sent' });
+}).catch((error) => {
+  console.log(error);
+  res.json({ status: 'ERROR' });
 });
 
 // Transactions
