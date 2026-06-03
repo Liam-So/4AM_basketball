@@ -29,14 +29,6 @@ const connection_url = process.env.MONGODB_URI;
 import { Resend } from 'resend';
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-contactEmail.verify((error) => {
-  if (error) {
-    console.log(error);
-  } else {
-    console.log('Ready to Send');
-  }
-});
-
 // Middlewares
 app.use(express.json());
 app.use(Cors());
