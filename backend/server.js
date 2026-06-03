@@ -179,7 +179,7 @@ app.post('/scholarship', (req, res) => {
           <p>Reference Phone: ${reference_phone}</p>
           <p>Question Response: <br /><br />${character}</p>`,
   };
-  
+
   /*contactEmail.sendMail(mail, (error) => {
     if (error) {
       console.log(error);
@@ -187,28 +187,29 @@ app.post('/scholarship', (req, res) => {
     } else {
       res.json({ status: 'Message Sent' });
     }
-  });
-});*/
+  });*/
 
-resend.emails.send({
-  from: 'onboarding@resend.dev',
-  to: process.env.user,
-  subject: 'Scholarship Application',
-  html: `<p>Name: ${fname} ${lname}</p>
-        <p>Email: ${email}</p>
-        <p>Phone: ${phone}</p>
-        <p>City: ${city}</p>
-        <p>School: ${school}</p>
-        <p>Team: ${team}</p>
-        <p>Reference Name: ${reference_name}</p>
-        <p>Reference Relationship: ${reference_relationship}</p>
-        <p>Reference Phone: ${reference_phone}</p>
-        <p>Question Response: <br /><br />${character}</p>`,
-}).then(() => {
-  res.json({ status: 'Message Sent' });
-}).catch((error) => {
-  console.log(error);
-  res.json({ status: 'ERROR' });
+  resend.emails.send({
+    from: 'onboarding@resend.dev',
+    to: process.env.user,
+    subject: 'Scholarship Application',
+    html: `<p>Name: ${fname} ${lname}</p>
+          <p>Email: ${email}</p>
+          <p>Phone: ${phone}</p>
+          <p>City: ${city}</p>
+          <p>School: ${school}</p>
+          <p>Team: ${team}</p>
+          <p>Reference Name: ${reference_name}</p>
+          <p>Reference Relationship: ${reference_relationship}</p>
+          <p>Reference Phone: ${reference_phone}</p>
+          <p>Question Response: <br /><br />${character}</p>`,
+  }).then(() => {
+    res.json({ status: 'Message Sent' });
+  }).catch((error) => {
+    console.log(error);
+    res.json({ status: 'ERROR' });
+  });
+
 });
 
 // Transactions
