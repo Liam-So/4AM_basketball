@@ -28,7 +28,7 @@ const registrationFormSchema = mongoose.Schema({
 
   // Set when payment was bypassed (free/sponsored athlete or a valid
   // special code), so it's easy to spot these in the sheet later.
-  paymentMethod: String, // "Paid" | "Free - Name Match" | "Free - Special Code"
+  paymentMethod: String, // "Paid" | "Free - Name Match"
 
   submittedAt: { type: Date, default: Date.now },
 });

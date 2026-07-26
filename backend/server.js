@@ -188,33 +188,23 @@ app.get('/registration-form', async (req, res) => {
   }
 });
 
-// Checks whether a checkout should bypass payment -- either because the
-// athlete's name is on this year's free/sponsored list, or because a
-// valid special code was entered. Both the name list and the code live
-// only in Render's environment variables (FREE_ATHLETES, SPECIAL_CODE),
-// never in the frontend, so they can't be read out of the JS bundle.
+// Checks whether a checkout should bypass payment because the athlete's
+// name is on this year's free/sponsored list. The list lives only in
+// Render's environment variables (FREE_ATHLETES), never in the frontend,
+// so it can't be read out of the JS bundle.
 app.post('/check-bypass', (req, res) => {
-  const { athleteName, code } = req.body;
+  const { athleteName } = req.body;
 
   const freeAthletes = (process.env.FREE_ATHLETES || '')
     .split(',')
     .map((name) => name.trim().toLowerCase())
     .filter(Boolean);
 
-  const specialCode = (process.env.SPECIAL_CODE || '').trim();
+  const bypass = !!(
+    athleteName && freeAthletes.includes(athleteName.trim().toLowerCase())
+  );
 
-  let bypass = false;
-  let reason = null;
-
-  if (athleteName && freeAthletes.includes(athleteName.trim().toLowerCase())) {
-    bypass = true;
-    reason = 'name';
-  } else if (code && specialCode && code.trim() === specialCode) {
-    bypass = true;
-    reason = 'code';
-  }
-
-  res.status(200).send({ bypass, reason });
+  res.status(200).send({ bypass });
 });
 
 // Gear Products
