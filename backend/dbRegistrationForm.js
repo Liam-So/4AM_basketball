@@ -20,6 +20,16 @@ const registrationFormSchema = mongoose.Schema({
   tshirtSize: String,
   comments: String,
 
+  // Waiver (clickwrap, collected as step 2 of checkout, appended here
+  // rather than stored separately since it's the same submission).
+  parentGuardianName: String,
+  waiverDate: String,
+  waiverAgreed: Boolean,
+
+  // Set when payment was bypassed (free/sponsored athlete or a valid
+  // special code), so it's easy to spot these in the sheet later.
+  paymentMethod: String, // "Paid" | "Free - Name Match" | "Free - Special Code"
+
   submittedAt: { type: Date, default: Date.now },
 });
 

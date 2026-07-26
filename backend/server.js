@@ -119,6 +119,10 @@ app.post('/registration-form', async (req, res) => {
     emergencyContactPhone,
     tshirtSize,
     comments,
+    parentGuardianName,
+    waiverDate,
+    waiverAgreed,
+    paymentMethod,
   } = req.body;
 
   try {
@@ -136,6 +140,10 @@ app.post('/registration-form', async (req, res) => {
       emergencyContactPhone,
       tshirtSize,
       comments,
+      parentGuardianName,
+      waiverDate,
+      waiverAgreed,
+      paymentMethod,
     });
 
     try {
@@ -151,6 +159,10 @@ app.post('/registration-form', async (req, res) => {
         tshirtSize,
         comments,
         transactionId,
+        parentGuardianName,
+        waiverDate,
+        waiverAgreed ? 'Yes' : 'No',
+        paymentMethod,
       ]);
     } catch (sheetsErr) {
       console.error(
@@ -174,6 +186,35 @@ app.get('/registration-form', async (req, res) => {
     console.error(err.message);
     res.status(500).send({ error: 'Failed to fetch registration forms.' });
   }
+});
+
+// Checks whether a checkout should bypass payment -- either because the
+// athlete's name is on this year's free/sponsored list, or because a
+// valid special code was entered. Both the name list and the code live
+// only in Render's environment variables (FREE_ATHLETES, SPECIAL_CODE),
+// never in the frontend, so they can't be read out of the JS bundle.
+app.post('/check-bypass', (req, res) => {
+  const { athleteName, code } = req.body;
+
+  const freeAthletes = (process.env.FREE_ATHLETES || '')
+    .split(',')
+    .map((name) => name.trim().toLowerCase())
+    .filter(Boolean);
+
+  const specialCode = (process.env.SPECIAL_CODE || '').trim();
+
+  let bypass = false;
+  let reason = null;
+
+  if (athleteName && freeAthletes.includes(athleteName.trim().toLowerCase())) {
+    bypass = true;
+    reason = 'name';
+  } else if (code && specialCode && code.trim() === specialCode) {
+    bypass = true;
+    reason = 'code';
+  }
+
+  res.status(200).send({ bypass, reason });
 });
 
 // Gear Products
