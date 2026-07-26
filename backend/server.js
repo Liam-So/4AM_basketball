@@ -5,6 +5,8 @@ import nodemailer from 'nodemailer';
 import Camps from './dbCamps.js';
 import Gear from './dbGear.js';
 import Transactions from './dbTransactions.js';
+import RegistrationForm from './dbRegistrationForm.js';
+import { appendRegistrationRow } from './googleSheets.js';
 import env from 'dotenv';
 
 // App config
@@ -94,6 +96,83 @@ app.put('/registration/:id', async (req, res) => {
   } catch (err) {
     console.error(err.message);
     res.send(400).send('Server Error');
+  }
+});
+
+// Registration Form (athlete info collected during checkout, step 1)
+// Mongo is the source of truth here. The Google Sheets write is a mirror
+// for the volunteers' convenience -- if it fails, the submission is still
+// saved and the request still succeeds, so a Sheets/API hiccup can never
+// cost someone their registration data.
+app.post('/registration-form', async (req, res) => {
+  const {
+    campId,
+    campType,
+    campName,
+    transactionId,
+    athleteName,
+    grade,
+    school,
+    team,
+    email,
+    emergencyContactName,
+    emergencyContactPhone,
+    tshirtSize,
+    comments,
+  } = req.body;
+
+  try {
+    const saved = await RegistrationForm.create({
+      campId,
+      campType,
+      campName,
+      transactionId,
+      athleteName,
+      grade,
+      school,
+      team,
+      email,
+      emergencyContactName,
+      emergencyContactPhone,
+      tshirtSize,
+      comments,
+    });
+
+    try {
+      await appendRegistrationRow(campType, [
+        new Date().toISOString(),
+        athleteName,
+        grade,
+        school,
+        team,
+        email,
+        emergencyContactName,
+        emergencyContactPhone,
+        tshirtSize,
+        comments,
+        transactionId,
+      ]);
+    } catch (sheetsErr) {
+      console.error(
+        'Google Sheets append failed (submission is still saved in MongoDB):',
+        sheetsErr.message
+      );
+    }
+
+    res.status(201).send(saved);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send({ error: 'Failed to save registration form.' });
+  }
+});
+
+app.get('/registration-form', async (req, res) => {
+  try {
+    const data = await RegistrationForm.find();
+    res.status(200).send(data);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send({ error: 'Failed to fetch registration forms.' });
   }
 });
 
